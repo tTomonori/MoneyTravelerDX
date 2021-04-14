@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/ui/FaceStamp.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/ui/status/TravelerStatusDisplayFactory.cs">
     <Files>
-      <File FileName="Assets/scripts/game/GameMaster.cs" Line="36" Column="1" />
-      <File FileName="Assets/scripts/game/ui/GameUiMain.cs" Line="20" Column="35" />
-      <File FileName="Assets/scripts/game/ui/box/BudBox.cs" Line="15" Column="29" />
-      <File FileName="Assets/scripts/game/ui/TurnOrderAnimator.cs" Line="17" Column="19" />
-      <File FileName="Assets/scripts/game/ui/FaceStamp.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/game/GameMaster.cs" Line="34" Column="20" />
+      <File FileName="Assets/scripts/game/ui/GameUiMain.cs" Line="7" Column="40" />
+      <File FileName="Assets/scripts/game/ui/TravelerStatusDisplay.cs" Line="24" Column="6" />
+      <File FileName="Assets/scripts/game/ui/status/TravelerStatusDisplayFactory.cs" Line="5" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,7 +22,9 @@
                   </Node>
                   <Node name="ui" expanded="True">
                     <Node name="box" expanded="True" />
-                    <Node name="FaceStamp.cs" selected="True" />
+                    <Node name="status" expanded="True">
+                      <Node name="TravelerStatusDisplayFactory.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
                 <Node name="gameData" expanded="True" />

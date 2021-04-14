@@ -7,7 +7,7 @@ public class TurnOrderAnimator : MyBehaviour {
     public void animate(List<TravelerStatus> aTravelers, List<TravelerStatus> aTurnOrder, Action aCallback) {
         List<BudBox> tBoxes = new List<BudBox>();
         for (int i = 0; i < 4; i++) {
-            if (aTravelers[i].mTravelerData.mTravelerCharaData == TravelerCharaData.none) {
+            if (aTravelers[i] == null) {
                 tBoxes.Add(null);
                 continue;
             }

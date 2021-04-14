@@ -16,6 +16,10 @@ static public class TravelerFactory {
             break;
         }
         for(int i = 0; i < 4; i++) {
+            if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == TravelerCharaData.none) {
+                tTravelers.Add(null);
+                continue;
+            }
             TravelerStatus tTraveler = new TravelerStatus();
             tTraveler.mTravelerData = GameData.mGameSetting.mTravelerData[i];
             tTraveler.mAi = tTraveler.mTravelerData.mAiPattern.getAi();

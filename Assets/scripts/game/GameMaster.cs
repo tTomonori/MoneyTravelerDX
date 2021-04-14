@@ -29,8 +29,10 @@ public class GameMaster {
                 mTurnOrder = aTurnOrder;
                 distributeInitialMoney();
                 //ステータス表示
-                mUiMain.displayStatus(mTurnOrder, () => {
+                MyBehaviour.setTimeoutToIns(0.5f, () => {
+                    mUiMain.displayStatus(mTurnOrder, () => {
 
+                    });
                 });
             });
         });

@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a2d1405796447b29ccb90012cf4b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mTravelerStatusDisplayContainer: {fileID: 0}
+  mTravelerStatusDisplays: []
 --- !u!4 &286126193
 Transform:
   m_ObjectHideFlags: 0
