@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharaData {
+public class TravelerData {
     public TravelerCharaData mTravelerCharaData;
     public TravelerAiPattern mAiPattern;
 }

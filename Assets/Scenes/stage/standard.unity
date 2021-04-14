@@ -894,12 +894,12 @@ MonoBehaviour:
   mRouteContainer: {fileID: 338393193}
   mComaContainer: {fileID: 362706233}
   mWallContainer: {fileID: 563475655}
-  mNorth: 32
-  mEast: 43
-  mSouth: -8
-  mWest: -7
+  mNorth: 40
+  mEast: 51
+  mSouth: -16
+  mWest: -15
   mFloor: 0
-  mCeiling: 8
+  mCeiling: 16
 --- !u!4 &187700228
 Transform:
   m_ObjectHideFlags: 0
@@ -1260,8 +1260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: 3.95}
-  m_SizeDelta: {x: 40, y: 8.1}
+  m_AnchoredPosition: {x: -15, y: 7.95}
+  m_SizeDelta: {x: 56, y: 16.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267844711
 MonoBehaviour:
@@ -1376,6 +1376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36581f2d100c34028855f255c66e9217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mInitialMoney: 1000
+  mFeild: {fileID: 187700227}
+  mCamera: {fileID: 915530813}
 --- !u!114 &281676532 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7076459238299599140, guid: 9fdcf7379c3ee4cc193a29e6a112eb4d,
@@ -2826,7 +2829,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582008175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 32}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 563475656}
@@ -2834,8 +2837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 3.95}
-  m_SizeDelta: {x: 50, y: 8.1}
+  m_AnchoredPosition: {x: 18, y: 7.95}
+  m_SizeDelta: {x: 66, y: 16.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &582008177
 MonoBehaviour:
@@ -3135,6 +3138,7 @@ GameObject:
   - component: {fileID: 691330205}
   - component: {fileID: 691330204}
   - component: {fileID: 691330203}
+  - component: {fileID: 691330206}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3181,7 +3185,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 289
+    m_Bits: 1
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3200,13 +3204,25 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691330202}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 7, z: -10}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 7, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 915530812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &691330206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691330202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b43997169c2e4a8d89b355c72c912a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &708827690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4107,6 +4123,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 909709693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &915530811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915530812}
+  - component: {fileID: 915530813}
+  m_Layer: 0
+  m_Name: gameCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &915530812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915530811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 691330205}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915530813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915530811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac96943a1509946ddb5dcec42f2e790b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCamera: {fileID: 691330206}
 --- !u!1 &951621682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,8 +6105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43, y: 3.95}
-  m_SizeDelta: {x: 40, y: 8.1}
+  m_AnchoredPosition: {x: 51, y: 7.95}
+  m_SizeDelta: {x: 56, y: 16.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351728101
 MonoBehaviour:
@@ -7183,7 +7244,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18, y: -0.1}
-  m_SizeDelta: {x: 50, y: 40}
+  m_SizeDelta: {x: 66, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601438365
 MonoBehaviour:
@@ -8267,7 +8328,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957566660}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 27}
+  m_LocalPosition: {x: 0, y: 0, z: 31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 563475656}
@@ -8276,7 +8337,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18, y: 0.9}
-  m_SizeDelta: {x: 50, y: 10}
+  m_SizeDelta: {x: 66, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1957566662
 MonoBehaviour:
@@ -8372,7 +8433,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18, y: 0.4}
-  m_SizeDelta: {x: 50, y: 1.414213}
+  m_SizeDelta: {x: 66, y: 1.414213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967816406
 MonoBehaviour:

@@ -3,10 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMain : MonoBehaviour {
+    private GameMaster mMaster;
+    [SerializeField]
+    public int mInitialMoney;
+    public GameFeild mFeild;
+    public GameCamera mCamera;
     void Start() {
-        MySceneManager.fadeCallbacks.fadeInFinished = () => {
-            Debug.Log("ゲーム準備完了");
-        };
-        MySceneManager.fadeCallbacks.nextSceneReady();
+        GameData.mStageData = new StageData();
+        GameData.mStageData.mInitialMoney = mInitialMoney;
+        GameData.mStageData.mNorth = mFeild.mNorth;
+        GameData.mStageData.mEast = mFeild.mEast;
+        GameData.mStageData.mSouth = mFeild.mSouth;
+        GameData.mStageData.mWest = mFeild.mWest;
+        GameData.mStageData.mFloor = mFeild.mFloor;
+        GameData.mStageData.mCeiling = mFeild.mCeiling;
+
+        Arg tArg = MySceneManager.getArg(this.gameObject.scene.name);
+        if (tArg.ContainsKey("game") && !tArg.get<bool>("game")) {
+            return;
+        }
+        prepare();
+    }
+    private void prepare() {
+        mMaster = new GameMaster(mFeild,mCamera);
+        mMaster.prepare(()=> {
+            //準備完了
+            if (MySceneManager.fadeCallbacks == null) {
+                gameStart();
+                return;
+            }
+            MySceneManager.fadeCallbacks.fadeInFinished = () => {
+                gameStart();
+            };
+            MySceneManager.fadeCallbacks.nextSceneReady();
+        });
+    }
+    private void gameStart() {
+        mMaster.gameStart();
     }
 }

@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/feild/GameFeild.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/ui/FaceStamp.cs">
     <Files>
-      <File FileName="Assets/scripts/fade/CurtainFadeMain.cs" Line="25" Column="50" />
-      <File FileName="Assets/scripts/MyUnityFrameworks/myFramework/MySceneManager.cs" Line="15" Column="50" />
-      <File FileName="Assets/scripts/setting/SettingMain.cs" />
-      <File FileName="Assets/scripts/game/GameMain.cs" />
-      <File FileName="Assets/scripts/feild/GameFeild.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/game/GameMaster.cs" Line="36" Column="1" />
+      <File FileName="Assets/scripts/game/ui/GameUiMain.cs" Line="20" Column="35" />
+      <File FileName="Assets/scripts/game/ui/box/BudBox.cs" Line="15" Column="29" />
+      <File FileName="Assets/scripts/game/ui/TurnOrderAnimator.cs" Line="17" Column="19" />
+      <File FileName="Assets/scripts/game/ui/FaceStamp.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,11 +14,18 @@
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
                 <Node name="fade" expanded="True" />
-                <Node name="feild" expanded="True">
-                  <Node name="mass" expanded="True" />
-                  <Node name="GameFeild.cs" selected="True" />
+                <Node name="game" expanded="True">
+                  <Node name="feild" expanded="True">
+                    <Node name="mass" expanded="True" />
+                    <Node name="traveler" expanded="True">
+                      <Node name="ai" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="ui" expanded="True">
+                    <Node name="box" expanded="True" />
+                    <Node name="FaceStamp.cs" selected="True" />
+                  </Node>
                 </Node>
-                <Node name="game" expanded="True" />
                 <Node name="gameData" expanded="True" />
                 <Node name="MyUnityFrameworks" expanded="True">
                   <Node name="my2DMeshFramework" expanded="True">
@@ -26,6 +33,7 @@
                   </Node>
                   <Node name="myFramework" expanded="True">
                     <Node name="behaviour" expanded="True" />
+                    <Node name="controller" expanded="True" />
                     <Node name="sound" expanded="True" />
                   </Node>
                 </Node>

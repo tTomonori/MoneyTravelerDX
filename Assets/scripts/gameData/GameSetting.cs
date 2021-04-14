@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSetting {
-    public List<CharaData> mTravelerData;
+    public List<TravelerData> mTravelerData;
     public float mInitialMoney;
     public float mFee;
     public float mBonus;

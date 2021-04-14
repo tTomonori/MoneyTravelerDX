@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEditor;
 
 public class GameFeild : MyBehaviour {
-    static public readonly float mHorizontalMargin = 7;
-    static public readonly float mCeilingMargin = 7;
+    static public readonly float mHorizontalMargin = 15;
+    static public readonly float mCeilingMargin = 15;
     static public readonly float mFloorMargin = 0.1f;
     [SerializeField]
     public List<GameMass> mMassList;

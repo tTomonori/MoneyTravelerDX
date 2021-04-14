@@ -15,6 +15,11 @@ public class TravelerCharaData {
     public Sprite getImage() {
         return Resources.Load<Sprite>("sprites/chara/" + mFile + "/" + mFile);
     }
+    public TravelerComa createComa() {
+        TravelerComa tComa = GameObject.Instantiate(Resources.Load<TravelerComa>("prefabs/game/coma/travelerComa"));
+        tComa.mImage.sprite = getImage();
+        return tComa;
+    }
 
     static public readonly TravelerCharaData none = new TravelerCharaData("なし", "none", "none");
     static public readonly TravelerCharaData marie = new TravelerCharaData("マリー", "Marie", "marie");

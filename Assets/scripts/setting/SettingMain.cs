@@ -110,7 +110,7 @@ public class SettingMain : MonoBehaviour {
         //開始可能な設定になっているか確認
         //トラベラーが2人以上か
         int tTravelerNum = 0;
-        foreach(CharaData tData in GameData.mGameSetting.mTravelerData) {
+        foreach(TravelerData tData in GameData.mGameSetting.mTravelerData) {
             if (tData.mTravelerCharaData != TravelerCharaData.none) tTravelerNum++;
         }
         if (tTravelerNum < 2) {

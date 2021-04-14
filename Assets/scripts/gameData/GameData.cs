@@ -4,6 +4,7 @@ using UnityEngine;
 
 static public class GameData {
     static public GameSetting mGameSetting;
+    static public StageData mStageData;
     static GameData() {
         mGameSetting = new GameSetting();
         mGameSetting.mInitialMoney = 1;
@@ -15,24 +16,24 @@ static public class GameData {
         mGameSetting.mStage = "standard";
         mGameSetting.mBattleMethod = new LosingMethod();
 
-        mGameSetting.mTravelerData = new List<CharaData>();
-        CharaData tCharaData;
-        tCharaData = new CharaData();
+        mGameSetting.mTravelerData = new List<TravelerData>();
+        TravelerData tCharaData;
+        tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.marie;
         tCharaData.mAiPattern = TravelerAiPattern.player;
         mGameSetting.mTravelerData.Add(tCharaData);
 
-        tCharaData = new CharaData();
+        tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.rear;
         tCharaData.mAiPattern = TravelerAiPattern.carefully;
         mGameSetting.mTravelerData.Add(tCharaData);
 
-        tCharaData = new CharaData();
+        tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.maru;
         tCharaData.mAiPattern = TravelerAiPattern.solid;
         mGameSetting.mTravelerData.Add(tCharaData);
 
-        tCharaData = new CharaData();
+        tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.chiara;
         tCharaData.mAiPattern = TravelerAiPattern.impulse;
         mGameSetting.mTravelerData.Add(tCharaData);

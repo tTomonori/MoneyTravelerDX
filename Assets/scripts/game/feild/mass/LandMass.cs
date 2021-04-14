@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class LandMass : GameMass {
     static public int mMaxIncreaseLevel = 3;
-    [NonSerialized]public int mOwner = 0;
-    [NonSerialized]public int mIncreaseLevel = 0;
+    [NonSerialized] public int mOwner = 0;
+    [NonSerialized] public int mIncreaseLevel = 0;
     [SerializeField]
     public string mName;
     public int mBaseValue;
     public List<LandAttribute> mAttributes;
-    public int mFeeRate;
+    public float mFeeRate;
 
     public SpriteRenderer mMassMesh;
     public TextMesh mNameMesh;
@@ -30,7 +30,7 @@ public class LandMass : GameMass {
         return mBaseValue / 2 * (int)Mathf.Pow(2, aIncraseLevel);
     }
     public int mPurchaseCost { get { return mBaseValue; } }
-    public int mFeeCost { get { return (int)(GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3, mIncreaseLevel)); } }
+    public int mFeeCost { get { return (int)(mFeeRate * GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3, mIncreaseLevel)); } }
     public int mIncreaseCost { get { return getIncreaseCost(mIncreaseLevel); } }
     public int mAcquisitionCost { get { return (int)(mTotalValue * GameData.mGameSetting.mAcquisition); } }
     public int mSellCost { get { return (int)(mTotalValue * 0.8f); } }
@@ -99,7 +99,7 @@ public class LandMass : GameMass {
         mAttribute1Renderer.sprite = mAttributes[0].getSprite();
         mAttribute2Renderer.sprite = mAttributes[1].getSprite();
     }
-    public void initialize() {
+    public override void initialize() {
         updateValueDisplay();
         foreach (MyBehaviour tRenderer in mBuildingRenderers)
             tRenderer.gameObject.SetActive(false);
