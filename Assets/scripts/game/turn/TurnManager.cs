@@ -10,7 +10,13 @@ public class TurnManager {
         mMaster.mUiMain.animateTurnStart(aTurnTraveler, () => { });
         mMaster.mCamera.mTarget = aTurnTraveler.mComa;
         mMaster.tweakComaPosition(aTurnTraveler, () => {
+            //ダイス
+            mMaster.mUiMain.setDice((aDiceManager) => {
+                aTurnTraveler.mAi.rollDice(aDiceManager);
+            },(aNumber)=> {
+                aTurnTraveler.mAi.endRollDice();
 
+            });
         });
     }
 }

@@ -46,4 +46,15 @@ public class GameUiMain : MyBehaviour {
             aCallback();
         });
     }
+    //ダイス
+    public void setDice(Action<DiceManager> aPrepared, Action<int> aEnd) {
+        DiceManager tManager = null;
+        DiceManager.setDice(this.gameObject, (aManager) => {
+            tManager = aManager;
+            aPrepared(aManager);
+        }, (aNum) => {
+            tManager.delete();
+            aEnd(aNum);
+        });
+    }
 }

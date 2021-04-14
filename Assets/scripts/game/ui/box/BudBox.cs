@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BudBox : MyBehaviour {
+    [SerializeField]
     public MyBehaviour mBox;//boxのimageのbehaviour
     public SpriteRenderer mRenderer;//boxのimage
     public MyBehaviour mContents;//中身
+    public bool mIsOpened;
     public enum BoxColor {
         blue, red
     }
-    private void Awake() {
-        mBox = this.createChild<MyBehaviour>("box");
-        mRenderer = mBox.gameObject.AddComponent<SpriteRenderer>();
-        mBox.positionZ = -1;
-        mContents = this.createChild<MyBehaviour>("contents");
-        mContents.scale2D = Vector2.zero;
-        this.changeLayer(5);
+
+    static public BudBox create() {
+        return GameObject.Instantiate(Resources.Load<BudBox>("prefabs/game/ui/budBox"));
     }
     public void setColor(BoxColor aColor) {
         switch (aColor) {
@@ -28,6 +26,8 @@ public class BudBox : MyBehaviour {
         }
     }
     public void open() {
+        if (mIsOpened) return;
+        mIsOpened = true;
         mBox.scaleTo(new Vector2(0, 0), 0.3f);
         mContents.scaleTo(new Vector2(1, 1), 0.3f);
         //sound

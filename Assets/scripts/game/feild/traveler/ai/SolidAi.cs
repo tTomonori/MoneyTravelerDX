@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SolidAi : TravelerAi {
+public class SolidAi : CpuAi {
 
 }

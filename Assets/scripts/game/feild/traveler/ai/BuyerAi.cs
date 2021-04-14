@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuyerAi : TravelerAi {
+public class BuyerAi : CpuAi {
 
 }

@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarefullyAi : TravelerAi {
+public class CarefullyAi : CpuAi {
 
 }
