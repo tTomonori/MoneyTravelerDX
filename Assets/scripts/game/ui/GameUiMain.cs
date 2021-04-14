@@ -24,7 +24,7 @@ public class GameUiMain : MyBehaviour {
         });
     }
     //トラベラーのステータスを表示
-    public void displayStatus(List<TravelerStatus> aTravelersTurnOrder,Action aCallback) {
+    public void displayStatus(List<TravelerStatus> aTravelersTurnOrder, Action aCallback) {
         (mTravelerStatusDisplayContainer, mTravelerStatusDisplays) = TravelerStatusDisplayFactory.create(aTravelersTurnOrder);
         mTravelerStatusDisplayContainer.transform.SetParent(this.transform, false);
         mTravelerStatusDisplayContainer.position2D = new Vector2(0, -4);
@@ -32,9 +32,18 @@ public class GameUiMain : MyBehaviour {
     }
     //トラベラーのステータスを更新
     public void updateStatus(List<TravelerStatus> aTravelers) {
-        foreach(TravelerStatus tTraveler in aTravelers) {
+        foreach (TravelerStatus tTraveler in aTravelers) {
             if (tTraveler == null) continue;
             mTravelerStatusDisplays[tTraveler.mPlayerNumber - 1].updateStatus(tTraveler);
         }
+    }
+    //ターン開始演出
+    public void animateTurnStart(TravelerStatus aTurnTraveler, Action aCallback) {
+        TurnEnvelope tEnvelope = TurnEnvelope.create(aTurnTraveler);
+        tEnvelope.transform.SetParent(this.transform, false);
+        tEnvelope.animate(() => {
+            tEnvelope.delete();
+            aCallback();
+        });
     }
 }
