@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/fade/curtainFade.unity
+    guid: 23a33ebe45175481c8434daa869809aa
+  - enabled: 1
+    path: Assets/Scenes/stage/standard.unity
+    guid: b353b174ec7664e9cbe4f3e0e3d33067
+  - enabled: 1
+    path: Assets/Scenes/setting/setting.unity
+    guid: 3698b2107194e4615880618384b84524
   m_configObjects: {}

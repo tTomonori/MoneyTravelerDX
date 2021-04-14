@@ -1,18 +1,11 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/ui/Attention.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/feild/GameFeild.cs">
     <Files>
-      <File FileName="Assets/scripts/setting/GameSetting.cs" Line="6" Column="39" />
-      <File FileName="Assets/scripts/setting/GameData.cs" Line="37" Column="58" />
-      <File FileName="Assets/scripts/setting/SettingMain.cs" Line="26" Column="66" />
-      <File FileName="Assets/scripts/setting/AcquisitionConditionSetting.cs" Line="8" Column="40" />
-      <File FileName="Assets/scripts/setting/InitialMoneySetting.cs" Line="7" Column="1" />
-      <File FileName="Assets/scripts/setting/DisasterDamageSetting.cs" Line="27" Column="62" />
-      <File FileName="Assets/scripts/gameData/BattleMethod.cs" Line="28" Column="54" />
-      <File FileName="Assets/scripts/setting/flowerSetting/BattleMethodSetting.cs" Line="109" Column="57" />
-      <File FileName="Assets/scripts/gameData/TravelerCharaData.cs" Line="19" Column="97" />
-      <File FileName="Assets/scripts/setting/flowerSetting/TravelerAiSetting.cs" Line="13" Column="111" />
-      <File FileName="Assets/scripts/setting/flowerSetting/TravelerCharaSetting.cs" Line="25" Column="129" />
-      <File FileName="Assets/scripts/ui/Attention.cs" Line="5" Column="23" />
+      <File FileName="Assets/scripts/fade/CurtainFadeMain.cs" Line="25" Column="50" />
+      <File FileName="Assets/scripts/MyUnityFrameworks/myFramework/MySceneManager.cs" Line="15" Column="50" />
+      <File FileName="Assets/scripts/setting/SettingMain.cs" />
+      <File FileName="Assets/scripts/game/GameMain.cs" />
+      <File FileName="Assets/scripts/feild/GameFeild.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,8 +13,17 @@
           <Node name="MoneyTravelerDX" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
+                <Node name="fade" expanded="True" />
+                <Node name="feild" expanded="True">
+                  <Node name="mass" expanded="True" />
+                  <Node name="GameFeild.cs" selected="True" />
+                </Node>
+                <Node name="game" expanded="True" />
                 <Node name="gameData" expanded="True" />
                 <Node name="MyUnityFrameworks" expanded="True">
+                  <Node name="my2DMeshFramework" expanded="True">
+                    <Node name="shader" expanded="True" />
+                  </Node>
                   <Node name="myFramework" expanded="True">
                     <Node name="behaviour" expanded="True" />
                     <Node name="sound" expanded="True" />
@@ -30,9 +32,7 @@
                 <Node name="setting" expanded="True">
                   <Node name="flowerSetting" expanded="True" />
                 </Node>
-                <Node name="ui" expanded="True">
-                  <Node name="Attention.cs" selected="True" />
-                </Node>
+                <Node name="ui" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -128,6 +128,7 @@ public class SettingMain : MonoBehaviour {
             }
         }
         Debug.Log("ゲーム開始");
+        MySceneManager.changeSceneWithFade("standard", "curtainFade");
     }
     private void OnDestroy() {
         Subject.removeObserver("settingMain");
