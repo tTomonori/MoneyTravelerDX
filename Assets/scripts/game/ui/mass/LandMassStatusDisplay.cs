@@ -22,6 +22,8 @@ public class LandMassStatusDisplay : MassStatusDisplay {
             mOwnerStamp.gameObject.SetActive(false);
             mOwnerNameMesh.text = "";
         } else {
+            mBack.color = tLand.mOwner.playerColor;
+            mBack.color = new Color(mBack.color.r, mBack.color.g, mBack.color.b, 0.3f);
             mOwnerStamp.mImage.sprite = tLand.mOwner.mTravelerData.mTravelerCharaData.getImage();
             mOwnerNameMesh.text = tLand.mOwner.mTravelerData.mTravelerCharaData.mName;
         }

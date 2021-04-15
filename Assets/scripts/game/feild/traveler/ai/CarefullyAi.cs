@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CarefullyAi : CpuAi {
-    public override void purchaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
+    public override void purchaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback) {
         //所持金が現在の最も料金が高いマスの料金を下回らなければ購入する
-        LandMass tLand = mMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
+        LandMass tLand = aMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
         if (tLand == null) {
             aCallback(true);
             return;
@@ -17,9 +17,9 @@ public class CarefullyAi : CpuAi {
         }
         aCallback(false);
     }
-    public override void increaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
+    public override void increaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback) {
         //所持金が現在の最も料金が高いマスの料金を下回らなければ増資する
-        LandMass tLand = mMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
+        LandMass tLand = aMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
         if (tLand == null) {
             aCallback(true);
             return;
@@ -30,9 +30,9 @@ public class CarefullyAi : CpuAi {
         }
         aCallback(false);
     }
-    public override void acquireLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
+    public override void acquireLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback) {
         //所持金が現在の最も料金が高いマスの料金を下回らなければ買収する
-        LandMass tLand = mMaster.mFeild.searchExpensivestFeeLand(aMyStatus, aLand);
+        LandMass tLand = aMaster.mFeild.searchExpensivestFeeLand(aMyStatus, aLand);
         if (tLand == null) {
             aCallback(true);
             return;

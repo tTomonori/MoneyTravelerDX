@@ -64,4 +64,10 @@ public class GameUiMain : MyBehaviour {
         tDisplay.position2D = new Vector2(0, 1.5f);
         return tDisplay;
     }
+    //hangingBoard
+    public HangingBoard displayHangingBoard(HangingBoard.BoardImage aBoardImage) {
+        HangingBoard tBoard = HangingBoard.create(aBoardImage);
+        tBoard.transform.SetParent(this.transform, false);
+        return tBoard;
+    }
 }

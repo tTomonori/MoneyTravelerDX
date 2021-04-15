@@ -12,7 +12,7 @@ public class TurnManager {
         mMaster.tweakComaPosition(aTurnTraveler, () => {
             //ダイス
             mMaster.mUiMain.setDice((aDiceManager) => {
-                aTurnTraveler.mAi.rollDice(aDiceManager);
+                aTurnTraveler.mAi.rollDice(aDiceManager, mMaster);
             }, (aNumber) => {
                 aTurnTraveler.mAi.endRollDice();
                 move(aTurnTraveler, aNumber, aCallback);

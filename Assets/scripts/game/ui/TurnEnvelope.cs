@@ -25,14 +25,14 @@ public class TurnEnvelope : MyBehaviour {
         mMark.scale2D = Vector2.zero;
         this.position2D = new Vector2(-13, 8);
         this.rotate = Vector3.zero;
-        this.rotateBy(-30, 0.5f, () => {
-            mMark.rotateBy(360, 0.3f);
+        this.rotateZBy(-30, 0.5f, () => {
+            mMark.rotateZBy(360, 0.3f);
             mMark.scale2D = new Vector2(5, 5);
             mMark.scaleTo(new Vector2(1, 1), 0.3f, () => {
                 mObjects.scaleTo(new Vector2(0.9f, 0.9f), 0.1f, () => {
                     mObjects.scaleTo(new Vector2(1f, 1f), 0.1f, () => {
                         MyBehaviour.setTimeoutToIns(0.5f, () => {
-                            this.rotateBy(30, 0.5f, aCallback);
+                            this.rotateZBy(30, 0.5f, aCallback);
                         });
                     });
                 });
