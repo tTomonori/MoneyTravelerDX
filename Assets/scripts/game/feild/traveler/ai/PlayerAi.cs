@@ -57,14 +57,35 @@ public class PlayerAi : TravelerAi {
     }
     //土地の購入
     public override void purchaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
-        aCallback(true);
+        MassStatusDisplay tDisplay = null;
+        List<MassStatusUiButtonData> tButtonDataList = new List<MassStatusUiButtonData>() {
+            {new MassStatusUiButtonData("購入する",aMyStatus.playerColor,()=>{tDisplay.close(); aCallback(true); }) },
+            null,null,
+            {new MassStatusUiButtonData("マップを\n見る",new Color(0.8f,0.8f,0.8f),()=>{ }) },
+            {new MassStatusUiButtonData("やめる",new Color(0.8f,0.8f,0.8f),()=>{tDisplay.close(); aCallback(false); }) }
+        };
+        tDisplay = mMaster.mUiMain.displayMassStatus(aLand, tButtonDataList);
     }
     //土地の増資
     public override void increaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
-        aCallback(true);
+        MassStatusDisplay tDisplay = null;
+        List<MassStatusUiButtonData> tButtonDataList = new List<MassStatusUiButtonData>() {
+            {new MassStatusUiButtonData("増資する",aMyStatus.playerColor,()=>{tDisplay.close(); aCallback(true); }) },
+            null,null,
+            {new MassStatusUiButtonData("マップを\n見る",new Color(0.8f,0.8f,0.8f),()=>{ }) },
+            {new MassStatusUiButtonData("やめる",new Color(0.8f,0.8f,0.8f),()=>{tDisplay.close(); aCallback(false); }) }
+        };
+        tDisplay = mMaster.mUiMain.displayMassStatus(aLand, tButtonDataList);
     }
     //土地の買収
     public override void acquireLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster mMaster, Action<bool> aCallback) {
-        aCallback(true);
+        MassStatusDisplay tDisplay = null;
+        List<MassStatusUiButtonData> tButtonDataList = new List<MassStatusUiButtonData>() {
+            {new MassStatusUiButtonData("買収する",aMyStatus.playerColor,()=>{tDisplay.close(); aCallback(true); }) },
+            null,null,
+            {new MassStatusUiButtonData("マップを\n見る",new Color(0.8f,0.8f,0.8f),()=>{ }) },
+            {new MassStatusUiButtonData("やめる",new Color(0.8f,0.8f,0.8f),()=>{tDisplay.close(); aCallback(false); }) }
+        };
+        tDisplay = mMaster.mUiMain.displayMassStatus(aLand, tButtonDataList);
     }
 }

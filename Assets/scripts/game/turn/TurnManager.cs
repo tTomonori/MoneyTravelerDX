@@ -13,14 +13,14 @@ public class TurnManager {
             //ダイス
             mMaster.mUiMain.setDice((aDiceManager) => {
                 aTurnTraveler.mAi.rollDice(aDiceManager);
-            },(aNumber)=> {
+            }, (aNumber) => {
                 aTurnTraveler.mAi.endRollDice();
                 move(aTurnTraveler, aNumber, aCallback);
             });
         });
     }
     //指定マス数移動する
-    private void move(TravelerStatus aTurnTraveler,int aNumber,Action aCallback) {
+    private void move(TravelerStatus aTurnTraveler, int aNumber, Action aCallback) {
         aTurnTraveler.mComa.mNumberMesh.text = aNumber.ToString();
         moveToNextMass(aTurnTraveler, () => {
             //マスに止まった
@@ -30,17 +30,18 @@ public class TurnManager {
                 return;
             }
             //マスを通過する
+            aTurnTraveler.mComa.mNumberMesh.text = (aNumber - 1).ToString();
             MassEventManager.runPassEvent(aTurnTraveler, mMaster, () => {
                 move(aTurnTraveler, aNumber - 1, aCallback);
             });
         });
     }
     //次のマスへ移動させる(空マスは通過する)
-    private void moveToNextMass(TravelerStatus aTraveler,Action aCallback) {
+    private void moveToNextMass(TravelerStatus aTraveler, Action aCallback) {
         int tNextMassNumber = (aTraveler.mCurrentMassNumber + 1) % mMaster.mFeild.mMassList.Count;
         aTraveler.mComa.moveToWithSpeed(mMaster.mFeild.mMassList[tNextMassNumber].worldPosition, 8, () => {
             aTraveler.mCurrentMassNumber = tNextMassNumber;
-            if(mMaster.mFeild.mMassList[tNextMassNumber] is EmptyMass) {
+            if (mMaster.mFeild.mMassList[tNextMassNumber] is EmptyMass) {
                 moveToNextMass(aTraveler, aCallback);
                 return;
             }

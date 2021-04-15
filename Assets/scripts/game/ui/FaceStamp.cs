@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FaceStamp : MyBehaviour {
+    [SerializeField]
+    public SpriteRenderer mImage;
     public float cutRotation {
         get { return findChild<MyBehaviour>("stamp").rotateZ; }
         set { findChild<MyBehaviour>("stamp").rotateZ = value; }

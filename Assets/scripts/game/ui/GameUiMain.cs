@@ -57,4 +57,11 @@ public class GameUiMain : MyBehaviour {
             aEnd(aNum);
         });
     }
+    //マスのステータス表示
+    public MassStatusDisplay displayMassStatus(GameMass aMass, List<MassStatusUiButtonData> aButtonDataList) {
+        MassStatusDisplay tDisplay = MassStatusDisplay.create(aMass, aButtonDataList);
+        tDisplay.transform.SetParent(this.transform, false);
+        tDisplay.position2D = new Vector2(0, 1.5f);
+        return tDisplay;
+    }
 }
