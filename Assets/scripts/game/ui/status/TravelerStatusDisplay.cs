@@ -37,11 +37,10 @@ public class TravelerStatusDisplay : MyBehaviour {
         mDisplayedRanking = aTraveler.mRanking;
         mRankingRenderer.sprite = Resources.Load<Sprite>("sprites/number/ranking/" + mDisplayedRanking.ToString());
         //アニメーション
-        mRanking.scaleBy(new Vector2(-1, -1), 0, () => {
-            mRanking.scaleBy(new Vector2(0.4f, 1.3f), 0.15f, () => {
-                mRanking.scaleBy(new Vector2(0.8f, -0.5f), 0.15f, () => {
-                    mRanking.scaleBy(new Vector2(-0.2f, 0.2f), 0.15f);
-                });
+        mRanking.scale2D = new Vector2(0, 0);
+        mRanking.scaleBy(new Vector2(0.4f, 1.3f), 0.15f, () => {
+            mRanking.scaleBy(new Vector2(0.8f, -0.5f), 0.15f, () => {
+                mRanking.scaleBy(new Vector2(-0.2f, 0.2f), 0.15f);
             });
         });
     }

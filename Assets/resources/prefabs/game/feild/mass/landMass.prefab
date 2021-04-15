@@ -1119,6 +1119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091668923093226603}
   - component: {fileID: 538061338086482794}
+  - component: {fileID: 5600750377470074529}
   m_Layer: 0
   m_Name: landMass
   m_TagString: Untagged
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   mBaseValue: 0
   mAttributes: 0000000000000000
   mFeeRate: 1
-  mMassMesh: {fileID: 5115500922386993568}
+  mMassRenderer: {fileID: 5115500922386993568}
   mNameMesh: {fileID: 3880930489132227595}
   mSellingValues: {fileID: 9117866983999748021}
   mSoldValues: {fileID: 4194831475559949247}
@@ -1169,12 +1170,25 @@ MonoBehaviour:
   mFeeMesh: {fileID: 6742225882536113870}
   mAttribute1Renderer: {fileID: 4138281723301552169}
   mAttribute2Renderer: {fileID: 7637983268139993928}
-  mBuildings: {fileID: 0}
+  mBuildings: {fileID: 7530501807180748868}
   mBuildingRenderers:
   - {fileID: 6299006481333933035}
   - {fileID: 4950748729224357388}
   - {fileID: 3873511267749629537}
   - {fileID: 7702242881252596478}
+--- !u!65 &5600750377470074529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823862538151830875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6215195429875288361
 GameObject:
   m_ObjectHideFlags: 0

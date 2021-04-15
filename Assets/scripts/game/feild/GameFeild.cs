@@ -19,17 +19,6 @@ public class GameFeild : MyBehaviour {
     public float mWest;
     public float mFloor;
     public float mCeiling;
-    //指定したプレイヤが所有している土地のリストを返す
-    //public List<LandMass> getOwnedLand(int aPlayerNumber) {
-    //    List<LandMass> tLands = new List<LandMass>();
-    //    foreach (GameMass tMass in mMassList) {
-    //        if (!(tMass is LandMass)) continue;
-    //        LandMass tLand = (LandMass)tMass;
-    //        if (tLand.mOwner != aPlayerNumber) continue;
-    //        tLands.Add(tLand);
-    //    }
-    //    return tLands;
-    //}
 
     //inspector用
     private void createContainer() {

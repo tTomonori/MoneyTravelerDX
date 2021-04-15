@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LandMass : GameMass {
     static public int mMaxIncreaseLevel = 3;
-    [NonSerialized] public int mOwner = 0;
+    public TravelerStatus mOwner = null;
     [NonSerialized] public int mIncreaseLevel = 0;
     [SerializeField]
     public string mName;
@@ -14,7 +14,7 @@ public class LandMass : GameMass {
     public List<LandAttribute> mAttributes;
     public float mFeeRate;
 
-    public SpriteRenderer mMassMesh;
+    public SpriteRenderer mMassRenderer;
     public TextMesh mNameMesh;
     public MyBehaviour mSellingValues;
     public MyBehaviour mSoldValues;
@@ -29,23 +29,23 @@ public class LandMass : GameMass {
     public int getIncreaseCost(int aIncraseLevel) {
         return mBaseValue / 2 * (int)Mathf.Pow(2, aIncraseLevel);
     }
+    public int getTotalValue(int aIncreaseLevel) {
+        int tTotal = mBaseValue;
+        for (int i = 0; i < aIncreaseLevel; i++) {
+            tTotal += getIncreaseCost(i);
+        }
+        return tTotal;
+    }
     public int mPurchaseCost { get { return mBaseValue; } }
     public int mFeeCost { get { return (int)(mFeeRate * GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3, mIncreaseLevel)); } }
     public int mIncreaseCost { get { return getIncreaseCost(mIncreaseLevel); } }
     public int mAcquisitionCost { get { return (int)(mTotalValue * GameData.mGameSetting.mAcquisition); } }
+    public int mAcquisitionTakeCost { get { return mTotalValue; } }
     public int mSellCost { get { return (int)(mTotalValue * 0.8f); } }
-    public int mTotalValue {
-        get {
-            int tTotal = mBaseValue;
-            for (int i = 0; i < mIncreaseLevel; i++) {
-                tTotal += getIncreaseCost(i);
-            }
-            return tTotal;
-        }
-    }
+    public int mTotalValue { get { return getTotalValue(mIncreaseLevel); } }
     //購入増資等の欄更新
     public void updateValueDisplay() {
-        if (mOwner <= 0) {
+        if (mOwner == null) {
             mSellingValues.gameObject.SetActive(true);
             mSoldValues.gameObject.SetActive(false);
             mPurchaseMesh.text = mPurchaseCost.ToString();
@@ -60,19 +60,19 @@ public class LandMass : GameMass {
         }
     }
     //オーナー変更
-    //public void changeOrner(PlayerStatus aStatus, Action aCallback) {
-    //    if (aStatus == null) {
-    //        mOwner = 0;
-    //        mMass.color = new Color(1, 1, 1, 1);
-    //        updateValueDisplay();
-    //        aCallback();
-    //        return;
-    //    }
-    //    mOwner = aStatus.mPlayerNumber;
-    //    mMass.color = aStatus.playerColor;
-    //    updateValueDisplay();
-    //    aCallback();
-    //}
+    public void changeOrner(TravelerStatus aTraveler, Action aCallback) {
+        if (aTraveler == null) {
+            mOwner = null;
+            mMassRenderer.color = new Color(1, 1, 1, 1);
+            updateValueDisplay();
+            aCallback();
+            return;
+        }
+        mOwner = aTraveler;
+        mMassRenderer.color = aTraveler.playerColor;
+        updateValueDisplay();
+        aCallback();
+    }
     //増資レベル変更
     public void changeIncreaseLevel(int aLevel, Action aCallback) {
         mBuildingRenderers[mIncreaseLevel].gameObject.SetActive(false);

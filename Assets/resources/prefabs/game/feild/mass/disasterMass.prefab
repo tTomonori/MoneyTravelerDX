@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016034209706292138}
   - component: {fileID: 2401869231753556755}
+  - component: {fileID: 8667953044470295604}
   m_Layer: 0
   m_Name: disasterMass
   m_TagString: Untagged
@@ -157,3 +158,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mEventType: 3
+--- !u!65 &8667953044470295604
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088717077293740573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}

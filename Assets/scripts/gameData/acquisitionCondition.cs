@@ -21,4 +21,31 @@ static public class AcquisitionConditionMethods {
         }
         throw new Exception();
     }
+    static public bool canAcquisition(this AcquisitionCondition e, GameMaster aMaster, TravelerStatus aTraveler) {
+        switch (e) {
+            case AcquisitionCondition.none:
+                return false;
+            case AcquisitionCondition.always:
+                return true;
+            case AcquisitionCondition.soldOut:
+                foreach (GameMass tMass in aMaster.mFeild.mMassList) {
+                    if (!(tMass is LandMass)) continue;
+                    LandMass tLand = (LandMass)tMass;
+                    if (tLand.mOwner == null)
+                        return false;
+                }
+                return true;
+            case AcquisitionCondition.increaseMax:
+                foreach (GameMass tMass in aMaster.mFeild.mMassList) {
+                    if (!(tMass is LandMass)) continue;
+                    LandMass tLand = (LandMass)tMass;
+                    if (tLand.mOwner == null)
+                        return false;
+                    if (tLand.mOwner == aTraveler && tLand.mIncreaseLevel != LandMass.mMaxIncreaseLevel)
+                        return false;
+                }
+                return true;
+        }
+        throw new Exception();
+    }
 }

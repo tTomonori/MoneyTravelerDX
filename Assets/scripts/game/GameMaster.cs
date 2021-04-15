@@ -12,6 +12,7 @@ public class GameMaster {
     public List<TravelerStatus> mTurnOrder;
     public int mTurnIndex = -1;
     public TurnManager mTurnManager;
+    public int mTurnNumber = 1;
     public GameMaster(GameFeild aFeild, GameCamera aCamera) {
         mFeild = aFeild;
         mCamera = aCamera;
@@ -50,17 +51,38 @@ public class GameMaster {
     //初期所持金を配布
     private void distributeInitialMoney() {
         foreach (TravelerStatus tTraveler in mTurnOrder) {
-            tTraveler.mMoney = (int)(GameData.mStageData.mInitialMoney * GameData.mGameSetting.mInitialMoney);
-            tTraveler.mAssets = tTraveler.mMoney;
+            tTraveler.setInitialMoney((int)(GameData.mStageData.mInitialMoney * GameData.mGameSetting.mInitialMoney));
         }
     }
     //次のターン開始
     private void nextTurn() {
+        int tPreTurnIndex = mTurnIndex;
         mTurnIndex = (mTurnIndex + 1) % mTurnOrder.Count;
         while (mTurnOrder[mTurnIndex].mIsRetired)
             mTurnIndex = (mTurnIndex + 1) % mTurnOrder.Count;
 
-        mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
+        if (mTurnIndex < tPreTurnIndex) {
+            mTurnNumber++;
+        }
+            mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
+    }
+    //ステータス表示更新
+    public void updateStatusDisplay() {
+        updateRanking();
+        mUiMain.updateStatus(mTurnOrder);
+    }
+    //トラベラーの順位更新
+    public void updateRanking() {
+        foreach (TravelerStatus tTraveler in mTurnOrder) {
+            if (tTraveler.mIsRetired) continue;
+            int tRanking = 1;
+            foreach (TravelerStatus tComparison in mTurnOrder) {
+                if (tTraveler.mAssets < tComparison.mAssets) {
+                    tRanking++;
+                }
+            }
+            tTraveler.mRanking = tRanking;
+        }
     }
     //同じマス内でキャラが重ならないように移動して調整
     public void tweakComaPosition(TravelerStatus aTurnTraveler, Action aCallback) {

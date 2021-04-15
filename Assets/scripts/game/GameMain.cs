@@ -17,6 +17,7 @@ public class GameMain : MonoBehaviour {
         GameData.mStageData.mWest = mFeild.mWest;
         GameData.mStageData.mFloor = mFeild.mFloor;
         GameData.mStageData.mCeiling = mFeild.mCeiling;
+        GameData.mStageData.mCamera = mCamera;
 
         Arg tArg = MySceneManager.getArg(this.gameObject.scene.name);
         if (tArg.ContainsKey("game") && !tArg.get<bool>("game")) {

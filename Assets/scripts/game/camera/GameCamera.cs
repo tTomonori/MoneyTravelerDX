@@ -32,5 +32,20 @@ public class GameCamera : MyBehaviour {
     }
     public void move(Vector2 aVec) {
         this.position += new Vector3(aVec.x, 0, aVec.y);
+        orthodonticsPosition();
+    }
+    public void orthodonticsPosition() {
+        if (mCamera.worldPosition.z > GameData.mStageData.mNorth - 7) {
+            this.positionZ -= mCamera.worldPosition.z - (GameData.mStageData.mNorth - 7);
+        }
+        if (mCamera.worldPosition.x > GameData.mStageData.mEast - 1) {
+            this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mEast - 1);
+        }
+        if (mCamera.worldPosition.z < GameData.mStageData.mSouth + 1) {
+            this.positionZ -= mCamera.worldPosition.z - (GameData.mStageData.mSouth + 1);
+        }
+        if (mCamera.worldPosition.x < GameData.mStageData.mWest + 1) {
+            this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mWest + 1);
+        }
     }
 }

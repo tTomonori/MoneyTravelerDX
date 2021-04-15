@@ -127,7 +127,7 @@ public class SettingMain : MonoBehaviour {
                 }
             }
         }
-        Debug.Log("ゲーム開始");
+        mCover.gameObject.SetActive(true);
         MySceneManager.changeSceneWithFade("standard", "curtainFade");
     }
     private void OnDestroy() {

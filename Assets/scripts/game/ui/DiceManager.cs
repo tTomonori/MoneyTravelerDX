@@ -14,6 +14,7 @@ public class DiceManager : MyBehaviour {
     [SerializeField] private TextMesh mNumberMesh1;
     [SerializeField] private TextMesh mNumberMesh2;
     [SerializeField] private TextMesh mNumberMesh3;
+    [SerializeField] private MyButton mMapButton;
     private Action<int> mEndCallback;
     static public void setDice(GameObject aParent, Action<DiceManager> aPrepared, Action<int> aEnd) {
         DiceManager tManager = GameObject.Instantiate(Resources.Load<DiceManager>("prefabs/game/ui/diceManager"));
@@ -75,8 +76,21 @@ public class DiceManager : MyBehaviour {
     //全てのboxを開けたかチェック
     private void checkAllOpened() {
         if (!(mBox1.mIsOpened && mBox2.mIsOpened && mBox3.mIsOpened)) return;
+        hideMapButton();
         MyBehaviour.setTimeoutToIns(1, () => {
             mEndCallback(int.Parse(mNumberMesh1.text) + int.Parse(mNumberMesh2.text) + int.Parse(mNumberMesh3.text));
         });
+    }
+    public void displayMapButton() {
+        mMapButton.gameObject.SetActive(true);
+    }
+    public void hideMapButton() {
+        mMapButton.gameObject.SetActive(false);
+    }
+    public void hide() {
+        mContainer.gameObject.SetActive(false);
+    }
+    public void show() {
+        mContainer.gameObject.SetActive(true);
     }
 }

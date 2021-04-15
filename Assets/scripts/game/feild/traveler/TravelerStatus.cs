@@ -7,7 +7,7 @@ public class TravelerStatus {
     public TravelerData mTravelerData;
     public int mMoney;
     public int mProperty;
-    public int mAssets;
+    public int mAssets { get { return mMoney + mProperty; } }
     public int mOrbit;
     public int mRanking;
     public int mPlayerNumber;

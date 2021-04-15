@@ -10,4 +10,5 @@ public class StageData {
     public float mWest;
     public float mFloor;
     public float mCeiling;
+    public GameCamera mCamera;
 }
