@@ -63,15 +63,15 @@ public class LandMass : GameMass {
     public void changeOrner(TravelerStatus aTraveler, Action aCallback) {
         if (aTraveler == null) {
             mOwner = null;
-            mMassRenderer.color = new Color(1, 1, 1, 1);
+            mMassRenderer.color = new Color(0.8f, 0.8f, 0.8f, 1);
             updateValueDisplay();
-            aCallback();
+            GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), new Color(1, 1, 1, 1), aCallback);
             return;
         }
         mOwner = aTraveler;
         mMassRenderer.color = aTraveler.playerColor;
         updateValueDisplay();
-        aCallback();
+        GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), aTraveler.playerColor, aCallback);
     }
     //増資レベル変更
     public void changeIncreaseLevel(int aLevel, Action aCallback) {

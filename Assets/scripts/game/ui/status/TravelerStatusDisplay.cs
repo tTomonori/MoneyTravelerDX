@@ -15,6 +15,9 @@ public class TravelerStatusDisplay : MyBehaviour {
     public TextMesh mPropertyMesh;
     public TextMesh mLandNumberMesh;
     public TextMesh mAssetsMesh;
+    public MyBehaviour mBancruptcy;
+    public MyBehaviour mSanOfBancruptcy;
+    public MyBehaviour mRetire;
 
     public void initialize(TravelerStatus aTraveler) {
         mBackRenderer.color = aTraveler.playerColor;
@@ -29,6 +32,13 @@ public class TravelerStatusDisplay : MyBehaviour {
         mPropertyMesh.text = aTraveler.mProperty.ToString();
         mLandNumberMesh.text = aTraveler.mLandNumber.ToString();
         mAssetsMesh.text = aTraveler.mAssets.ToString();
+        if (aTraveler.mMoney >= 0) {
+            mBancruptcy.gameObject.SetActive(false);
+        } else if (!mBancruptcy.gameObject.activeSelf) {
+            animateBancruptcy();
+        }
+        if (aTraveler.mIsRetired && !mRetire.gameObject.activeSelf)
+            animateRetire();
     }
     public void updateRanking(TravelerStatus aTraveler) {
         if (mDisplayedRanking == aTraveler.mRanking) {
@@ -42,6 +52,26 @@ public class TravelerStatusDisplay : MyBehaviour {
             mRanking.scaleBy(new Vector2(0.8f, -0.5f), 0.15f, () => {
                 mRanking.scaleBy(new Vector2(-0.2f, 0.2f), 0.15f);
             });
+        });
+    }
+    public void animateBancruptcy() {
+        mBancruptcy.gameObject.SetActive(true);
+        mSanOfBancruptcy.positionY = 0;
+        mSanOfBancruptcy.rotateZ = 0;
+        mBancruptcy.position2D = new Vector2(0, 0.5f);
+        mBancruptcy.moveTo(new Vector2(0, 0), 0.2f, () => {
+            MyBehaviour.setTimeoutToIns(0.5f, () => {
+                mSanOfBancruptcy.moveBy(new Vector2(0, -0.2f),0.2f);
+                mSanOfBancruptcy.rotateZBy(-10, 0.2f);
+            });
+        });
+    }
+    public void animateRetire() {
+        mRetire.gameObject.SetActive(true);
+        mRetire.position2D = new Vector2(0, 1);
+        mRetire.opacityBy(-0.1f, 0, () => {
+            mRetire.moveTo(new Vector2(0, 0), 1);
+            mRetire.opacityBy(1f, 1);
         });
     }
 }

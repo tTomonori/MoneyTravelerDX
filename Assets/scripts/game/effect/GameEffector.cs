@@ -44,6 +44,16 @@ static public class GameEffector {
         displayText(aPosition, aLabel + " ", new Color(0, 0, 1, 1), tSystem.getCounter());
         tSystem.then(aCallback);
     }
+    static public void generateAura(Vector3 aPosition, Color aColor, Action aCallback) {
+        Aura tAura = GameObject.Instantiate(Resources.Load<Aura>("models/aura/aura"));
+        tAura.position = aPosition;
+        tAura.mColor = aColor;
+        MySoundPlayer.playSe("aura", false);
+        tAura.animate(() => {
+            tAura.delete();
+            aCallback();
+        });
+    }
     static public void displayText(Vector3 aPosition, string aText, Color aColor, Action aCallback) {
         CallbackSystem tSystem = new CallbackSystem();
         for (int i = 0; i < aText.Length; i++) {
@@ -75,7 +85,7 @@ static public class GameEffector {
         }
         tSystem.then(aCallback);
     }
-    static private IEnumerator sinMove(float aHeight, float aDuration, MyBehaviour aBehaviour,Action aCallback) {
+    static private IEnumerator sinMove(float aHeight, float aDuration, MyBehaviour aBehaviour, Action aCallback) {
         float tElapsedTime = 0;
         float tCurrentHeight = 0;
         float tHeight = 0;

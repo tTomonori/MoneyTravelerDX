@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class GameFeildSearche {
+    //landを全て返す
+    static public List<LandMass> getAllLands(this GameFeild aFeild) {
+        List<LandMass> tLands = new List<LandMass>();
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            tLands.Add((LandMass)tMass);
+        }
+        return tLands;
+    }
     //指定したトラベラーが所有している土地のリストを返す
     static public List<LandMass> getOwnedLand(this GameFeild aFeild, TravelerStatus aTraveler) {
         List<LandMass> tLands = new List<LandMass>();
@@ -10,6 +19,18 @@ static public class GameFeildSearche {
             if (!(tMass is LandMass)) continue;
             LandMass tLand = (LandMass)tMass;
             if (tLand.mOwner != aTraveler) continue;
+            tLands.Add(tLand);
+        }
+        return tLands;
+    }
+    //指定したトラベラー以外が所有している土地のリストを返す
+    static public List<LandMass> getOtherOwnedLand(this GameFeild aFeild, TravelerStatus aTraveler) {
+        List<LandMass> tLands = new List<LandMass>();
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mOwner == null) continue;
+            if (tLand.mOwner == aTraveler) continue;
             tLands.Add(tLand);
         }
         return tLands;
@@ -59,5 +80,21 @@ static public class GameFeildSearche {
         }
         if (tNum == 0) return 0;
         return tTotal / tNum;
+    }
+    //指定したトラベラーが所有する土地の中で価値が最も低い土地を返す
+    static public LandMass searchCheapestLand(this GameFeild aFeild, TravelerStatus aTraveler) {
+        LandMass tCheapest = null;
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mOwner != aTraveler) continue;
+            if (tCheapest == null) {
+                tCheapest = tLand;
+                continue;
+            }
+            if (tCheapest.mTotalValue > tLand.mTotalValue)
+                tCheapest = tLand;
+        }
+        return tCheapest;
     }
 }

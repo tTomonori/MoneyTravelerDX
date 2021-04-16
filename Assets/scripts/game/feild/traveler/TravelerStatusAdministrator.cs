@@ -54,4 +54,10 @@ static public class TravelerStatusAdministrator {
         aTraveler.mMoney += aLand.mAcquisitionTakeCost;
         aTraveler.mLandNumber -= 1;
     }
+    //土地を売却した
+    static public void soldLand(this TravelerStatus aTraveler,LandMass aLand) {
+        aTraveler.mMoney += aLand.mSellCost;
+        aTraveler.mProperty -= aLand.mTotalValue;
+        aTraveler.mLandNumber -= 1;
+    }
 }

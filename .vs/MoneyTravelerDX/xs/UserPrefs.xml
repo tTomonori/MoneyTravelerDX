@@ -1,13 +1,11 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/ui/mass/EventMassStatusDisplay.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/effect/Aura.cs">
     <Files>
-      <File FileName="Assets/scripts/game/feild/mass/LandMass.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/game/feild/mass/LandMass.cs" Line="66" Column="64" />
       <File FileName="Assets/scripts/game/ui/mass/MassStatusUiButtons.cs" />
-      <File FileName="Assets/scripts/game/ui/mass/MassStatusDisplay.cs" Line="25" Column="135" />
-      <File FileName="Assets/scripts/game/feild/traveler/ai/PlayerAi.cs" Line="110" Column="17" />
-      <File FileName="Assets/scripts/game/ui/HangingBoard.cs" Line="33" Column="27" />
-      <File FileName="Assets/scripts/game/ui/mass/EventMassStatusDisplay.cs" Line="22" Column="10" />
-      <File FileName="Assets/scripts/game/feild/mass/EventMass.cs" Line="16" Column="1" />
+      <File FileName="Assets/scripts/game/ui/mass/MassStatusDisplay.cs" />
+      <File FileName="Assets/scripts/game/feild/traveler/ai/PlayerAi.cs" />
+      <File FileName="Assets/scripts/game/effect/Aura.cs" Line="12" Column="81" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,21 +15,27 @@
               <Node name="scripts" expanded="True">
                 <Node name="game" expanded="True">
                   <Node name="camera" expanded="True" />
+                  <Node name="effect" expanded="True">
+                    <Node name="Aura.cs" selected="True" />
+                  </Node>
                   <Node name="feild" expanded="True">
                     <Node name="mass" expanded="True" />
                     <Node name="traveler" expanded="True">
                       <Node name="ai" expanded="True" />
                     </Node>
                   </Node>
-                  <Node name="turn" expanded="True" />
+                  <Node name="turn" expanded="True">
+                    <Node name="event" expanded="True" />
+                  </Node>
                   <Node name="ui" expanded="True">
-                    <Node name="mass" expanded="True">
-                      <Node name="EventMassStatusDisplay.cs" selected="True" />
-                    </Node>
+                    <Node name="mass" expanded="True" />
                     <Node name="status" expanded="True" />
                   </Node>
                 </Node>
                 <Node name="MyUnityFrameworks" expanded="True">
+                  <Node name="my2DMeshFramework" expanded="True">
+                    <Node name="shader" expanded="True" />
+                  </Node>
                   <Node name="myFramework" expanded="True">
                     <Node name="behaviour" expanded="True" />
                   </Node>

@@ -27,14 +27,7 @@ static public class LandMassEventManager {
                 return;
             }
             //購入する
-            GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mPurchaseCost).ToString(), () => {
-                aLand.changeOrner(aTraveler, () => { });
-                aLand.changeIncreaseLevel(aLand.mIncreaseLevel, () => {
-                    aTraveler.purchased(aLand);
-                    aMaster.updateStatusDisplay();
-                    aCallback();
-                });
-            });
+            purchaseLand(aTraveler, aLand, aMaster, aCallback);
         });
     }
     static public void runStopMyLandEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
@@ -49,13 +42,7 @@ static public class LandMassEventManager {
                 return;
             }
             //増資する
-            GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mIncreaseCost).ToString(), () => {
-                aLand.changeIncreaseLevel(aLand.mIncreaseLevel + 1, () => {
-                    aTraveler.increased(aLand);
-                    aMaster.updateStatusDisplay();
-                    aCallback();
-                });
-            });
+            increaseLand(aTraveler, aLand, aMaster, aCallback);
         });
     }
     static public void runStopEnemyLandEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
@@ -70,7 +57,8 @@ static public class LandMassEventManager {
                     runAcquisitionEvent(aTraveler, aLand, aMaster, aCallback);
                     return;
                 }
-                aCallback();
+                //破産チェック
+                BankruptcyEventManager.checkRankruptcy(aTraveler, aMaster, aCallback);
             });
         });
     }
@@ -87,17 +75,55 @@ static public class LandMassEventManager {
                 return;
             }
             //買収する
-            TravelerStatus tPreOwner = aLand.mOwner;
-            GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mAcquisitionCost).ToString(), () => {
-                aLand.changeOrner(aTraveler, () => {
-                    aTraveler.acquired(aLand);
-                    GameData.mStageData.mCamera.mTarget = tPreOwner.mComa;
-                    GameEffector.getCoin(tPreOwner.mComa.worldPosition, "+" + aLand.mAcquisitionTakeCost.ToString(), () => {
-                        aTraveler.beAcquired(aLand);
-                        aMaster.updateStatusDisplay();
-                        aCallback();
-                    });
+            acquireLand(aTraveler, aLand, aMaster, aCallback);
+        });
+    }
+    static public void purchaseLand(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
+        GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mPurchaseCost).ToString(), () => {
+            GameData.mStageData.mCamera.mTarget = aLand;
+            aLand.changeOrner(aTraveler, () => { });
+            aLand.changeIncreaseLevel(aLand.mIncreaseLevel, () => {
+                aTraveler.purchased(aLand);
+                aMaster.updateStatusDisplay();
+                aCallback();
+            });
+        });
+    }
+    static public void increaseLand(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
+        GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mIncreaseCost).ToString(), () => {
+            GameData.mStageData.mCamera.mTarget = aLand;
+            aLand.changeIncreaseLevel(aLand.mIncreaseLevel + 1, () => {
+                aTraveler.increased(aLand);
+                aMaster.updateStatusDisplay();
+                aCallback();
+            });
+        });
+    }
+    static public void acquireLand(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        TravelerStatus tPreOwner = aLand.mOwner;
+        GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
+        GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mAcquisitionCost).ToString(), () => {
+            GameData.mStageData.mCamera.mTarget = aLand;
+            aLand.changeOrner(aTraveler, () => {
+                aTraveler.acquired(aLand);
+                GameData.mStageData.mCamera.mTarget = tPreOwner.mComa;
+                GameEffector.getCoin(tPreOwner.mComa.worldPosition, "+" + aLand.mAcquisitionTakeCost.ToString(), () => {
+                    aTraveler.beAcquired(aLand);
+                    aMaster.updateStatusDisplay();
+                    aCallback();
                 });
+            });
+        });
+    }
+    static public void sellLand(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        GameData.mStageData.mCamera.mTarget = aLand;
+        GameEffector.lostCoin(aLand.worldPosition, "", () => {
+            aLand.changeOrner(null, () => {
+                aTraveler.soldLand(aLand);
+                aMaster.updateStatusDisplay();
+                aCallback();
             });
         });
     }

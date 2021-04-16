@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 
 public class PlayerAi : TravelerAi {
+    public void moveCamera(Vector2 aDragVector) {
+        Vector2 tVec = aDragVector / -15f;
+        GameData.mStageData.mCamera.move(tVec);
+    }
     //マップを見る
     private void viewMap(GameMaster aMaster, Action aCallback) {
         MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
@@ -19,8 +23,7 @@ public class PlayerAi : TravelerAi {
                     aCallback();
                     return;
                 case "gamePadDragged":
-                    Vector2 tVec = aMessage.getParameter<Vector2>("vector") / -15f;
-                    GameData.mStageData.mCamera.move(tVec);
+                    moveCamera(aMessage.getParameter<Vector2>("vector"));
                     return;
                 case "gamePadClicked":
                     Subject.removeObserver("playerAiViewMap");
@@ -113,5 +116,39 @@ public class PlayerAi : TravelerAi {
             {new MassStatusUiButtonData("やめる",new Color(0.8f,0.8f,0.8f),()=>{tDisplay.close(); aCallback(false); }) }
         };
         tDisplay = aMaster.mUiMain.displayMassStatus(aLand, tButtonDataList);
+    }
+    //土地の売却
+    public override void sellLand(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
+        GameData.mStageData.mCamera.mTarget = null;
+        Subject.addObserver(new Observer("playerAiSellLand", (aMessage) => {
+            switch (aMessage.name) {
+                case "gamePadDragged":
+                    moveCamera(aMessage.getParameter<Vector2>("vector"));
+                    return;
+                case "gamePadClicked":
+                    Subject.removeObserver("playerAiSellLand");
+                    MassStatusDisplay tDisplay = null;
+                    List<MassStatusUiButtonData> tButtonData = new List<MassStatusUiButtonData>() {
+                        null,null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            sellLand(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    GameMass tMass = aMessage.getParameter<GameMass>("mass");
+                    if (tMass is LandMass && ((LandMass)tMass).mOwner == aMyStatus) {
+                        //自分の土地の場合は売却ボタン追加
+                        tButtonData[0] = new MassStatusUiButtonData("売却する", aMyStatus.playerColor, () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget = tTarget;
+                            aCallback((LandMass)tMass);
+                        });
+                    }
+                    tDisplay = aMaster.mUiMain.displayMassStatus(tMass, tButtonData);
+                    return;
+            }
+        }));
     }
 }
