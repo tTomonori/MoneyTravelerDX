@@ -28,5 +28,26 @@ static public class LandAttributeMethods {
                 return Resources.Load<Sprite>("sprites/feild/mass/attribute/woods");
         }
         throw new Exception();
-    } 
+    }
+    static public string getName(this LandAttribute e) {
+        switch (e) {
+            case LandAttribute.none:
+                return null;
+            case LandAttribute.north:
+                return "北部地方";
+            case LandAttribute.east:
+                return "東部地方";
+            case LandAttribute.south:
+                return "南部地方";
+            case LandAttribute.west:
+                return "西部地方";
+            case LandAttribute.center:
+                return "中部地方";
+            case LandAttribute.waterside:
+                return "水域";
+            case LandAttribute.woods:
+                return "緑地";
+        }
+        throw new Exception();
+    }
 }

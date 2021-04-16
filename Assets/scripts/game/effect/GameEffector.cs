@@ -22,7 +22,10 @@ static public class GameEffector {
             });
         }
         displayText(aPosition, aLabel + " ", new Color(1, 0, 0, 1), tSystem.getCounter());
-        tSystem.then(aCallback);
+        tSystem.then(()=> {
+            tContainer.delete();
+            aCallback();
+        });
     }
     static public void getCoin(Vector3 aPosition, string aLabel, Action aCallback) {
         MyBehaviour tContainer = MyBehaviour.create<MyBehaviour>();
@@ -42,7 +45,10 @@ static public class GameEffector {
             });
         }
         displayText(aPosition, aLabel + " ", new Color(0, 0, 1, 1), tSystem.getCounter());
-        tSystem.then(aCallback);
+        tSystem.then(()=> {
+            tContainer.delete();
+            aCallback();
+        });
     }
     static public void generateAura(Vector3 aPosition, Color aColor, Action aCallback) {
         Aura tAura = GameObject.Instantiate(Resources.Load<Aura>("models/aura/aura"));

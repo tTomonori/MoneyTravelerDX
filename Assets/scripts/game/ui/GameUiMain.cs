@@ -70,4 +70,16 @@ public class GameUiMain : MyBehaviour {
         tBoard.transform.SetParent(this.transform, false);
         return tBoard;
     }
+    //イベント内容表示
+    public void displayEventDescription(string aText, Action aCallback) {
+        EventDocuments tDocuments = EventDocuments.create(aText);
+        tDocuments.transform.SetParent(this.transform, false);
+        tDocuments.positionZ = 2;
+        tDocuments.animateOpen(() => {
+            MyBehaviour.setTimeoutToIns(1.2f, () => {
+                tDocuments.delete();
+                aCallback();
+            });
+        });
+    }
 }

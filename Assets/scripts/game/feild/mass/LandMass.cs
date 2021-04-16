@@ -63,9 +63,9 @@ public class LandMass : GameMass {
     public void changeOrner(TravelerStatus aTraveler, Action aCallback) {
         if (aTraveler == null) {
             mOwner = null;
-            mMassRenderer.color = new Color(0.8f, 0.8f, 0.8f, 1);
+            mMassRenderer.color = new Color(1, 1, 1, 1);
             updateValueDisplay();
-            GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), new Color(1, 1, 1, 1), aCallback);
+            GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), new Color(0.8f, 0.8f, 0.8f, 1), aCallback);
             return;
         }
         mOwner = aTraveler;

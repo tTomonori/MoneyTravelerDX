@@ -97,4 +97,34 @@ static public class GameFeildSearche {
         }
         return tCheapest;
     }
+    //ステージに含まれる土地の属性を返す
+    static public List<LandAttribute> getAttributes(this GameFeild aFeild) {
+        List<LandAttribute> tAttributes = new List<LandAttribute>();
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mAttributes[0] != LandAttribute.none) {
+                if (!tAttributes.Contains(tLand.mAttributes[0]))
+                    tAttributes.Add(tLand.mAttributes[0]);
+            }
+            if (tLand.mAttributes[1] != LandAttribute.none) {
+                if (!tAttributes.Contains(tLand.mAttributes[1]))
+                    tAttributes.Add(tLand.mAttributes[1]);
+            }
+        }
+        return tAttributes;
+    }
+    //ステージに含まれる土地の属性を被りを含めて全て返す
+    static public List<LandAttribute> getAttributesIncludingCover(this GameFeild aFeild) {
+        List<LandAttribute> tAttributes = new List<LandAttribute>();
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mAttributes[0] != LandAttribute.none)
+                tAttributes.Add(tLand.mAttributes[0]);
+            if (tLand.mAttributes[1] != LandAttribute.none)
+                tAttributes.Add(tLand.mAttributes[1]);
+        }
+        return tAttributes;
+    }
 }

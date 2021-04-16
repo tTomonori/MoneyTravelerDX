@@ -16,7 +16,7 @@ public class TurnOrderAnimator : MyBehaviour {
             BudBox tBox = BudBox.create();
             tBox.name = "box" + i.ToString();
             tBox.transform.SetParent(this.transform, false);
-            tBox.setColor(BudBox.BoxColor.blue);
+            tBox.setColor(BudBox.BoxColor.red);
             MyBehaviour tOrderImg = tBox.mContents.createChild<MyBehaviour>("order");
             tOrderImg.gameObject.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/number/ranking/" + (tOrder + 1).ToString());
             tOrderImg.changeLayer(5);

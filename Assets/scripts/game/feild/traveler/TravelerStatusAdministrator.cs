@@ -14,9 +14,18 @@ static public class TravelerStatusAdministrator {
             aTraveler.mMaxAssets = aTraveler.mAssets;
     }
     //ボーナスマネー取得
-    static public void getMoney(this TravelerStatus aTraveler,int aMoney) {
+    static public void getMoney(this TravelerStatus aTraveler, int aMoney) {
         aTraveler.mMoney += aMoney;
         aTraveler.updateMaxAssets();
+    }
+    //イベント支出
+    static public void lostMoney(this TravelerStatus aTraveler, int aMoney) {
+        aTraveler.mMoney -= aMoney;
+    }
+    //災害被害
+    static public void disasterDamage(this TravelerStatus aTraveler, int aMoney) {
+        aTraveler.mMoney -= aMoney;
+        aTraveler.mDisasterDamageAmount += aMoney;
     }
     //移動した
     static public void moved(this TravelerStatus aTraveler, int aNumber = 1) {
@@ -55,7 +64,7 @@ static public class TravelerStatusAdministrator {
         aTraveler.mLandNumber -= 1;
     }
     //土地を売却した
-    static public void soldLand(this TravelerStatus aTraveler,LandMass aLand) {
+    static public void soldLand(this TravelerStatus aTraveler, LandMass aLand) {
         aTraveler.mMoney += aLand.mSellCost;
         aTraveler.mProperty -= aLand.mTotalValue;
         aTraveler.mLandNumber -= 1;

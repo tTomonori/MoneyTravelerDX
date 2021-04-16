@@ -26,7 +26,7 @@ static public class MassEventManager {
                 LandMassEventManager.runStopEvent(aTraveler, tLand, aMaster, aCallback);
                 return;
             case EventMass tEvent:
-                aCallback();
+                EventMassEventManager.run(aTraveler, tEvent, aMaster, aCallback);
                 return;
             case CheckPointMass tCheck:
                 CheckPointMassEventManager.runStopEvent(aTraveler, tCheck, aMaster, aCallback);

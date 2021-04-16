@@ -582,7 +582,6 @@ MonoBehaviour:
   mNumberMesh1: {fileID: 4510695085774581558}
   mNumberMesh2: {fileID: 6260629752272643320}
   mNumberMesh3: {fileID: 8206096631416516315}
-  mMapButton: {fileID: 0}
 --- !u!1 &8912015227919608115
 GameObject:
   m_ObjectHideFlags: 0
