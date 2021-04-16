@@ -18,6 +18,7 @@ public class EventDocuments : MyBehaviour {
         mDocuments.positionY = 6f;
         mDocuments.moveTo(new Vector2(0, 0), 0.8f, () => {
             MyBehaviour.setTimeoutToIns(0.3f, () => {
+                MySoundPlayer.playSe("turn", false);
                 mDocuments.rotateZBy(-30, 0.3f);
                 mPaper.moveTo(new Vector2(0, 1),0.7f);
                 mEnvelope.moveTo(new Vector2(0, -4), 0.7f);

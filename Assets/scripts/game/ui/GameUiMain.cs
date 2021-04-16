@@ -7,6 +7,7 @@ using System.Linq;
 public class GameUiMain : MyBehaviour {
     public MyBehaviour mTravelerStatusDisplayContainer;
     public List<TravelerStatusDisplay> mTravelerStatusDisplays;
+    public TurnClock mTurnClock;
     //ターンの順番を決める
     public void decideTurnOrder(List<TravelerStatus> aTravelers, Action<List<TravelerStatus>> aCallback) {
         //順番を決める
@@ -81,5 +82,13 @@ public class GameUiMain : MyBehaviour {
                 aCallback();
             });
         });
+    }
+    //ターンクロック生成
+    public void createTurnDisplay() {
+        mTurnClock = TurnClock.create();
+    }
+    //ターンクロック更新
+    public void updateTurnDisplay(string tText) {
+        mTurnClock.setTurn(tText);
     }
 }

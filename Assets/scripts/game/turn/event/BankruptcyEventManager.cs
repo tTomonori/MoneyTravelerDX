@@ -15,6 +15,7 @@ static public class BankruptcyEventManager {
     static public void run(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         if (aMaster.mFeild.getOwnedLand(aTraveler).Count == 0) {
             //リタイア
+            aMaster.updateStatusDisplay();
             runRetire(aTraveler, aCallback);
             return;
         }

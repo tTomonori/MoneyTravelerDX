@@ -54,7 +54,9 @@ static public class LandMassEventManager {
                 aMaster.updateStatusDisplay();
                 //買収イベント
                 if (GameData.mGameSetting.mAcquisitionCondition.canAcquisition(aMaster, aTraveler)) {
-                    runAcquisitionEvent(aTraveler, aLand, aMaster, aCallback);
+                    runAcquisitionEvent(aTraveler, aLand, aMaster, () => {
+                        BankruptcyEventManager.checkRankruptcy(aTraveler, aMaster, aCallback);
+                    });
                     return;
                 }
                 //破産チェック

@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTravelerStatusDisplayContainer: {fileID: 0}
   mTravelerStatusDisplays: []
+  mTurnClock: {fileID: 0}
 --- !u!4 &286126193
 Transform:
   m_ObjectHideFlags: 0

@@ -42,6 +42,10 @@ public class GameMaster {
                 //ステータス表示
                 MyBehaviour.setTimeoutToIns(0.5f, () => {
                     mUiMain.displayStatus(mTurnOrder, () => {
+                        //ターン表示
+                        mUiMain.createTurnDisplay();
+                        mUiMain.updateTurnDisplay(mTurnNumber.ToString());
+                        //ターン開始
                         nextTurn();
                     });
                 });
@@ -63,8 +67,9 @@ public class GameMaster {
 
         if (mTurnIndex < tPreTurnIndex) {
             mTurnNumber++;
+            mUiMain.updateTurnDisplay(mTurnNumber.ToString());
         }
-            mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
+        mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
     }
     //ステータス表示更新
     public void updateStatusDisplay() {

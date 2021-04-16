@@ -33,7 +33,7 @@ public class HangingBoard : MyBehaviour {
         mIsClosing = true;
         mButton.gameObject.SetActive(false);
         if (mAnimation != null)
-            StopCoroutine(mAnimation);
+            mObjects.StopCoroutine(mAnimation);
         mAnimation = null;
         float tRotateZ = mObjects.rotateZ;
         tRotateZ = 180 - tRotateZ;

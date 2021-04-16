@@ -54,14 +54,14 @@ static public partial class EventMassEventManager {
     }
     //巨大地震
     static public void hugeEarthquake(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        int tRate = UnityEngine.Random.Range(5, 7);
+        int tRate = (int)(UnityEngine.Random.Range(5, 7) * GameData.mGameSetting.mDisasterDamage);
         aMaster.mUiMain.displayEventDescription("巨大地震が全世界を襲う!\n物件の" + tRate.ToString() + "%の被害", () => {
             disaster(aMaster, LandAttribute.none, tRate, aCallback);
         });
     }
     //ランダムな属性の土地に災害
     static public void randomDisaster(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        int tRate = UnityEngine.Random.Range(5, 7);
+        int tRate = (int)(UnityEngine.Random.Range(5, 7) * GameData.mGameSetting.mDisasterDamage);
         List<LandAttribute> tAttributes = aMaster.mFeild.getAttributesIncludingCover();
         LandAttribute tAttribute = tAttributes[UnityEngine.Random.Range(0, tAttributes.Count)];
         string tText = "";
@@ -86,7 +86,7 @@ static public partial class EventMassEventManager {
     }
     //ランダムな属性の土地に大きな災害
     static public void randomCatastrophe(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        int tRate = UnityEngine.Random.Range(7, 12);
+        int tRate = (int)(UnityEngine.Random.Range(7, 12) * GameData.mGameSetting.mDisasterDamage);
         List<LandAttribute> tAttributes = aMaster.mFeild.getAttributesIncludingCover();
         LandAttribute tAttribute = tAttributes[UnityEngine.Random.Range(0, tAttributes.Count)];
         string tText = "";

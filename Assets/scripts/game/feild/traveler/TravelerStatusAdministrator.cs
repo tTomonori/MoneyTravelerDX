@@ -56,6 +56,7 @@ static public class TravelerStatusAdministrator {
     //買収した
     static public void acquired(this TravelerStatus aTraveler, LandMass aLand) {
         aTraveler.mMoney -= aLand.mAcquisitionCost;
+        aTraveler.mProperty += aLand.mTotalValue;
         aTraveler.mLandNumber += 1;
     }
     //買収された
