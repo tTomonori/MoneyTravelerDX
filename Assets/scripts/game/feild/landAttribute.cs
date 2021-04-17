@@ -32,7 +32,7 @@ static public class LandAttributeMethods {
     static public string getName(this LandAttribute e) {
         switch (e) {
             case LandAttribute.none:
-                return null;
+                return "";
             case LandAttribute.north:
                 return "北部地方";
             case LandAttribute.east:

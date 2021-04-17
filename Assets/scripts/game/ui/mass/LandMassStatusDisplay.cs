@@ -16,6 +16,10 @@ public class LandMassStatusDisplay : MassStatusDisplay {
     public TextMesh mPurchaseMesh;
     public TextMesh mSellMesh;
     public TextMesh mIncreaseLevelMesh;
+    public SpriteRenderer mAttributeRenderer1;
+    public SpriteRenderer mAttributeRenderer2;
+    public TextMesh mAttributeNameMesh1;
+    public TextMesh mAttributeNameMesh2;
     public override void setStatus(GameMass aMass) {
         LandMass tLand = (LandMass)aMass;
         if (tLand.mOwner == null) {
@@ -35,5 +39,9 @@ public class LandMassStatusDisplay : MassStatusDisplay {
         mPurchaseMesh.text = tLand.mPurchaseCost.ToString();
         mSellMesh.text = tLand.mSellCost.ToString();
         mIncreaseLevelMesh.text = tLand.mIncreaseLevel.ToString();
+        mAttributeRenderer1.sprite = tLand.mAttributes[0].getSprite();
+        mAttributeRenderer2.sprite = tLand.mAttributes[1].getSprite();
+        mAttributeNameMesh1.text = tLand.mAttributes[0].getName();
+        mAttributeNameMesh2.text = tLand.mAttributes[1].getName();
     }
 }
