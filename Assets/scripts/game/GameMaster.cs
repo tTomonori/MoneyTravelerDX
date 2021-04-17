@@ -60,6 +60,12 @@ public class GameMaster {
     }
     //次のターン開始
     private void nextTurn() {
+        //終了判定
+        if (GameData.mGameSetting.mBattleMethod.isFinish(this)) {
+            endGame();
+            return;
+        }
+        //次のターンのトラベラーを探す
         int tPreTurnIndex = mTurnIndex;
         mTurnIndex = (mTurnIndex + 1) % mTurnOrder.Count;
         while (mTurnOrder[mTurnIndex].mIsRetired)
@@ -70,6 +76,10 @@ public class GameMaster {
             mUiMain.updateTurnDisplay(mTurnNumber.ToString());
         }
         mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
+    }
+    //ゲーム終了
+    private void endGame() {
+        MySceneManager.changeSceneWithFade("result", "curtainFade", new Arg(new Dictionary<string, object>() { { "travelers", mTravelers } }));
     }
     //ステータス表示更新
     public void updateStatusDisplay() {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 abstract public class BattleMethod {
     public string mName;
+    abstract public bool isFinish(GameMaster aMaster);
 }
 abstract public class WithResultBonusMethod : BattleMethod {
     public int mResultBonus = 500;
@@ -18,11 +19,26 @@ public class LosingMethod : BattleMethod {
     public LosingMethod() {
         mName = "負け抜け";
     }
+    public override bool isFinish(GameMaster aMaster) {
+        int tTravelerNumber = 0;
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (!tTraveler.mIsRetired)
+                tTravelerNumber++;
+        }
+        return tTravelerNumber <= 1;
+    }
 }
 public class AssetsGoalMethod : BattleMethod {
     public int mGoalAmount = 9000;//目標金額
     public AssetsGoalMethod() {
         mName = "総資産目標";
+    }
+    public override bool isFinish(GameMaster aMaster) {
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (tTraveler.mAssets >= mGoalAmount)
+                return true;
+        }
+        return false;
     }
 }
 public class TurnLimitsMethod : WithResultBonusMethod {
@@ -30,15 +46,39 @@ public class TurnLimitsMethod : WithResultBonusMethod {
     public TurnLimitsMethod() {
         mName = "ターン制限";
     }
+    public override bool isFinish(GameMaster aMaster) {
+        if (aMaster.mTurnNumber < mLimitsTurn) return false;
+        for (int i = aMaster.mTurnIndex + 1; i < aMaster.mTurnOrder.Count; i++) {
+            if (aMaster.mTurnOrder[i].mIsRetired)
+                continue;
+            else
+                return false;
+        }
+        return true;
+    }
 }
 public class LapGoalMethod : WithResultBonusMethod {
     public int mGoalLap = 15;//目標周回数
     public LapGoalMethod() {
         mName = "周回目標";
     }
+    public override bool isFinish(GameMaster aMaster) {
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (tTraveler.mOrbit >= mGoalLap)
+                return true;
+        }
+        return false;
+    }
 }
 public class BottomConfirmedMethod : WithResultBonusMethod {
     public BottomConfirmedMethod() {
         mName = "ビリ確定";
+    }
+    public override bool isFinish(GameMaster aMaster) {
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (tTraveler.mIsRetired)
+                return true;
+        }
+        return false;
     }
 }

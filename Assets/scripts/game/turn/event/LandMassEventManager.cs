@@ -112,7 +112,7 @@ static public class LandMassEventManager {
                 aTraveler.acquired(aLand);
                 GameData.mStageData.mCamera.mTarget = tPreOwner.mComa;
                 GameEffector.getCoin(tPreOwner.mComa.worldPosition, "+" + aLand.mAcquisitionTakeCost.ToString(), () => {
-                    aTraveler.beAcquired(aLand);
+                    tPreOwner.beAcquired(aLand);
                     aMaster.updateStatusDisplay();
                     aCallback();
                 });

@@ -56,7 +56,7 @@ public class TravelerStatusDisplay : MyBehaviour {
     }
     public void animateBancruptcy() {
         mBancruptcy.gameObject.SetActive(true);
-        mSanOfBancruptcy.positionY = 0;
+        mSanOfBancruptcy.positionY = -0.3f;
         mSanOfBancruptcy.rotateZ = 0;
         mBancruptcy.position2D = new Vector2(0, 0.5f);
         mBancruptcy.moveTo(new Vector2(0, 0), 0.2f, () => {
