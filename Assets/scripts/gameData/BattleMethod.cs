@@ -9,7 +9,7 @@ abstract public class WithResultBonusMethod : BattleMethod {
     public int mResultBonus = 500;
     public bool mMaxAssets = true;//最大総資産
     public bool mMoveDistance = true;//移動マス数
-    public bool mLandNumber = true;//土地の数
+    public bool mLandNumber = true;//所有地の数
     public bool mFeeAmount = true;//支払い料金
     public bool mDisasterDamageAmount = true;//災害被害額
 }
