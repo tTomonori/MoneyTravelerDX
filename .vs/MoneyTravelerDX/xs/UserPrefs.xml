@@ -1,13 +1,7 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/ui/mass/LandMassStatusDisplay.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/GameMain.cs">
     <Files>
-      <File FileName="Assets/scripts/game/GameMaster.cs" Line="78" Column="55" />
-      <File FileName="Assets/scripts/game/feild/traveler/TravelerStatusAdministrator.cs" Line="57" Column="24" />
-      <File FileName="Assets/scripts/game/turn/event/LandMassEventManager.cs" Line="115" Column="30" />
-      <File FileName="Assets/scripts/result/ResultCalculator.cs" Line="1" Column="1" />
-      <File FileName="Assets/scripts/game/ui/status/TravelerStatusDisplay.cs" Line="58" Column="48" />
-      <File FileName="Assets/scripts/game/feild/landAttribute.cs" Line="1" Column="1" />
-      <File FileName="Assets/scripts/game/ui/mass/LandMassStatusDisplay.cs" Line="19" Column="27" />
+      <File FileName="Assets/scripts/game/GameMain.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

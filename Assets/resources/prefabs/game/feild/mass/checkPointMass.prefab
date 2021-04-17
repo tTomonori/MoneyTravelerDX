@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mBonus: 200
-  mExactryBonus: 50
+  mExactlyBonus: 50
 --- !u!65 &-2010121564615375631
 BoxCollider:
   m_ObjectHideFlags: 0
