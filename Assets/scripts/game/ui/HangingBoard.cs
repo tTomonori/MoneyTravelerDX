@@ -5,13 +5,14 @@ using UnityEngine;
 public class HangingBoard : MyBehaviour {
     static private List<HangingBoard> mBoards = new List<HangingBoard>();
     public enum BoardImage {
-        arrow, map
+        arrow, map, paper
     }
     [SerializeField]
     public MyBehaviour mObjects;
     public MyButton mButton;
     public SpriteRenderer mArrowImage;
     public SpriteRenderer mMapImage;
+    public SpriteRenderer mPaperImage;
     private Coroutine mAnimation;
     private bool mIsClosing = false;
     static public HangingBoard create(BoardImage aBoardImage) {
@@ -45,12 +46,16 @@ public class HangingBoard : MyBehaviour {
     public void setImage(BoardImage aBoardImage) {
         mArrowImage.gameObject.SetActive(false);
         mMapImage.gameObject.SetActive(false);
+        mPaperImage.gameObject.SetActive(false);
         switch (aBoardImage) {
             case BoardImage.arrow:
                 mArrowImage.gameObject.SetActive(true);
                 return;
             case BoardImage.map:
                 mMapImage.gameObject.SetActive(true);
+                return;
+            case BoardImage.paper:
+                mPaperImage.gameObject.SetActive(true);
                 return;
         }
     }

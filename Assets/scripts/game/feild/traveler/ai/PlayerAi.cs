@@ -119,15 +119,49 @@ public class PlayerAi : TravelerAi {
     }
     //土地の売却
     public override void sellLand(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        HangingBoard tBoard = aMaster.mUiMain.displayHangingBoard(HangingBoard.BoardImage.paper);
+        tBoard.open();
         MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
         GameData.mStageData.mCamera.mTarget = null;
         Subject.addObserver(new Observer("playerAiSellLand", (aMessage) => {
             switch (aMessage.name) {
+                case "hangingBoardPushed":
+                    Subject.removeObserver("playerAiSellLand");
+                    tBoard.close();
+                    LandOwnedDisplay tOwnedDisplay = null;
+                    List<MassStatusUiButtonData> tUiButtonData = new List<MassStatusUiButtonData>() {
+                        null,null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tOwnedDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            sellLand(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    Action<LandMass> tF = (aLand) => {
+                        tOwnedDisplay.close();
+                        GameData.mStageData.mCamera.mTarget = aLand;
+                        LandMassStatusDisplay tLandDisplay = null;
+                        List<MassStatusUiButtonData> tLandUiButtonData = new List<MassStatusUiButtonData>() {
+                        new MassStatusUiButtonData("売却する", aMyStatus.playerColor, () => {
+                            tLandDisplay.close();
+                            GameData.mStageData.mCamera.mTarget = tTarget;
+                            aCallback(aLand);
+                        }),null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tLandDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            sellLand(aMyStatus,aMaster,aCallback);
+                        })};
+                        tLandDisplay = (LandMassStatusDisplay)aMaster.mUiMain.displayMassStatus(aLand, tLandUiButtonData);
+                    };
+                    tOwnedDisplay = aMaster.mUiMain.displayLandOwnedDisplay(aMyStatus, aMaster.mFeild.getOwnedLand(aMyStatus), tF, tUiButtonData);
+                    return;
                 case "gamePadDragged":
                     moveCamera(aMessage.getParameter<Vector2>("vector"));
                     return;
                 case "gamePadClicked":
                     Subject.removeObserver("playerAiSellLand");
+                    tBoard.close();
                     MassStatusDisplay tDisplay = null;
                     List<MassStatusUiButtonData> tButtonData = new List<MassStatusUiButtonData>() {
                         null,null,null,null,

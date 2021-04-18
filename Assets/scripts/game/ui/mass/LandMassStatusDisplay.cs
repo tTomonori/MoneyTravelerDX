@@ -11,6 +11,7 @@ public class LandMassStatusDisplay : MassStatusDisplay {
     public TextMesh mNameMesh;
     public TextMesh mTotalValueMesh;
     public TextMesh mFeeMesh;
+    public TextMesh mFeeRateMesh;
     public TextMesh mIncreaseMesh;
     public TextMesh mAcquisitionMesh;
     public TextMesh mPurchaseMesh;
@@ -34,6 +35,7 @@ public class LandMassStatusDisplay : MassStatusDisplay {
         mNameMesh.text = tLand.mName;
         mTotalValueMesh.text = tLand.mTotalValue.ToString();
         mFeeMesh.text = tLand.mFeeCost.ToString();
+        mFeeRateMesh.text = tLand.mFeeRate.ToString();
         mIncreaseMesh.text = tLand.mIncreaseCost.ToString();
         mAcquisitionMesh.text = tLand.mAcquisitionCost.ToString();
         mPurchaseMesh.text = tLand.mPurchaseCost.ToString();

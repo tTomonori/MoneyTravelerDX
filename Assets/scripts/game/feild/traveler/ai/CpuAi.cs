@@ -11,7 +11,7 @@ abstract public class CpuAi : TravelerAi {
     }
     public override void endRollDice() { }
     public override void sellLand(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
-        //一番価値が低い土地を売る
-        aCallback(aMaster.mFeild.searchCheapestLand(aMyStatus));
+        //一番料金が低い土地を売る
+        aCallback(aMaster.mFeild.searchCheapestFeeLand(aMyStatus));
     }
 }

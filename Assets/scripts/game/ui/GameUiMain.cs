@@ -91,4 +91,11 @@ public class GameUiMain : MyBehaviour {
     public void updateTurnDisplay(string tText) {
         mTurnClock.setTurn(tText);
     }
+    //所有地リスト表示
+    public LandOwnedDisplay displayLandOwnedDisplay(TravelerStatus aTraveler, List<LandMass> aLans, Action<LandMass> aDetailButtonPushed, List<MassStatusUiButtonData> aUiButtondata) {
+        LandOwnedDisplay tDisplay = LandOwnedDisplay.create(aTraveler, aLans, aDetailButtonPushed, aUiButtondata);
+        tDisplay.transform.SetParent(this.transform, false);
+        tDisplay.position2D = new Vector2(0, 1.5f);
+        return tDisplay;
+    }
 }

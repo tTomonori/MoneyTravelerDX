@@ -82,7 +82,7 @@ static public class GameFeildSearche {
         return tTotal / tNum;
     }
     //指定したトラベラーが所有する土地の中で価値が最も低い土地を返す
-    static public LandMass searchCheapestLand(this GameFeild aFeild, TravelerStatus aTraveler) {
+    static public LandMass searchCheapestValueLand(this GameFeild aFeild, TravelerStatus aTraveler) {
         LandMass tCheapest = null;
         foreach (GameMass tMass in aFeild.mMassList) {
             if (!(tMass is LandMass)) continue;
@@ -93,6 +93,37 @@ static public class GameFeildSearche {
                 continue;
             }
             if (tCheapest.mTotalValue > tLand.mTotalValue)
+                tCheapest = tLand;
+        }
+        return tCheapest;
+    }
+    //指定したトラベラーが所有する土地の中で料金が最も低い土地を返す
+    static public LandMass searchCheapestFeeLand(this GameFeild aFeild, TravelerStatus aTraveler) {
+        LandMass tCheapest = null;
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mOwner != aTraveler) continue;
+            if (tCheapest == null) {
+                tCheapest = tLand;
+                continue;
+            }
+            if (tCheapest.mFeeRate > tLand.mFeeCost)
+                tCheapest = tLand;
+        }
+        return tCheapest;
+    }
+    //指定したトラベラーが所有する指定した売却額を超える土地の中で料金が最も低い土地を返す
+    static public LandMass searchCheapestFeeOfOverSellCostLand(this GameFeild aFeild, TravelerStatus aTraveler, int aSellCost) {
+        LandMass tCheapest = null;
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mOwner != aTraveler) continue;
+            if (tLand.mSellCost < aSellCost) continue;
+            if (tCheapest == null)
+                tCheapest = tLand;
+            if (tCheapest.mFeeRate > tLand.mFeeCost)
                 tCheapest = tLand;
         }
         return tCheapest;

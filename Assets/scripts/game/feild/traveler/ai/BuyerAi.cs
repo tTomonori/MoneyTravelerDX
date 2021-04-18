@@ -27,4 +27,15 @@ public class BuyerAi : CpuAi {
         //常に買収する
         aCallback(true);
     }
+    public override void sellLand(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        //1つ売却しただけで破産を回避できる土地の中で最も料金が安い土地を売却する
+        LandMass tLand = aMaster.mFeild.searchCheapestFeeOfOverSellCostLand(aMyStatus, -aMyStatus.mMoney);
+        if (tLand != null) {
+            aCallback(tLand);
+            return;
+        }
+        //最も料金が安い土地を売却する
+        tLand = aMaster.mFeild.searchCheapestFeeLand(aMyStatus);
+        aCallback(tLand);
+    }
 }
