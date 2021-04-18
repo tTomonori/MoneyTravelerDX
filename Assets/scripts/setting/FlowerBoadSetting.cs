@@ -5,12 +5,12 @@ using System;
 
 abstract public class FlowerBoadSetting {
     public MyBehaviour mBoard;
-    static public int t;
     //ボードをロードして表示
     public void displayBoard(string aBoardName, Action aCallback, Action aInstantiated = null) {
         mBoard = GameObject.Instantiate<MyBehaviour>(Resources.Load<MyBehaviour>("prefabs/setting/flowerBoard/" + aBoardName));
         mBoard.transform.SetParent(GameObject.Find("settingBoard").transform, false);
         mBoard.positionY = 8;
+        mBoard.changeLayer(10);
         if (aInstantiated != null) aInstantiated();
         mBoard.moveTo(Vector2.zero, 0.3f, aCallback);
         MySoundPlayer.playSe("boardDown");

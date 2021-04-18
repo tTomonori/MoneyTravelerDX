@@ -13,7 +13,8 @@ static public class GameData {
         mGameSetting.mAcquisition = 2;
         mGameSetting.mAcquisitionCondition = AcquisitionCondition.soldOut;
         mGameSetting.mDisasterDamage = 1;
-        mGameSetting.mStage = "standard";
+        mGameSetting.mStageSceneName = "standard";
+        mGameSetting.mStageName = "スタンダード";
         mGameSetting.mBattleMethod = new LosingMethod();
 
         mGameSetting.mTravelerData = new List<TravelerData>();

@@ -61,6 +61,9 @@ public class SettingMain : MonoBehaviour {
                 case "disasterDamageButtonPushed":
                     displayFlowerBoard<DisasterDamageSetting>();
                     break;
+                case "stageButtonPushed":
+                    displayPaperBoard("stageSetting");
+                    break;
                 case "battleMethodButtonPushed":
                     displayFlowerBoard<BattleMethodSetting>();
                     break;
@@ -74,7 +77,7 @@ public class SettingMain : MonoBehaviour {
     //設定に応じて表示更新
     public void updteDisplay() {
         //キャラ
-        for(int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 4; i++) {
             MyBehaviour tContainer = GameObject.Find("chara" + i.ToString()).GetComponent<MyBehaviour>();
             tContainer.findChild<SpriteRenderer>("charaImg").sprite = GameData.mGameSetting.mTravelerData[i - 1].mTravelerCharaData.getImage();
             tContainer.findChild<TextMesh>("nameMesh").text = GameData.mGameSetting.mTravelerData[i - 1].mTravelerCharaData.mName;
@@ -93,6 +96,7 @@ public class SettingMain : MonoBehaviour {
         //災害被害
         GameObject.Find("disasterDamageMesh").GetComponent<TextMesh>().text = "x" + GameData.mGameSetting.mDisasterDamage.ToString();
         //ステージ
+        GameObject.Find("stageMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mStageName;
         //対戦方式
         GameObject.Find("battleMethodMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mBattleMethod.mName;
     }
@@ -105,12 +109,20 @@ public class SettingMain : MonoBehaviour {
             mCover.gameObject.SetActive(false);
         });
     }
+    //設定用のボードを表示
+    public void displayPaperBoard(string aBoardName) {
+        mCover.gameObject.SetActive(true);
+        PaperBoardSetting.display(aBoardName, () => {
+            this.updteDisplay();
+            mCover.gameObject.SetActive(false);
+        });
+    }
     //開始
     public void gameStart() {
         //開始可能な設定になっているか確認
         //トラベラーが2人以上か
         int tTravelerNum = 0;
-        foreach(TravelerData tData in GameData.mGameSetting.mTravelerData) {
+        foreach (TravelerData tData in GameData.mGameSetting.mTravelerData) {
             if (tData.mTravelerCharaData != TravelerCharaData.none) tTravelerNum++;
         }
         if (tTravelerNum < 2) {
@@ -118,17 +130,17 @@ public class SettingMain : MonoBehaviour {
             return;
         }
         //同じキャラを複数選んでいないか
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == TravelerCharaData.none) continue;
-            for(int j = i + 1; j < 4; j++) {
-                if(GameData.mGameSetting.mTravelerData[i].mTravelerCharaData== GameData.mGameSetting.mTravelerData[j].mTravelerCharaData) {
+            for (int j = i + 1; j < 4; j++) {
+                if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == GameData.mGameSetting.mTravelerData[j].mTravelerCharaData) {
                     Attention.attention("同じキャラを\n複数選択できません", Attention.OverlapType.truncate);
                     return;
                 }
             }
         }
         mCover.gameObject.SetActive(true);
-        MySceneManager.changeSceneWithFade("standard", "curtainFade");
+        MySceneManager.changeSceneWithFade(GameData.mGameSetting.mStageSceneName, "curtainFade");
     }
     private void OnDestroy() {
         Subject.removeObserver("settingMain");

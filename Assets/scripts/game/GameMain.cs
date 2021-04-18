@@ -21,13 +21,14 @@ public class GameMain : MonoBehaviour {
 
         Arg tArg = MySceneManager.getArg(this.gameObject.scene.name);
         if (tArg.ContainsKey("game") && !tArg.get<bool>("game")) {
+            setPreview();
             return;
         }
         prepare();
     }
     private void prepare() {
-        mMaster = new GameMaster(mFeild,mCamera);
-        mMaster.prepare(()=> {
+        mMaster = new GameMaster(mFeild, mCamera);
+        mMaster.prepare(() => {
             //準備完了
             if (MySceneManager.fadeCallbacks == null) {
                 gameStart();
@@ -41,5 +42,21 @@ public class GameMain : MonoBehaviour {
     }
     private void gameStart() {
         mMaster.gameStart();
+    }
+    private void setPreview() {
+        Subject.addObserver(new Observer("gameMain", (aMessage) => {
+            switch (aMessage.name) {
+                case "gamePadDragged":
+                    moveCamera(aMessage.getParameter<Vector2>("vector"));
+                    return;
+            }
+        }));
+    }
+    public void moveCamera(Vector2 aDragVector) {
+        Vector2 tVec = aDragVector / -15f;
+        mCamera.move(tVec);
+    }
+    private void OnDestroy() {
+        Subject.removeObserver("gameMain");
     }
 }

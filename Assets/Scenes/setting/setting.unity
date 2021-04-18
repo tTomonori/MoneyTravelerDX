@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 3181699}
   - component: {fileID: 3181701}
   - component: {fileID: 3181700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: nameMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8988101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: initialMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22285288}
   - component: {fileID: 22285289}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33980814}
   - component: {fileID: 33980815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 42211217}
   - component: {fileID: 42211218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 56000733}
   - component: {fileID: 56000735}
   - component: {fileID: 56000734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisitionConditionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71973968}
   - component: {fileID: 71973969}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 84489135}
   - component: {fileID: 84489137}
   - component: {fileID: 84489136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: feeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 111308715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 113930217}
   - component: {fileID: 113930218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119622858}
   - component: {fileID: 119622859}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 120836916}
   - component: {fileID: 120836918}
   - component: {fileID: 120836917}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 145427340}
   - component: {fileID: 145427342}
   - component: {fileID: 145427341}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 153136869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167244520}
   - component: {fileID: 167244521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174683244}
   - component: {fileID: 174683245}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,7 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 190111896}
   - component: {fileID: 190111897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204885085}
   - component: {fileID: 204885086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1451,7 +1451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222254835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 227896923}
   - component: {fileID: 227896925}
   - component: {fileID: 227896924}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bonusButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1560,7 +1560,7 @@ GameObject:
   - component: {fileID: 265529564}
   - component: {fileID: 265529566}
   - component: {fileID: 265529565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisitionMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,7 +1652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272054418}
   - component: {fileID: 272054419}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1734,7 +1734,7 @@ GameObject:
   - component: {fileID: 278364002}
   - component: {fileID: 278364004}
   - component: {fileID: 278364003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: battleMethodMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1826,7 +1826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284509470}
   - component: {fileID: 284509471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 293950408}
   - component: {fileID: 293950410}
   - component: {fileID: 293950409}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ GameObject:
   - component: {fileID: 305019052}
   - component: {fileID: 305019054}
   - component: {fileID: 305019053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 310487503}
   - component: {fileID: 310487505}
   - component: {fileID: 310487504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 338545951}
   - component: {fileID: 338545953}
   - component: {fileID: 338545952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2282,7 +2282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359004263}
   - component: {fileID: 359004264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,7 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 364403399}
   - component: {fileID: 364403400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2445,7 +2445,7 @@ GameObject:
   - component: {fileID: 367605064}
   - component: {fileID: 367605066}
   - component: {fileID: 367605065}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2575,7 +2575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 375617700}
   - component: {fileID: 375617701}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2656,7 +2656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 386042671}
   - component: {fileID: 386042672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 391876139}
   - component: {fileID: 391876141}
   - component: {fileID: 391876140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2829,7 +2829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 439324191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2866,7 +2866,7 @@ GameObject:
   - component: {fileID: 470159102}
   - component: {fileID: 470159104}
   - component: {fileID: 470159103}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2940,7 +2940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 485945771}
   - component: {fileID: 485945772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3020,7 +3020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 487118741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3054,7 +3054,7 @@ GameObject:
   - component: {fileID: 493443464}
   - component: {fileID: 493443466}
   - component: {fileID: 493443465}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisitionConditionMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3147,7 +3147,7 @@ GameObject:
   - component: {fileID: 553413238}
   - component: {fileID: 553413240}
   - component: {fileID: 553413239}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3222,7 +3222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573721424}
   - component: {fileID: 573721425}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3304,7 +3304,7 @@ GameObject:
   - component: {fileID: 643568598}
   - component: {fileID: 643568600}
   - component: {fileID: 643568599}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3395,7 +3395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650508056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3426,7 +3426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 654416235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3463,7 +3463,7 @@ GameObject:
   - component: {fileID: 683964249}
   - component: {fileID: 683964248}
   - component: {fileID: 683964247}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3531,7 +3531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707774869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3563,7 +3563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738912650}
   - component: {fileID: 738912651}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3645,7 +3645,7 @@ GameObject:
   - component: {fileID: 752679795}
   - component: {fileID: 752679797}
   - component: {fileID: 752679796}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3738,7 +3738,7 @@ GameObject:
   - component: {fileID: 755593756}
   - component: {fileID: 755593758}
   - component: {fileID: 755593757}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3812,7 +3812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773031257}
   - component: {fileID: 773031258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3894,7 +3894,7 @@ GameObject:
   - component: {fileID: 835190679}
   - component: {fileID: 835190681}
   - component: {fileID: 835190680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: battleMethodButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3968,7 +3968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845119842}
   - component: {fileID: 845119843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4049,7 +4049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 867297808}
   - component: {fileID: 867297809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4130,7 +4130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872450168}
   - component: {fileID: 872450169}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4211,7 +4211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891903608}
   - component: {fileID: 891903609}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4292,7 +4292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 923005986}
   - component: {fileID: 923005987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4373,7 +4373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939706619}
   - component: {fileID: 939706620}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4455,7 +4455,7 @@ GameObject:
   - component: {fileID: 1006581174}
   - component: {fileID: 1006581176}
   - component: {fileID: 1006581175}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: disasterDamageMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4547,7 +4547,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1014482509}
   - component: {fileID: 1014482510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4591,7 +4591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043870782}
   - component: {fileID: 1043870781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: corkBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4672,7 +4672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048098465}
   - component: {fileID: 1048098466}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4753,7 +4753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056116593}
   - component: {fileID: 1056116594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4835,7 +4835,7 @@ GameObject:
   - component: {fileID: 1076164017}
   - component: {fileID: 1076164019}
   - component: {fileID: 1076164018}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,7 +4927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1146161743}
   - component: {fileID: 1146161744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5007,7 +5007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151059012}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5044,7 +5044,7 @@ GameObject:
   - component: {fileID: 1153866708}
   - component: {fileID: 1153866710}
   - component: {fileID: 1153866709}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5119,7 +5119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170047763}
   - component: {fileID: 1170047764}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5199,7 +5199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1170590313}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5233,7 +5233,7 @@ GameObject:
   - component: {fileID: 1189376553}
   - component: {fileID: 1189376555}
   - component: {fileID: 1189376554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: nameMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5324,7 +5324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1202003414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5357,7 +5357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226781502}
   - component: {fileID: 1226781503}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5438,7 +5438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230987547}
   - component: {fileID: 1230987548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5518,7 +5518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1240740897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5552,7 +5552,7 @@ GameObject:
   - component: {fileID: 1247314583}
   - component: {fileID: 1247314585}
   - component: {fileID: 1247314584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5644,7 +5644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263732946}
   - component: {fileID: 1263732947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5724,7 +5724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1267896067}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: battleMethod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5761,7 +5761,7 @@ GameObject:
   - component: {fileID: 1270742272}
   - component: {fileID: 1270742274}
   - component: {fileID: 1270742273}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: initialMoneyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5836,7 +5836,7 @@ GameObject:
   - component: {fileID: 1307933432}
   - component: {fileID: 1307933434}
   - component: {fileID: 1307933433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5929,7 +5929,7 @@ GameObject:
   - component: {fileID: 1348062537}
   - component: {fileID: 1348062539}
   - component: {fileID: 1348062538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: nameMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6021,7 +6021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1350306480}
   - component: {fileID: 1350306481}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6103,7 +6103,7 @@ GameObject:
   - component: {fileID: 1375251111}
   - component: {fileID: 1375251113}
   - component: {fileID: 1375251112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: startMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6195,7 +6195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1390386097}
   - component: {fileID: 1390386098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6275,7 +6275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414120124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6311,7 +6311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420152009}
   - component: {fileID: 1420152010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6393,7 +6393,7 @@ GameObject:
   - component: {fileID: 1447210773}
   - component: {fileID: 1447210775}
   - component: {fileID: 1447210774}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6486,7 +6486,7 @@ GameObject:
   - component: {fileID: 1458900720}
   - component: {fileID: 1458900722}
   - component: {fileID: 1458900721}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: nameMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6578,7 +6578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483894453}
   - component: {fileID: 1483894454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clippedPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6658,7 +6658,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494104551}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6690,7 +6690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1501451179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6725,7 +6725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1505071397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisitionCondition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6762,7 +6762,7 @@ GameObject:
   - component: {fileID: 1506619732}
   - component: {fileID: 1506619734}
   - component: {fileID: 1506619733}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6854,7 +6854,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1507081980}
   - component: {fileID: 1507081981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6935,7 +6935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514255803}
   - component: {fileID: 1514255804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7016,7 +7016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514939620}
   - component: {fileID: 1514939621}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7096,7 +7096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1541638825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7127,7 +7127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1577256491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: disasterDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7162,7 +7162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1586765822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7197,7 +7197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1601931112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7234,7 +7234,7 @@ GameObject:
   - component: {fileID: 1616951755}
   - component: {fileID: 1616951757}
   - component: {fileID: 1616951756}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bonusMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7325,7 +7325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1626852027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7358,7 +7358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1633817190}
   - component: {fileID: 1633817191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chara2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7406,7 +7406,7 @@ GameObject:
   - component: {fileID: 1642309245}
   - component: {fileID: 1642309247}
   - component: {fileID: 1642309246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7498,7 +7498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644880715}
   - component: {fileID: 1644880716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7579,7 +7579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649128078}
   - component: {fileID: 1649128079}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clippedPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7659,7 +7659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652163514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7693,7 +7693,7 @@ GameObject:
   - component: {fileID: 1663812751}
   - component: {fileID: 1663812753}
   - component: {fileID: 1663812752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7786,7 +7786,7 @@ GameObject:
   - component: {fileID: 1723192358}
   - component: {fileID: 1723192357}
   - component: {fileID: 1723192359}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7851,7 +7851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738844252}
   - component: {fileID: 1738844253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7922,6 +7922,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1742215466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742215467}
+  m_Layer: 10
+  m_Name: settingPaper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742215467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742215466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742536520
 GameObject:
   m_ObjectHideFlags: 0
@@ -7932,7 +7962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742536521}
   - component: {fileID: 1742536522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chara4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7980,7 +8010,7 @@ GameObject:
   - component: {fileID: 1745104763}
   - component: {fileID: 1745104765}
   - component: {fileID: 1745104764}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: aiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8053,7 +8083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1768886866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8089,7 +8119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775335206}
   - component: {fileID: 1775335207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8171,7 +8201,7 @@ GameObject:
   - component: {fileID: 1776368626}
   - component: {fileID: 1776368628}
   - component: {fileID: 1776368627}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8263,7 +8293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787751428}
   - component: {fileID: 1787751429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clippedPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8344,7 +8374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794053036}
   - component: {fileID: 1794053037}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8426,7 +8456,7 @@ GameObject:
   - component: {fileID: 1819142344}
   - component: {fileID: 1819142346}
   - component: {fileID: 1819142345}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: feeMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8517,7 +8547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1825130941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: settingBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8549,7 +8579,7 @@ GameObject:
   - component: {fileID: 1841907593}
   - component: {fileID: 1841907595}
   - component: {fileID: 1841907594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: disasterDamageButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8623,7 +8653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1844982669}
   - component: {fileID: 1844982670}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8705,7 +8735,7 @@ GameObject:
   - component: {fileID: 1868405430}
   - component: {fileID: 1868405432}
   - component: {fileID: 1868405431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8836,7 +8866,7 @@ GameObject:
   - component: {fileID: 1881123868}
   - component: {fileID: 1881123870}
   - component: {fileID: 1881123869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stageMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8928,7 +8958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886877774}
   - component: {fileID: 1886877775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: labelPaint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9009,7 +9039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904788547}
   - component: {fileID: 1904788548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: paint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9090,7 +9120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907616018}
   - component: {fileID: 1907616019}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: brush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9171,7 +9201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1916664762}
   - component: {fileID: 1916664763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9253,7 +9283,7 @@ GameObject:
   - component: {fileID: 1926619809}
   - component: {fileID: 1926619811}
   - component: {fileID: 1926619810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9384,7 +9414,7 @@ GameObject:
   - component: {fileID: 1937417545}
   - component: {fileID: 1937417547}
   - component: {fileID: 1937417546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9477,7 +9507,7 @@ GameObject:
   - component: {fileID: 1962167053}
   - component: {fileID: 1962167055}
   - component: {fileID: 1962167054}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: charaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9553,7 +9583,7 @@ GameObject:
   - component: {fileID: 1968032156}
   - component: {fileID: 1968032158}
   - component: {fileID: 1968032157}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: initialMoneyMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9645,7 +9675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972187533}
   - component: {fileID: 1972187534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: clippedPaper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9726,7 +9756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993714894}
   - component: {fileID: 1993714895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chara3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9773,7 +9803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998892141}
   - component: {fileID: 1998892142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chara1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9821,7 +9851,7 @@ GameObject:
   - component: {fileID: 1999914452}
   - component: {fileID: 1999914451}
   - component: {fileID: 1999914450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -9867,7 +9897,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 1280
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9904,7 +9934,7 @@ GameObject:
   - component: {fileID: 2056095387}
   - component: {fileID: 2056095389}
   - component: {fileID: 2056095388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9997,7 +10027,7 @@ GameObject:
   - component: {fileID: 2095163799}
   - component: {fileID: 2095163801}
   - component: {fileID: 2095163800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10089,7 +10119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2096071716}
   - component: {fileID: 2096071717}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cut1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10171,7 +10201,7 @@ GameObject:
   - component: {fileID: 2109064734}
   - component: {fileID: 2109064736}
   - component: {fileID: 2109064735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: acquisitionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

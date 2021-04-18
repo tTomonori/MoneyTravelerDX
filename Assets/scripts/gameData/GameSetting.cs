@@ -10,6 +10,7 @@ public class GameSetting {
     public float mAcquisition;
     public AcquisitionCondition mAcquisitionCondition;
     public float mDisasterDamage;
-    public string mStage;
+    public string mStageSceneName;
+    public string mStageName;
     public BattleMethod mBattleMethod;
 }
