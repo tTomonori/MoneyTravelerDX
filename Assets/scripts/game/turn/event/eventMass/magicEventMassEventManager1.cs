@@ -11,30 +11,6 @@ static public partial class EventMassEventManager {
         tEventList.Add((runDisasterEvent, 3));
         pickEvent(tEventList)(aTraveler, aMaster, aCallback);
     }
-    //指定したトラベラーに指定した額のボーナスを与える
-    static public void giveBonus(TravelerStatus aTraveler, int aMoney, GameMaster aMaster, Action aCallback) {
-        GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
-        GameEffector.getCoin(aTraveler.mComa.worldPosition, "+" + aMoney.ToString(), () => {
-            aTraveler.getMoney(aMoney);
-            aMaster.updateStatusDisplay();
-            aCallback();
-        });
-    }
-    //それぞれのトラベラーにそれぞれ指定した額のボーナスを与える
-    static public void continuousGiveBonus(List<(TravelerStatus, int)> aBonusList, GameMaster aMaster, Action aCallback) {
-        int tLength = aBonusList.Count;
-        Action<int> tFunction = null;
-        tFunction = (aIndex) => {
-            giveBonus(aBonusList[aIndex].Item1, aBonusList[aIndex].Item2, aMaster, () => {
-                if (aIndex + 1 < tLength) {
-                    tFunction(aIndex + 1);
-                    return;
-                }
-                aCallback();
-            });
-        };
-        tFunction(0);
-    }
     //天の恵み
     static public void heavenlyBlessing(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         int tMoney = (int)(100 + 200 * UnityEngine.Random.Range(0f, 1f));

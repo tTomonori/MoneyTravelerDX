@@ -9,7 +9,7 @@ public class Aura : MyBehaviour {
     public void animate(Action aCallback) {
         mMesh.material.SetColor("_TintColor", mColor);
         this.scale = new Vector3(0, 0, 0.4f);
-        StartCoroutine(delta(new Vector3(150, 150, 0), 1, -1, 0.5f, aCallback));
+        StartCoroutine(delta(new Vector3(150, 150, 0), 1, -1, 0.6f, aCallback));
     }
     private IEnumerator delta(Vector3 aScale, float aInitialOpacty, float aAlpha, float aDuration, Action aCallback) {
         float tElapsedTime = 0;

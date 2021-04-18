@@ -185,4 +185,80 @@ public class PlayerAi : TravelerAi {
             }
         }));
     }
+    //選択式増資
+    public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        HangingBoard tBoard = aMaster.mUiMain.displayHangingBoard(HangingBoard.BoardImage.paper);
+        tBoard.open();
+        MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
+        GameData.mStageData.mCamera.mTarget = null;
+        Subject.addObserver(new Observer("playerAiSelectIncrease", (aMessage) => {
+            switch (aMessage.name) {
+                case "hangingBoardPushed":
+                    Subject.removeObserver("playerAiSelectIncrease");
+                    tBoard.close();
+                    LandOwnedDisplay tOwnedDisplay = null;
+                    List<MassStatusUiButtonData> tUiButtonData = new List<MassStatusUiButtonData>() {
+                        new MassStatusUiButtonData("増資\nしない",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tOwnedDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            aCallback(null);
+                        }),null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tOwnedDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            selectIncrease(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    Action<LandMass> tF = (aLand) => {
+                        tOwnedDisplay.close();
+                        GameData.mStageData.mCamera.mTarget = aLand;
+                        LandMassStatusDisplay tLandDisplay = null;
+                        List<MassStatusUiButtonData> tLandUiButtonData = new List<MassStatusUiButtonData>() {
+                            null,null,null,null,
+                            new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                                tLandDisplay.close();
+                                GameData.mStageData.mCamera.mTarget=tTarget;
+                                selectIncrease(aMyStatus,aMaster,aCallback);
+                        })};
+                        //増資可能な土地なら増資ボタン追加
+                        if (aMyStatus.mMoney >= aLand.mIncreaseCost) {
+                            tLandUiButtonData[0] = new MassStatusUiButtonData("増資する", aMyStatus.playerColor, () => {
+                                tLandDisplay.close();
+                                GameData.mStageData.mCamera.mTarget = tTarget;
+                                aCallback(aLand);
+                            });
+                        }
+                        tLandDisplay = (LandMassStatusDisplay)aMaster.mUiMain.displayMassStatus(aLand, tLandUiButtonData);
+                    };
+                    tOwnedDisplay = aMaster.mUiMain.displayLandOwnedDisplay(aMyStatus, aMaster.mFeild.getOwnedLand(aMyStatus), tF, tUiButtonData);
+                    return;
+                case "gamePadDragged":
+                    moveCamera(aMessage.getParameter<Vector2>("vector"));
+                    return;
+                case "gamePadClicked":
+                    Subject.removeObserver("playerAiSelectIncrease");
+                    tBoard.close();
+                    MassStatusDisplay tDisplay = null;
+                    List<MassStatusUiButtonData> tButtonData = new List<MassStatusUiButtonData>() {
+                        null,null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            selectIncrease(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    GameMass tMass = aMessage.getParameter<GameMass>("mass");
+                    if (tMass is LandMass && ((LandMass)tMass).mOwner == aMyStatus && aMyStatus.mMoney >= ((LandMass)tMass).mIncreaseCost) {
+                        //自分の土地のかつ増資可能な場合は増資ボタン追加
+                        tButtonData[0] = new MassStatusUiButtonData("増資する", aMyStatus.playerColor, () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget = tTarget;
+                            aCallback((LandMass)tMass);
+                        });
+                    }
+                    tDisplay = aMaster.mUiMain.displayMassStatus(tMass, tButtonData);
+                    return;
+            }
+        }));
+    }
 }

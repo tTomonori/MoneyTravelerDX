@@ -28,4 +28,22 @@ public class SolidAi : CpuAi {
         }
         aCallback(false);
     }
+    public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        //所持金が現在の全てのマスの料金の平均を下回らない最も価値が高い土地に増資する
+        float tFeeAve = aMaster.mFeild.calcurateFeeAverage(aMyStatus);
+        LandMass tTarget = null;
+        foreach(LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
+            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (tFeeAve > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
+            if (tTarget == null) {
+                tTarget = tLand;
+                continue;
+            }
+            if (tTarget.mTotalValue < tLand.mTotalValue) {
+                tTarget = tLand;
+                continue;
+            }
+        }
+        aCallback(tTarget);
+    }
 }

@@ -38,4 +38,34 @@ public class BuyerAi : CpuAi {
         tLand = aMaster.mFeild.searchCheapestFeeLand(aMyStatus);
         aCallback(tLand);
     }
+    public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        //所有者がいる土地が8割を超えているか所持金が所有者がいないマスの購入価格の平均を下回らなければ最も増資コストが安い土地に増資する
+        LandMass tTarget = null;
+        //最も増資コストが安い土地を求める
+        foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
+            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (aMyStatus.mMoney < tLand.mIncreaseCost) continue;
+            if (tTarget == null) {
+                tTarget = tLand;
+                continue;
+            }
+            if (tTarget.mIncreaseCost > tLand.mIncreaseCost) {
+                tTarget = tLand;
+                continue;
+            }
+        }
+        //所有者がいる土地が8割を超えているか
+        List<LandMass> tAllLands = aMaster.mFeild.getAllLands();
+        List<LandMass> tOwnedLands = aMaster.mFeild.getOtherOwnedLand(null);
+        if (tOwnedLands.Count / (float)(tAllLands.Count) > 0.8f) {
+            aCallback(tTarget);
+            return;
+        }
+        //所持金が所有者がいないマスの購入価格の平均を下回らないか
+        if (aMaster.mFeild.calculatePriceAverage() < aMyStatus.mMoney - tTarget.mIncreaseCost) {
+            aCallback(tTarget);
+            return;
+        }
+        aCallback(null);
+    }
 }

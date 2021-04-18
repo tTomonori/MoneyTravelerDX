@@ -43,4 +43,23 @@ public class CarefullyAi : CpuAi {
         }
         aCallback(false);
     }
+    public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        //所持金が現在の最も料金が高いマスの料金を下回らなければ最も増資コストが安い土地に増資する
+        LandMass tHighestFeeLand = aMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
+        int tHighestFee = (tHighestFeeLand == null) ? 0 : tHighestFeeLand.mFeeCost;
+        LandMass tTarget = null;
+        foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
+            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (tHighestFee > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
+            if (tTarget == null) {
+                tTarget = tLand;
+                continue;
+            }
+            if (tTarget.mIncreaseCost > tLand.mIncreaseCost) {
+                tTarget = tLand;
+                continue;
+            }
+        }
+        aCallback(tTarget);
+    }
 }

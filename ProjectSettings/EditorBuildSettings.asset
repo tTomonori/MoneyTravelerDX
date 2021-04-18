@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/trail.unity
     guid: 914d10faa0b8a48a98431dbc7902b4a5
+  - enabled: 1
+    path: Assets/Scenes/stage/twinBridge.unity
+    guid: bd880333ee46a48e09928531f69207d3
   m_configObjects: {}

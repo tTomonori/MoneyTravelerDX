@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36581f2d100c34028855f255c66e9217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mInitialMoney: 1000
+  mInitialMoney: 1200
   mFeild: {fileID: 187700227}
   mCamera: {fileID: 915530813}
 --- !u!1 &285420311
