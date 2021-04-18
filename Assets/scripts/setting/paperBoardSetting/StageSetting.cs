@@ -18,6 +18,7 @@ public class StageSetting : PaperBoardSetting {
         mStageData = new List<(string, string)>();
         mStageData.Add(("スタンダード", "standard"));
         mStageData.Add(("登山道", "trail"));
+        mStageData.Add(("双子橋", "twinBridge"));
 
         updatePage();
     }

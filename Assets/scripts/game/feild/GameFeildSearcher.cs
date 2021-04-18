@@ -108,7 +108,7 @@ static public class GameFeildSearche {
                 tCheapest = tLand;
                 continue;
             }
-            if (tCheapest.mFeeRate > tLand.mFeeCost)
+            if (tCheapest.mFeeCost > tLand.mFeeCost)
                 tCheapest = tLand;
         }
         return tCheapest;
@@ -123,7 +123,7 @@ static public class GameFeildSearche {
             if (tLand.mSellCost < aSellCost) continue;
             if (tCheapest == null)
                 tCheapest = tLand;
-            if (tCheapest.mFeeRate > tLand.mFeeCost)
+            if (tCheapest.mFeeCost > tLand.mFeeCost)
                 tCheapest = tLand;
         }
         return tCheapest;
