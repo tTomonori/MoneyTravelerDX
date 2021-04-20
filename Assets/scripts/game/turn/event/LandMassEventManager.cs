@@ -36,6 +36,11 @@ static public class LandMassEventManager {
             aCallback();
             return;
         }
+        if (aLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) {
+            //増資MAX
+            aCallback();
+            return;
+        }
         aTraveler.mAi.increaseLand(aTraveler, aLand, aMaster, (aAns) => {
             if (!aAns) {
                 aCallback();

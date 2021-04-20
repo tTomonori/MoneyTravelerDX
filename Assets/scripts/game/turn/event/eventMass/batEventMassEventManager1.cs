@@ -28,7 +28,7 @@ static public partial class EventMassEventManager {
     //下位への支援金
     static public void lostSupportMoneyToLower(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         int tMoney = (int)(30 + 70 * UnityEngine.Random.Range(0f, 1f) + aTraveler.mOrbit * UnityEngine.Random.Range(0f, 0.5f));
-        aMaster.mUiMain.displayEventDescription("自分より下位のトラベラーへ!\n支援金として" + tMoney.ToString() + "金ずつ\n払う", () => {
+        aMaster.mUiMain.displayEventDescription("自分より下位のトラベラーへ\n支援金として" + tMoney.ToString() + "金ずつ\n払う", () => {
             List<(TravelerStatus, int)> tMoneyList = new List<(TravelerStatus, int)>();
             foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
                 if (tTraveler.mIsRetired) continue;
