@@ -1461,6 +1461,7 @@ MonoBehaviour:
   mInitialMoney: 1000
   mFeild: {fileID: 187700227}
   mCamera: {fileID: 915530813}
+  mBGM: {fileID: 8300000, guid: 2a548bc5f07834b598ef3029a34d9aa0, type: 3}
 --- !u!114 &281676532 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7076459238299599140, guid: 9fdcf7379c3ee4cc193a29e6a112eb4d,

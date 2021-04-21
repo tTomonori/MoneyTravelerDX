@@ -1881,6 +1881,7 @@ MonoBehaviour:
   mInitialMoney: 1500
   mFeild: {fileID: 187700227}
   mCamera: {fileID: 915530813}
+  mBGM: {fileID: 8300000, guid: 45de21ef8c9004204836cc4a52665edc, type: 3}
 --- !u!1 &279848486
 GameObject:
   m_ObjectHideFlags: 0

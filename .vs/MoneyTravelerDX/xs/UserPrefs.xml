@@ -1,17 +1,13 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/setting/paperBoardSetting/StageSetting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/GameMaster.cs">
     <Files>
-      <File FileName="Assets/scripts/game/turn/event/eventMass/heartEventMassEventManager.cs" Line="32" Column="76" />
-      <File FileName="Assets/scripts/game/turn/event/eventMass/batEventMassEventManager1.cs" Line="31" Column="63" />
-      <File FileName="Assets/scripts/game/turn/event/eventMass/magicEventMassEventManager1.cs" Line="12" Column="49" />
-      <File FileName="Assets/scripts/game/feild/traveler/ai/PlayerAi.cs" Line="247" Column="43" />
-      <File FileName="Assets/scripts/game/turn/event/LandMassEventManager.cs" Line="42" Column="20" />
-      <File FileName="Assets/scripts/setting/paperBoardSetting/StageSetting.cs" Line="22" Column="27" />
+      <File FileName="Assets/scripts/game/GameMain.cs" Line="50" Column="37" />
+      <File FileName="Assets/scripts/game/GameMaster.cs" Line="83" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5ed97e04-5b9d-4cb8-a8ec-a742bec06cc8" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6758a6f8-5319-4713-b801-8ca83df2f612" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

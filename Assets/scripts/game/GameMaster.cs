@@ -13,6 +13,7 @@ public class GameMaster {
     public int mTurnIndex = -1;
     public TurnManager mTurnManager;
     public int mTurnNumber = 1;
+    public Action mEndCallback;
     public GameMaster(GameFeild aFeild, GameCamera aCamera) {
         mFeild = aFeild;
         mCamera = aCamera;
@@ -31,7 +32,8 @@ public class GameMaster {
             break;
         }
     }
-    public void gameStart() {
+    public void gameStart(Action aEndCallback) {
+        mEndCallback = aEndCallback;
         //uiのシーンを開く
         MySceneManager.openScene("gameUi", null, (aScene) => {
             mUiMain = GameObject.Find("gameUiMain").GetComponent<GameUiMain>();
@@ -79,7 +81,7 @@ public class GameMaster {
     }
     //ゲーム終了
     private void endGame() {
-        MySceneManager.changeSceneWithFade("result", "curtainFade", new Arg(new Dictionary<string, object>() { { "travelers", mTravelers } }));
+        mEndCallback();
     }
     //ステータス表示更新
     public void updateStatusDisplay() {

@@ -8,6 +8,7 @@ public class GameMain : MonoBehaviour {
     public int mInitialMoney;
     public GameFeild mFeild;
     public GameCamera mCamera;
+    public AudioClip mBGM;
     void Start() {
         GameData.mStageData = new StageData();
         GameData.mStageData.mInitialMoney = mInitialMoney;
@@ -41,7 +42,14 @@ public class GameMain : MonoBehaviour {
         });
     }
     private void gameStart() {
-        mMaster.gameStart();
+        MySoundPlayer.playBgm(mBGM.name, MySoundPlayer.LoopType.normalConnect, 0.6f);
+        mMaster.gameStart(gameEnd);
+    }
+    private void gameEnd() {
+        MySoundPlayer.fadeBgm(1, 0, () => {
+            MySoundPlayer.stopBgm();
+        });
+        MySceneManager.changeSceneWithFade("result", "curtainFade", new Arg(new Dictionary<string, object>() { { "travelers", mMaster.mTravelers } }));
     }
     private void setPreview() {
         Subject.addObserver(new Observer("gameMain", (aMessage) => {

@@ -64,7 +64,7 @@ public class LapGoalMethod : WithResultBonusMethod {
     }
     public override bool isFinish(GameMaster aMaster) {
         foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
-            if (tTraveler.mOrbit >= mGoalLap)
+            if (tTraveler.mOrbit >= mGoalLap + 1)
                 return true;
         }
         return false;
