@@ -1,11 +1,16 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/result/ResultMain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/title/TitleMain.cs">
     <Files>
-      <File FileName="Assets/scripts/game/GameMain.cs" Line="49" Column="35" />
-      <File FileName="Assets/scripts/game/GameMaster.cs" Line="83" Column="22" />
-      <File FileName="Assets/scripts/setting/SettingMain.cs" Line="144" Column="35" />
-      <File FileName="Assets/scripts/result/ResultMain.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/title/TitleMain.cs" Line="8" Column="9" />
+      <File FileName="Assets/scripts/title/FallCoin.cs" Line="16" Column="22" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoneyTravelerDX" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

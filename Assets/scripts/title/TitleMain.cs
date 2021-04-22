@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TitleMain : MonoBehaviour {
+    [SerializeField] public MyButton mButton;
     void Start() {
-        GameObject.Find("button").GetComponent<MyButton>().mPushedFunction = () => {
+        if (MySceneManager.fadeCallbacks != null) {
+            MySceneManager.fadeCallbacks.fadeInFinished = setButton;
+            MySceneManager.fadeCallbacks.nextSceneReady();
+        } else {
+            setButton();
+        }
+    }
+    public void setButton() {
+        mButton.mPushedFunction = () => {
+            mButton.gameObject.SetActive(false);
             MySceneManager.changeScene("setting");
         };
-
-        if (MySceneManager.fadeCallbacks != null) {
-            MySceneManager.fadeCallbacks.nextSceneReady();
-        }
     }
 }
