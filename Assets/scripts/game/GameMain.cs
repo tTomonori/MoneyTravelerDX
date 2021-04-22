@@ -46,7 +46,7 @@ public class GameMain : MonoBehaviour {
         mMaster.gameStart(gameEnd);
     }
     private void gameEnd() {
-        MySoundPlayer.fadeBgm(1, 0, () => {
+        MySoundPlayer.fadeBgm(1.5f, 0, () => {
             MySoundPlayer.stopBgm();
         });
         MySceneManager.changeSceneWithFade("result", "curtainFade", new Arg(new Dictionary<string, object>() { { "travelers", mMaster.mTravelers } }));

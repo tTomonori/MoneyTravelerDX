@@ -6,6 +6,7 @@ using System;
 public class SettingMain : MonoBehaviour {
     [SerializeField] public MyBehaviour mCover;
     void Start() {
+        MySoundPlayer.playBgm("何もない日常", MySoundPlayer.LoopType.normalConnect, 0.6f);
         updteDisplay();
         Subject.addObserver(new Observer("settingMain", (aMessage) => {
             switch (aMessage.name) {
@@ -140,6 +141,9 @@ public class SettingMain : MonoBehaviour {
             }
         }
         mCover.gameObject.SetActive(true);
+        MySoundPlayer.fadeBgm(1.5f, 0, () => {
+            MySoundPlayer.stopBgm();
+        });
         MySceneManager.changeSceneWithFade(GameData.mGameSetting.mStageSceneName, "curtainFade");
     }
     private void OnDestroy() {

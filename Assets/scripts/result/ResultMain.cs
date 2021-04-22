@@ -28,6 +28,7 @@ public class ResultMain : MyBehaviour {
         MySceneManager.fadeCallbacks.nextSceneReady();
     }
     private void result() {
+        MySoundPlayer.playBgm("勝利のマーチ", MySoundPlayer.LoopType.normalConnect, 0.6f);
         MyBehaviour.setTimeoutToIns(3, () => {
             mPerformer.result(mResult, () => {
                 MyBehaviour.setTimeoutToIns(2, endResult);
@@ -47,6 +48,9 @@ public class ResultMain : MyBehaviour {
         mBackButton.gameObject.SetActive(true);
         mBackButton.mPushedFunction = () => {
             mCover.SetActive(true);
+            MySoundPlayer.fadeBgm(1.5f, 0, () => {
+                MySoundPlayer.stopBgm();
+            });
             MySceneManager.changeSceneWithFade("title", "curtainFade");
         };
     }
