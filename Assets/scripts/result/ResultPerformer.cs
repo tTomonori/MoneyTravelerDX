@@ -22,6 +22,8 @@ public class ResultPerformer : MyBehaviour {
             }
             mTravelerResults[i].mFaceStamp.mImage.sprite = tTraveler.mTravelerData.mTravelerCharaData.getImage();
             mTravelerResults[i].mRanking.scale2D = Vector2.zero;
+            if (!tTraveler.mIsRetired)
+                mTravelerResults[i].mRetire.gameObject.SetActive(false);
         }
         mMiniPapersContainer.positionY = 6;
     }
@@ -83,7 +85,7 @@ public class ResultPerformer : MyBehaviour {
                                 ResultTravelerData tData = aTraveler[i];
                                 if (tData == null) continue;
                                 int tLengthNumber = tData.mResultNumberAndPoint[aResultIndex].Item2;
-                                mTravelerResults[i].mResultNumber.plus(tLengthNumber, tLengthNumber * mGaugeMaxLength / mMaxPoint / tGaugeSpeed, tSystem.getCounter());
+                                mTravelerResults[i].mResultNumber.plus(tLengthNumber, Mathf.Abs(tLengthNumber) * mGaugeMaxLength / mMaxPoint / tGaugeSpeed, tSystem.getCounter());
                                 if (mTravelerResults[i].mResultNumber.getNumber() < 0) {
                                     tLengthNumber += mTravelerResults[i].mResultNumber.getNumber();
                                 }

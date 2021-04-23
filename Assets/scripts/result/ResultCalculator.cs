@@ -117,13 +117,18 @@ static public class ResultCalculator {
         //順位
         foreach (ResultTravelerData tData in tResultTravelerDataList) {
             if (tData == null) continue;
-            int tRanling = 1;
+            int tRanking = 1;
             foreach (ResultTravelerData tComparison in tResultTravelerDataList) {
                 if (tComparison == null) continue;
-                if (tData.mTotalPoint >= tComparison.mTotalPoint) continue;
-                tRanling++;
+                if (tData.mTraveler.mIsRetired) {
+                    if (!tComparison.mTraveler.mIsRetired || tData.mTraveler.mRetiredNumber < tComparison.mTraveler.mRetiredNumber)
+                        tRanking++;
+                } else {
+                    if (tComparison.mTraveler.mIsRetired || tData.mTotalPoint >= tComparison.mTotalPoint) continue;
+                    tRanking++;
+                }
             }
-            tData.mRanking = tRanling;
+            tData.mRanking = tRanking;
         }
 
         return (tResultTravelerDataList, tResultNameList);

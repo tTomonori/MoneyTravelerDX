@@ -48,6 +48,8 @@ public class GameMaster {
                         mUiMain.createTurnDisplay();
                         mUiMain.updateTurnDisplay(mTurnNumber.ToString());
                         //ターン開始
+                        TravelerStatus.mRetiredCounter = 0;
+                        recordAssetsTransition();
                         nextTurn();
                     });
                 });
@@ -75,12 +77,14 @@ public class GameMaster {
 
         if (mTurnIndex < tPreTurnIndex) {
             mTurnNumber++;
+            recordAssetsTransition();
             mUiMain.updateTurnDisplay(mTurnNumber.ToString());
         }
         mTurnManager.startTurn(mTurnOrder[mTurnIndex], this.nextTurn);
     }
     //ゲーム終了
     private void endGame() {
+        recordAssetsTransition();
         mEndCallback();
     }
     //ステータス表示更新
@@ -99,6 +103,12 @@ public class GameMaster {
                 }
             }
             tTraveler.mRanking = tRanking;
+        }
+    }
+    //総資産の推移を記録
+    public void recordAssetsTransition() {
+        foreach (TravelerStatus aTraveler in mTurnOrder) {
+            aTraveler.recordAssetsTransition();
         }
     }
     //同じマス内でキャラが重ならないように移動して調整

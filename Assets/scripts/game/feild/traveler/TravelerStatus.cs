@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TravelerStatus {
+    static public int mRetiredCounter;
     public TravelerAi mAi;
     public TravelerData mTravelerData;
     public int mMoney;
@@ -14,12 +15,14 @@ public class TravelerStatus {
     public int mCurrentMassNumber;
     public TravelerComa mComa;
     public bool mIsRetired;
+    public int mRetiredNumber;
 
     public int mMaxAssets;
     public int mMoveDistance;
     public int mLandNumber;
     public int mFeeAmount;
     public int mDisasterDamageAmount;
+    public List<int> mAssetsTransitionList;
 
     public Color playerColor {
         get {

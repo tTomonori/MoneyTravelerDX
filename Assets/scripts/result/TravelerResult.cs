@@ -10,4 +10,5 @@ public class TravelerResult : MyBehaviour {
     public ResultNumber mResultNumber;
     public MyBehaviour mRanking;
     public SpriteRenderer mRankingRenderer;
+    public MyBehaviour mRetire;
 }

@@ -17,6 +17,7 @@ static public class BankruptcyEventManager {
             //リタイア
             aMaster.updateStatusDisplay();
             runRetire(aTraveler, aCallback);
+            aMaster.updateStatusDisplay();
             return;
         }
         aTraveler.mAi.sellLand(aTraveler, aMaster, (aLand) => {
@@ -32,7 +33,7 @@ static public class BankruptcyEventManager {
     }
     static public void runRetire(TravelerStatus aTraveler, Action aCallback) {
         GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
-        aTraveler.mIsRetired = true;
+        aTraveler.retire();
         MySoundPlayer.playSe("siren", false);
         MyBehaviour tPoliceCar = MyBehaviour.create<MyBehaviour>("policeCar");
         tPoliceCar.gameObject.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/game/bankruptcy/policeCar");

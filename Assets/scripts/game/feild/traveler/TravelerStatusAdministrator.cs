@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class TravelerStatusAdministrator {
+    //総資産の推移を記録
+    static public void recordAssetsTransition(this TravelerStatus aTraveler) {
+        if (aTraveler.mAssetsTransitionList == null)
+            aTraveler.mAssetsTransitionList = new List<int>();
+        aTraveler.mAssetsTransitionList.Add(aTraveler.mAssets);
+    }
     //初期所持金設定
     static public void setInitialMoney(this TravelerStatus aTraveler, int aInitialMoney) {
         aTraveler.mMoney = aInitialMoney;
@@ -62,6 +68,7 @@ static public class TravelerStatusAdministrator {
     //買収された
     static public void beAcquired(this TravelerStatus aTraveler, LandMass aLand) {
         aTraveler.mMoney += aLand.mAcquisitionTakeCost;
+        aTraveler.mProperty -= aLand.mTotalValue;
         aTraveler.mLandNumber -= 1;
     }
     //土地を売却した
@@ -69,5 +76,11 @@ static public class TravelerStatusAdministrator {
         aTraveler.mMoney += aLand.mSellCost;
         aTraveler.mProperty -= aLand.mTotalValue;
         aTraveler.mLandNumber -= 1;
+    }
+    //リタイアした
+    static public void retire(this TravelerStatus aTraveler) {
+        TravelerStatus.mRetiredCounter++;
+        aTraveler.mIsRetired = true;
+        aTraveler.mRetiredNumber = TravelerStatus.mRetiredCounter;
     }
 }

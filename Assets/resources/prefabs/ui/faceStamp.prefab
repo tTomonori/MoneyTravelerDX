@@ -136,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037238926152925341}
   - component: {fileID: 2527570998899403795}
+  - component: {fileID: 2677199687211904361}
   m_Layer: 0
   m_Name: faceStamp
   m_TagString: Untagged
@@ -172,6 +173,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mImage: {fileID: 375436862095218203}
+--- !u!210 &2677199687211904361
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705862470465272951}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &5227702143743198378
 GameObject:
   m_ObjectHideFlags: 0
