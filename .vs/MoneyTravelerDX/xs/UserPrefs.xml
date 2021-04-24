@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/traveler/ai/IncreaserAi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/traveler/ai/SolidAi.cs">
     <Files>
-      <File FileName="Assets/scripts/game/feild/traveler/ai/IncreaserAi.cs" Line="11" Column="31" />
+      <File FileName="Assets/scripts/game/feild/traveler/ai/SolidAi.cs" Line="8" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b99c3e90-8ec2-4c13-a9ae-a07bf950961e" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ae52ae7d-30a9-4583-a4d7-3afbe8e39b42" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -10,6 +10,7 @@ static public partial class EventMassEventManager {
         tEventList.Add((getGiftCertificates, 3));
         tEventList.Add((getSupportMoneyFromHigher, 3));
         tEventList.Add((selectIncrease, 1));
+        tEventList.Add((selectPurchase, 1));
         pickEvent(tEventList)(aTraveler, aMaster, aCallback);
     }
     //宝くじ
@@ -69,6 +70,29 @@ static public partial class EventMassEventManager {
                 }
                 //増資する
                 LandMassEventManager.increaseLand(aTraveler, aLand, aMaster, aCallback);
+            });
+        });
+    }
+    //好きな土地を購入
+    static public void selectPurchase(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
+        aMaster.mUiMain.displayEventDescription("好きな土地を\n購入できます", () => {
+            bool tOk = false;
+            foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
+                if (tLand.mPurchaseCost > aTraveler.mMoney) continue;
+                tOk = true;
+                break;
+            }
+            if (!tOk) {
+                aCallback();
+                return;
+            }
+            aTraveler.mAi.selectPurchase(aTraveler, aMaster, (aLand) => {
+                if (aLand == null) {
+                    aCallback();
+                    return;
+                }
+                //購入する
+                LandMassEventManager.purchaseLand(aTraveler, aLand, aMaster, aCallback);
             });
         });
     }

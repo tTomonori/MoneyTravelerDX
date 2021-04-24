@@ -16,10 +16,26 @@ public class ImpulseAi : CpuAi {
         //常に買収する
         aCallback(true);
     }
+    public override void selectPurchase(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        //最も価値が高い土地を購入する
+        LandMass tTarget = null;
+        foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
+            if (aMyStatus.mMoney < tLand.mPurchaseCost) continue;
+            if (tTarget == null) {
+                tTarget = tLand;
+                continue;
+            }
+            if (tTarget.mTotalValue < tLand.mTotalValue) {
+                tTarget = tLand;
+                continue;
+            }
+        }
+        aCallback(tTarget);
+    }
     public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
         //最も増資コストが高い土地に増資する
         LandMass tTarget = null;
-        foreach(LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
+        foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
             if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
             if (aMyStatus.mMoney < tLand.mIncreaseCost) continue;
             if (tTarget == null) {

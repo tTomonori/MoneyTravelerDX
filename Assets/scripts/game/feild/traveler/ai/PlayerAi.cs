@@ -185,6 +185,74 @@ public class PlayerAi : TravelerAi {
             }
         }));
     }
+    //選択式購入
+    public override void selectPurchase(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
+        HangingBoard tBoard = aMaster.mUiMain.displayHangingBoard(HangingBoard.BoardImage.paper);
+        tBoard.open();
+        MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
+        GameData.mStageData.mCamera.mTarget = null;
+        Subject.addObserver(new Observer("playerAiSelectPurchase", (aMessage) => {
+            switch (aMessage.name) {
+                case "hangingBoardPushed":
+                    Subject.removeObserver("playerAiSelectPurchase");
+                    tBoard.close();
+                    LandOwnedDisplay tOwnedDisplay = null;
+                    List<MassStatusUiButtonData> tUiButtonData = new List<MassStatusUiButtonData>() {
+                        new MassStatusUiButtonData("購入\nしない",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tOwnedDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            aCallback(null);
+                        }),null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tOwnedDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            selectPurchase(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    Action<LandMass> tF = (aLand) => {
+                        tOwnedDisplay.close();
+                        GameData.mStageData.mCamera.mTarget = aLand;
+                        LandMassStatusDisplay tLandDisplay = null;
+                        List<MassStatusUiButtonData> tLandUiButtonData = new List<MassStatusUiButtonData>() {
+                            null,null,null,null,
+                            new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                                tLandDisplay.close();
+                                GameData.mStageData.mCamera.mTarget=tTarget;
+                                selectPurchase(aMyStatus,aMaster,aCallback);
+                        })};
+                        tLandDisplay = (LandMassStatusDisplay)aMaster.mUiMain.displayMassStatus(aLand, tLandUiButtonData);
+                    };
+                    tOwnedDisplay = aMaster.mUiMain.displayLandOwnedDisplay(aMyStatus, aMaster.mFeild.getOwnedLand(aMyStatus), tF, tUiButtonData);
+                    return;
+                case "gamePadDragged":
+                    moveCamera(aMessage.getParameter<Vector2>("vector"));
+                    return;
+                case "gamePadClicked":
+                    Subject.removeObserver("playerAiSelectPurchase");
+                    tBoard.close();
+                    MassStatusDisplay tDisplay = null;
+                    List<MassStatusUiButtonData> tButtonData = new List<MassStatusUiButtonData>() {
+                        null,null,null,null,
+                        new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget=tTarget;
+                            selectPurchase(aMyStatus,aMaster,aCallback);
+                        })
+                    };
+                    GameMass tMass = aMessage.getParameter<GameMass>("mass");
+                    if (tMass is LandMass && ((LandMass)tMass).mOwner == null && aMyStatus.mMoney >= ((LandMass)tMass).mPurchaseCost) {
+                        //購入可能な場合は購入ボタン追加
+                        tButtonData[0] = new MassStatusUiButtonData("購入する", aMyStatus.playerColor, () => {
+                            tDisplay.close();
+                            GameData.mStageData.mCamera.mTarget = tTarget;
+                            aCallback((LandMass)tMass);
+                        });
+                    }
+                    tDisplay = aMaster.mUiMain.displayMassStatus(tMass, tButtonData);
+                    return;
+            }
+        }));
+    }
     //選択式増資
     public override void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
         HangingBoard tBoard = aMaster.mUiMain.displayHangingBoard(HangingBoard.BoardImage.paper);

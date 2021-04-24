@@ -78,6 +78,9 @@ public class SettingMain : MonoBehaviour {
                 case "disasterDamageButtonPushed":
                     displayFlowerBoard<DisasterDamageSetting>();
                     break;
+                case "orbitEventTypeButtonPushed":
+                    displayFlowerBoard<OrbitEventTypeSetting>();
+                    break;
                 case "stageButtonPushed":
                     displayPaperBoard("stageSetting");
                     break;
@@ -112,6 +115,8 @@ public class SettingMain : MonoBehaviour {
         GameObject.Find("acquisitionConditionMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mAcquisitionCondition.getName();
         //災害被害
         GameObject.Find("disasterDamageMesh").GetComponent<TextMesh>().text = "x" + GameData.mGameSetting.mDisasterDamage.ToString();
+        //周回イベント
+        GameObject.Find("orbitEventTypeMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mOrbitEventType.getName();
         //ステージ
         GameObject.Find("stageMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mStageName;
         //対戦方式

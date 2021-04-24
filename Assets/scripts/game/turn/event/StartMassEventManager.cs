@@ -8,7 +8,7 @@ static public class StartMassEventManager {
             aTraveler.getMoney(aStart.mStopBonus);
             aTraveler.mOrbit++;
             aMaster.updateStatusDisplay();
-            aCallback();
+            runOrbitEvent(aTraveler, aMaster, aCallback);
         });
     }
     static public void runPassEvent(TravelerStatus aTraveler, StartMass aStart, GameMaster aMaster, Action aCallback) {
@@ -16,7 +16,14 @@ static public class StartMassEventManager {
             aTraveler.getMoney(aStart.mPassBonus);
             aTraveler.mOrbit++;
             aMaster.updateStatusDisplay();
-            aCallback();
+            runOrbitEvent(aTraveler, aMaster, aCallback);
         });
+    }
+    static public void runOrbitEvent(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
+        if (!GameData.mGameSetting.mOrbitEventType.canRunEvent(aTraveler, aMaster)) {
+            aCallback();
+            return;
+        }
+        OrbitEventManager.run(aTraveler, aMaster, aCallback);
     }
 }

@@ -32,6 +32,7 @@ public class TurnManager {
             //マスを通過する
             aTurnTraveler.mComa.mNumberMesh.text = (aNumber - 1).ToString();
             MassEventManager.runPassEvent(aTurnTraveler, mMaster, () => {
+                GameData.mStageData.mCamera.mTarget = aTurnTraveler.mComa;
                 move(aTurnTraveler, aNumber - 1, aCallback);
             });
         });

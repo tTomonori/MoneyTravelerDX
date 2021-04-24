@@ -14,6 +14,7 @@ static public class GameData {
         mGameSetting.mAcquisition = 2;
         mGameSetting.mAcquisitionCondition = AcquisitionCondition.soldOut;
         mGameSetting.mDisasterDamage = 1;
+        mGameSetting.mOrbitEventType = OrbitEventType.always;
         mGameSetting.mStageSceneName = "standard";
         mGameSetting.mStageName = "スタンダード";
         mGameSetting.mBattleMethod = new LosingMethod();

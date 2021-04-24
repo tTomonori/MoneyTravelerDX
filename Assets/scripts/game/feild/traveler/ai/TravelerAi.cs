@@ -11,5 +11,6 @@ abstract public class TravelerAi {
     abstract public void increaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback);
     abstract public void acquireLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback);
     abstract public void sellLand(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback);
+    abstract public void selectPurchase(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback);
     abstract public void selectIncrease(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback);
 }
