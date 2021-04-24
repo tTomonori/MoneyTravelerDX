@@ -24,6 +24,12 @@ public class TravelerCharaSetting : FlowerBoadSetting {
                     case "chiaraPushed":
                         GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mTravelerCharaData = TravelerCharaData.chiara;
                         break;
+                    case "donnaPushed":
+                        GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mTravelerCharaData = TravelerCharaData.donna;
+                        break;
+                    case "hanaPushed":
+                        GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mTravelerCharaData = TravelerCharaData.hana;
+                        break;
                     default:
                         return;
                 }

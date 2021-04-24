@@ -31,6 +31,8 @@ public class TravelerStatus {
                 case 2: return new Color(0.2f, 0.4f, 1, 1);
                 case 3: return new Color(1, 1, 0, 1);
                 case 4: return new Color(0, 1, 0, 1);
+                case 5: return new Color(1, 0.2f, 1, 1);
+                case 6: return new Color(1, 0.6f, 0.2f, 1);
                 default: return new Color(1, 1, 1, 1);
             }
         }

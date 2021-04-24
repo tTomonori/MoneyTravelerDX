@@ -48,7 +48,7 @@ public class BattleMethodSetting : FlowerBoadSetting {
                         switch (GameData.mGameSetting.mBattleMethod) {
                             case AssetsGoalMethod tAssetsGoal:
                                 int tGoalAmountUp = int.Parse(mGoalAmountMesh.text);
-                                if (tGoalAmountUp >= 99000) return;
+                                if (tGoalAmountUp >= 50000) return;
                                 tGoalAmountUp += 1000;
                                 mGoalAmountMesh.text = tGoalAmountUp.ToString();
                                 tAssetsGoal.mGoalAmount = tGoalAmountUp;

@@ -13,7 +13,7 @@ public class ResultPerformer : MyBehaviour {
     public ResultTitle mResultTitle;
     public MyBehaviour mMiniPapersContainer;
     public void prepare(List<TravelerStatus> aTravelers) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < GameData.mTravelerNumber; i++) {
             TravelerStatus tTraveler = aTravelers[i];
             if (tTraveler == null) {
                 mTravelerResults[i].gameObject.SetActive(false);
@@ -54,7 +54,7 @@ public class ResultPerformer : MyBehaviour {
         //タイトル変更
         mResultTitle.setTitle(aResultName, () => {
             //MiniPaperの数字セット
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < GameData.mTravelerNumber; i++) {
                 if (aTraveler[i] == null) continue;
                 mMiniPapers[i].set(aTraveler[i].mResultNumberAndPoint[aResultIndex].Item1);
             }
@@ -63,7 +63,7 @@ public class ResultPerformer : MyBehaviour {
             mMiniPapersContainer.moveTo(new Vector2(0, 2.5f), 0.5f, () => {
                 MyBehaviour.setTimeoutToIns(2, () => {
                     CallbackSystem tSystem = new CallbackSystem();
-                    for (int i = 0; i < 4; i++) {
+                    for (int i = 0; i < GameData.mTravelerNumber; i++) {
                         if (aTraveler[i] == null) continue;
                         mMiniPapers[i].change(aTraveler[i].mResultNumberAndPoint[aResultIndex].Item2, tSystem.getCounter());
                     }
@@ -74,14 +74,14 @@ public class ResultPerformer : MyBehaviour {
                             //MiniPaperのhide
                             mMiniPapersContainer.moveTo(new Vector2(0, 6), 0.5f, tSystem.getCounter());
                             //MiniPaperの数字drop
-                            for (int i = 0; i < 4; i++) {
+                            for (int i = 0; i < GameData.mTravelerNumber; i++) {
                                 if (aTraveler[i] == null) continue;
                                 mMiniPapers[i].drop(tSystem.getCounter());
                             }
                             //Gaugeを伸ばす,数字を加算する
                             MySoundPlayer.playSe("increase", false);
                             int tGaugeSpeed = 1;
-                            for (int i = 0; i < 4; i++) {
+                            for (int i = 0; i < GameData.mTravelerNumber; i++) {
                                 ResultTravelerData tData = aTraveler[i];
                                 if (tData == null) continue;
                                 int tLengthNumber = tData.mResultNumberAndPoint[aResultIndex].Item2;
@@ -100,7 +100,7 @@ public class ResultPerformer : MyBehaviour {
     }
     public void resultRanking(List<ResultTravelerData> aResultData, Action aCallback) {
         CallbackSystem tSystem = new CallbackSystem();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < GameData.mTravelerNumber; i++) {
             if (aResultData[i] == null) continue;
             mTravelerResults[i].mRankingRenderer.sprite = Resources.Load<Sprite>("sprites/number/ranking/" + aResultData[i].mRanking.ToString());
             mTravelerResults[i].mRanking.scaleTo(new Vector2(1, 1), 1f, tSystem.getCounter());

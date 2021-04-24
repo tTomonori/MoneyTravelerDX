@@ -26,4 +26,6 @@ public class TravelerCharaData {
     static public readonly TravelerCharaData rear = new TravelerCharaData("リア", "Rear", "rear");
     static public readonly TravelerCharaData maru = new TravelerCharaData("マル", "Maru", "maru");
     static public readonly TravelerCharaData chiara = new TravelerCharaData("キアラ", "Chiara", "chiara");
+    static public readonly TravelerCharaData hana = new TravelerCharaData("ハナ", "Hana", "hana");
+    static public readonly TravelerCharaData donna = new TravelerCharaData("ドナ", "Donna", "donna");
 }

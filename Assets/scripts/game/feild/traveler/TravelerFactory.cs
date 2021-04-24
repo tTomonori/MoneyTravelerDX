@@ -15,7 +15,7 @@ static public class TravelerFactory {
             tStartMassNumber = i;
             break;
         }
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < GameData.mTravelerNumber; i++) {
             if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == TravelerCharaData.none) {
                 tTravelers.Add(null);
                 continue;

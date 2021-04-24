@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 static public class GameData {
+    static public readonly int mTravelerNumber = 6;
     static public GameSetting mGameSetting;
     static public StageData mStageData;
     static GameData() {
@@ -37,6 +38,16 @@ static public class GameData {
         tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.chiara;
         tCharaData.mAiPattern = TravelerAiPattern.impulse;
+        mGameSetting.mTravelerData.Add(tCharaData);
+
+        tCharaData = new TravelerData();
+        tCharaData.mTravelerCharaData = TravelerCharaData.hana;
+        tCharaData.mAiPattern = TravelerAiPattern.buyer;
+        mGameSetting.mTravelerData.Add(tCharaData);
+
+        tCharaData = new TravelerData();
+        tCharaData.mTravelerCharaData = TravelerCharaData.donna;
+        tCharaData.mAiPattern = TravelerAiPattern.buyer;
         mGameSetting.mTravelerData.Add(tCharaData);
     }
 }

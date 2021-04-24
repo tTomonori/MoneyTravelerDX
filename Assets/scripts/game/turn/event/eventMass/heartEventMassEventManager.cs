@@ -35,7 +35,7 @@ static public partial class EventMassEventManager {
     }
     //上位からの支援金
     static public void getSupportMoneyFromHigher(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        int tMoney = (int)(30 + 70 * UnityEngine.Random.Range(0f, 1f) + aTraveler.mOrbit * UnityEngine.Random.Range(0f, 0.5f));
+        int tMoney = (int)(20 + 50 * UnityEngine.Random.Range(0f, 1f) + aTraveler.mOrbit * UnityEngine.Random.Range(0f, 0.5f));
         aMaster.mUiMain.displayEventDescription("自分より上位のトラベラーから\n支援金として" + tMoney.ToString() + "金ずつ\nもらう", () => {
             List<(TravelerStatus, int)> tMoneyList = new List<(TravelerStatus, int)>();
             foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {

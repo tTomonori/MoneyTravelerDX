@@ -23,7 +23,7 @@ public class AssetsGraph : MyBehaviour {
     public void set(List<ResultTravelerData> aResult) {
         //グラフ以外の準備,総資産の最大値探し
         int tMaxAssets = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < GameData.mTravelerNumber; i++) {
             ResultTravelerData tData = aResult[i];
             if (tData == null) {
                 mFaceStamps[i].gameObject.SetActive(false);
@@ -38,7 +38,7 @@ public class AssetsGraph : MyBehaviour {
                 tMaxAssets = tData.mTotalPoint;
         }
         //グラフ作成
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < GameData.mTravelerNumber; i++) {
             ResultTravelerData tData = aResult[i];
             if (tData == null) continue;
             LineGraph tGrap = mLineGraphs[i];
@@ -81,6 +81,12 @@ public class AssetsGraph : MyBehaviour {
                     return;
                 case "stampOfGraph4Pushed":
                     graphToFront(3);
+                    return;
+                case "stampOfGraph5Pushed":
+                    graphToFront(4);
+                    return;
+                case "stampOfGraph6Pushed":
+                    graphToFront(5);
                     return;
                 case "graphBackPushed":
                     delete();

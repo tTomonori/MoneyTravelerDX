@@ -76,7 +76,7 @@ public class ResultMain : MyBehaviour {
         tTraveler.mMoney = -600;
         tTraveler.mProperty = 0;
         tTraveler.mOrbit = 120;
-        tTraveler.mRanking = 1;
+        tTraveler.mRanking = 6;
         tTraveler.mPlayerNumber = 1;
         tTraveler.mCurrentMassNumber = 8;
         tTraveler.mIsRetired = false;
@@ -136,7 +136,7 @@ public class ResultMain : MyBehaviour {
         tTraveler.mMoney = -421;
         tTraveler.mProperty = 0;
         tTraveler.mOrbit = 103;
-        tTraveler.mRanking = 3;
+        tTraveler.mRanking = 5;
         tTraveler.mPlayerNumber = 4;
         tTraveler.mCurrentMassNumber = 23;
         tTraveler.mIsRetired = true;
@@ -148,6 +148,48 @@ public class ResultMain : MyBehaviour {
         tTraveler.mAssetsTransitionList = new List<int>() { 1000, 1000, 500, 300, -100, -100 };
         tTraveler.mIsRetired = true;
         tTraveler.mRetiredNumber = 2;
+        tList.Add(tTraveler);
+
+        tTraveler = new TravelerStatus();
+        tTraveler.mTravelerData = new TravelerData();
+        tTraveler.mTravelerData.mAiPattern = TravelerAiPattern.buyer;
+        tTraveler.mTravelerData.mTravelerCharaData = TravelerCharaData.hana;
+        tTraveler.mMoney = 239;
+        tTraveler.mProperty = 392;
+        tTraveler.mOrbit = 113;
+        tTraveler.mRanking = 3;
+        tTraveler.mPlayerNumber = 5;
+        tTraveler.mCurrentMassNumber = 38;
+        tTraveler.mIsRetired = true;
+        tTraveler.mMaxAssets = 2133;
+        tTraveler.mMoveDistance = 120;
+        tTraveler.mLandNumber = 3;
+        tTraveler.mFeeAmount = 2397;
+        tTraveler.mDisasterDamageAmount = 1983;
+        tTraveler.mAssetsTransitionList = new List<int>() { 1000, 1200, 304, 532, 234, 239 };
+        tTraveler.mIsRetired = false;
+        tTraveler.mRetiredNumber = 0;
+        tList.Add(tTraveler);
+
+        tTraveler = new TravelerStatus();
+        tTraveler.mTravelerData = new TravelerData();
+        tTraveler.mTravelerData.mAiPattern = TravelerAiPattern.buyer;
+        tTraveler.mTravelerData.mTravelerCharaData = TravelerCharaData.donna;
+        tTraveler.mMoney = 1340;
+        tTraveler.mProperty = 4977;
+        tTraveler.mOrbit = 113;
+        tTraveler.mRanking = 2;
+        tTraveler.mPlayerNumber = 6;
+        tTraveler.mCurrentMassNumber = 38;
+        tTraveler.mIsRetired = true;
+        tTraveler.mMaxAssets = 3421;
+        tTraveler.mMoveDistance = 118;
+        tTraveler.mLandNumber = 3;
+        tTraveler.mFeeAmount = 6839;
+        tTraveler.mDisasterDamageAmount = 997;
+        tTraveler.mAssetsTransitionList = new List<int>() { 1000, 1200, 348, 893, 1184, 1340 };
+        tTraveler.mIsRetired = false;
+        tTraveler.mRetiredNumber = 0;
         tList.Add(tTraveler);
 
         LapGoalMethod tMethod = new LapGoalMethod();

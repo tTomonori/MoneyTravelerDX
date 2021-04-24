@@ -27,6 +27,14 @@ public class SettingMain : MonoBehaviour {
                     TravelerCharaSetting.mSettingPlayerNumber = 4;
                     displayFlowerBoard<TravelerCharaSetting>();
                     break;
+                case "chara5ButtonPushed":
+                    TravelerCharaSetting.mSettingPlayerNumber = 5;
+                    displayFlowerBoard<TravelerCharaSetting>();
+                    break;
+                case "chara6ButtonPushed":
+                    TravelerCharaSetting.mSettingPlayerNumber = 6;
+                    displayFlowerBoard<TravelerCharaSetting>();
+                    break;
                 case "ai1ButtonPushed":
                     TravelerAiSetting.mSettingPlayerNumber = 1;
                     displayFlowerBoard<TravelerAiSetting>();
@@ -41,6 +49,14 @@ public class SettingMain : MonoBehaviour {
                     break;
                 case "ai4ButtonPushed":
                     TravelerAiSetting.mSettingPlayerNumber = 4;
+                    displayFlowerBoard<TravelerAiSetting>();
+                    break;
+                case "ai5ButtonPushed":
+                    TravelerAiSetting.mSettingPlayerNumber = 5;
+                    displayFlowerBoard<TravelerAiSetting>();
+                    break;
+                case "ai6ButtonPushed":
+                    TravelerAiSetting.mSettingPlayerNumber = 6;
                     displayFlowerBoard<TravelerAiSetting>();
                     break;
                 //その他
@@ -78,7 +94,7 @@ public class SettingMain : MonoBehaviour {
     //設定に応じて表示更新
     public void updteDisplay() {
         //キャラ
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= GameData.mTravelerNumber; i++) {
             MyBehaviour tContainer = GameObject.Find("chara" + i.ToString()).GetComponent<MyBehaviour>();
             tContainer.findChild<SpriteRenderer>("charaImg").sprite = GameData.mGameSetting.mTravelerData[i - 1].mTravelerCharaData.getImage();
             tContainer.findChild<TextMesh>("nameMesh").text = GameData.mGameSetting.mTravelerData[i - 1].mTravelerCharaData.mName;
@@ -131,9 +147,9 @@ public class SettingMain : MonoBehaviour {
             return;
         }
         //同じキャラを複数選んでいないか
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < GameData.mTravelerNumber; i++) {
             if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == TravelerCharaData.none) continue;
-            for (int j = i + 1; j < 4; j++) {
+            for (int j = i + 1; j < GameData.mTravelerNumber; j++) {
                 if (GameData.mGameSetting.mTravelerData[i].mTravelerCharaData == GameData.mGameSetting.mTravelerData[j].mTravelerCharaData) {
                     Attention.attention("同じキャラを\n複数選択できません", Attention.OverlapType.truncate);
                     return;

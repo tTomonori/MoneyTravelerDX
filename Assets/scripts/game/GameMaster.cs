@@ -170,6 +170,41 @@ public class GameMaster {
                             break;
                     }
                     break;
+                case 4:
+                    switch (tRes.Item2) {
+                        case 1:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 2:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 3:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 4:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
+                            break;
+                    }
+                    break;
+                case 5:
+                    switch (tRes.Item2) {
+                        case 1:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 2:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 3:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.4f, 0, 0.7f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 4:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.9f, 0, 0.5f), 0.2f, tSystem.getCounter());
+                            break;
+                        case 5:
+                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1.4f, 0, 0.3f), 0.2f, tSystem.getCounter());
+                            break;
+                    }
+                    break;
             }
         }
         tSystem.then(aCallback);
