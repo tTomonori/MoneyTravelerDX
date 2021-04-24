@@ -21,6 +21,9 @@ public class TravelerAiSetting : FlowerBoadSetting {
                     case "impulsePushed":
                         GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mAiPattern = TravelerAiPattern.impulse;
                         break;
+                    case "increaserPushed":
+                        GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mAiPattern = TravelerAiPattern.increaser;
+                        break;
                     case "buyerPushed":
                         GameData.mGameSetting.mTravelerData[mSettingPlayerNumber - 1].mAiPattern = TravelerAiPattern.buyer;
                         break;

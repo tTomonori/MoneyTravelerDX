@@ -113,6 +113,21 @@ static public class GameFeildSearche {
         }
         return tCheapest;
     }
+    //指定したトラベラーが所有する土地の増資コストの平均を返す
+    static public float calculateIncreaseCostAverage(this GameFeild aFeild, TravelerStatus aTraveler) {
+        float tTotal = 0;
+        int tNum = 0;
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tLand.mOwner != aTraveler) continue;
+            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            tTotal += tLand.mIncreaseCost;
+            tNum++;
+        }
+        if (tNum == 0) return 0;
+        return tTotal / tNum;
+    }
     //指定したトラベラーが所有する指定した売却額を超える土地の中で料金が最も低い土地を返す
     static public LandMass searchCheapestFeeOfOverSellCostLand(this GameFeild aFeild, TravelerStatus aTraveler, int aSellCost) {
         LandMass tCheapest = null;

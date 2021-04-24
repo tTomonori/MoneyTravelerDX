@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/turn/event/eventMass/magicEventMassEventManager1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/traveler/ai/IncreaserAi.cs">
     <Files>
-      <File FileName="Assets/scripts/game/turn/event/eventMass/batEventMassEventManager1.cs" Line="30" Column="34" />
-      <File FileName="Assets/scripts/game/turn/event/eventMass/heartEventMassEventManager.cs" Line="38" Column="34" />
-      <File FileName="Assets/scripts/game/turn/event/eventMass/magicEventMassEventManager1.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/game/feild/traveler/ai/IncreaserAi.cs" Line="11" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

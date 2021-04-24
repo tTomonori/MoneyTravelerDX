@@ -42,7 +42,7 @@ static public class GameData {
 
         tCharaData = new TravelerData();
         tCharaData.mTravelerCharaData = TravelerCharaData.hana;
-        tCharaData.mAiPattern = TravelerAiPattern.buyer;
+        tCharaData.mAiPattern = TravelerAiPattern.increaser;
         mGameSetting.mTravelerData.Add(tCharaData);
 
         tCharaData = new TravelerData();

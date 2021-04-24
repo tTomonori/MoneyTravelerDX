@@ -9,10 +9,10 @@ public class BuyerAi : CpuAi {
         aCallback(true);
     }
     public override void increaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback) {
-        //所有者がいる土地が8割を超えている場合増資する
+        //所有者がいる土地が8割を超えていてかつ所持金が100を下回らなければ場合増資する
         List<LandMass> tAllLands = aMaster.mFeild.getAllLands();
         List<LandMass> tOwnedLands = aMaster.mFeild.getOtherOwnedLand(null);
-        if (tOwnedLands.Count / (float)(tAllLands.Count) > 0.8f) {
+        if (tOwnedLands.Count / (float)(tAllLands.Count) > 0.8f && aMyStatus.mMoney - aLand.mIncreaseCost >= 100) {
             aCallback(true);
             return;
         }

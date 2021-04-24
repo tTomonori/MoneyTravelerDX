@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public enum TravelerAiPattern {
-    player, solid, carefully, impulse, buyer
+    player, solid, carefully, impulse, increaser, buyer
 }
 
 static public class TravelerAiPatternMethods {
@@ -18,6 +18,8 @@ static public class TravelerAiPatternMethods {
                 return "慎重";
             case TravelerAiPattern.impulse:
                 return "衝動";
+            case TravelerAiPattern.increaser:
+                return "増資家";
             case TravelerAiPattern.buyer:
                 return "土地買い";
         }
@@ -33,6 +35,8 @@ static public class TravelerAiPatternMethods {
                 return new CarefullyAi();
             case TravelerAiPattern.impulse:
                 return new ImpulseAi();
+            case TravelerAiPattern.increaser:
+                return new IncreaserAi();
             case TravelerAiPattern.buyer:
                 return new BuyerAi();
         }
