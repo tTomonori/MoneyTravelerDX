@@ -240,7 +240,7 @@ public class PlayerAi : TravelerAi {
                         })
                     };
                     GameMass tMass = aMessage.getParameter<GameMass>("mass");
-                    if (tMass is LandMass && ((LandMass)tMass).mOwner == null && aMyStatus.mMoney >= ((LandMass)tMass).mPurchaseCost) {
+                    if (tMass is LandMass && aMyStatus.canPurchase((LandMass)tMass)) {
                         //購入可能な場合は購入ボタン追加
                         tButtonData[0] = new MassStatusUiButtonData("購入する", aMyStatus.playerColor, () => {
                             tDisplay.close();
@@ -289,7 +289,7 @@ public class PlayerAi : TravelerAi {
                                 selectIncrease(aMyStatus,aMaster,aCallback);
                         })};
                         //増資可能な土地なら増資ボタン追加
-                        if (aMyStatus.mMoney >= aLand.mIncreaseCost) {
+                        if (aMyStatus.canIncrease(aLand)) {
                             tLandUiButtonData[0] = new MassStatusUiButtonData("増資する", aMyStatus.playerColor, () => {
                                 tLandDisplay.close();
                                 GameData.mStageData.mCamera.mTarget = tTarget;
@@ -316,8 +316,8 @@ public class PlayerAi : TravelerAi {
                         })
                     };
                     GameMass tMass = aMessage.getParameter<GameMass>("mass");
-                    if (tMass is LandMass && ((LandMass)tMass).mOwner == aMyStatus && aMyStatus.mMoney >= ((LandMass)tMass).mIncreaseCost) {
-                        //自分の土地のかつ増資可能な場合は増資ボタン追加
+                    if (tMass is LandMass && aMyStatus.canIncrease((LandMass)tMass)) {
+                        //増資可能な場合は増資ボタン追加
                         tButtonData[0] = new MassStatusUiButtonData("増資する", aMyStatus.playerColor, () => {
                             tDisplay.close();
                             GameData.mStageData.mCamera.mTarget = tTarget;

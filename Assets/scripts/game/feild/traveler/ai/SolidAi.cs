@@ -33,6 +33,7 @@ public class SolidAi : CpuAi {
         float tFeeAve = aMaster.mFeild.calcurateFeeAverage(aMyStatus);
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
+            if (!aMyStatus.canPurchase(tLand)) continue;
             if (tFeeAve > aMyStatus.mMoney - tLand.mPurchaseCost) continue;
             if (120 > aMyStatus.mMoney - tLand.mPurchaseCost) continue;
             if (tTarget == null) {
@@ -51,7 +52,7 @@ public class SolidAi : CpuAi {
         float tFeeAve = aMaster.mFeild.calcurateFeeAverage(aMyStatus);
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
-            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (!aMyStatus.canIncrease(tLand)) continue;
             if (tFeeAve > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
             if (120 > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
             if (tTarget == null) {

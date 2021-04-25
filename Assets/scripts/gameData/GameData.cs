@@ -14,6 +14,8 @@ static public class GameData {
         mGameSetting.mAcquisition = 2;
         mGameSetting.mAcquisitionCondition = AcquisitionCondition.soldOut;
         mGameSetting.mDisasterDamage = 1;
+        mGameSetting.mSecondHandFee = true;
+        mGameSetting.mSecondHandPrice = SecondHandPrice.currentValue;
         mGameSetting.mOrbitEventType = OrbitEventType.always;
         mGameSetting.mStageSceneName = "standard";
         mGameSetting.mStageName = "スタンダード";

@@ -98,6 +98,7 @@ public class GameMaster {
             if (tTraveler.mIsRetired) continue;
             int tRanking = 1;
             foreach (TravelerStatus tComparison in mTurnOrder) {
+                if (tComparison.mIsRetired) continue;
                 if (tTraveler.mAssets < tComparison.mAssets) {
                     tRanking++;
                 }

@@ -10,6 +10,8 @@ public class GameSetting {
     public float mAcquisition;
     public AcquisitionCondition mAcquisitionCondition;
     public float mDisasterDamage;
+    public bool mSecondHandFee;
+    public SecondHandPrice mSecondHandPrice;
     public OrbitEventType mOrbitEventType;
     public string mStageSceneName;
     public string mStageName;

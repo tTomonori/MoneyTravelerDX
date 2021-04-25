@@ -32,7 +32,7 @@ public class IncreaserAi : CpuAi {
         //最も増資レベルが高い土地を探す
         List<LandMass> tMostEncreased = new List<LandMass>();
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
-            if (aMyStatus.mMoney < tLand.mPurchaseCost) continue;
+            if (!aMyStatus.canPurchase(tLand)) continue;
             if (tMostEncreased.Count == 0) {
                 tMostEncreased.Add(tLand);
                 continue;
@@ -88,7 +88,7 @@ public class IncreaserAi : CpuAi {
         //最も増資コストが高い土地に増資する
         LandMass tExpensivest = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
-            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (!aMyStatus.canIncrease(tLand)) continue;
             if (aMyStatus.mMoney < tLand.mIncreaseCost) continue;
             if (tExpensivest == null) {
                 tExpensivest = tLand;

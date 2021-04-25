@@ -20,7 +20,7 @@ public class ImpulseAi : CpuAi {
         //最も価値が高い土地を購入する
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
-            if (aMyStatus.mMoney < tLand.mPurchaseCost) continue;
+            if (!aMyStatus.canPurchase(tLand)) continue;
             if (tTarget == null) {
                 tTarget = tLand;
                 continue;
@@ -36,7 +36,7 @@ public class ImpulseAi : CpuAi {
         //最も増資コストが高い土地に増資する
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
-            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (!aMyStatus.canIncrease(tLand)) continue;
             if (aMyStatus.mMoney < tLand.mIncreaseCost) continue;
             if (tTarget == null) {
                 tTarget = tLand;

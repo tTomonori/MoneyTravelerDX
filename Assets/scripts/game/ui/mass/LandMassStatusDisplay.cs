@@ -26,6 +26,10 @@ public class LandMassStatusDisplay : MassStatusDisplay {
         if (tLand.mOwner == null) {
             mOwnerStamp.gameObject.SetActive(false);
             mOwnerNameMesh.text = "";
+            if (tLand.mSecondHand) {
+                mBack.color = tLand.mSecondHandColor;
+                mBack.color = new Color(mBack.color.r, mBack.color.g, mBack.color.b, 0.3f);
+            }
         } else {
             mBack.color = tLand.mOwner.playerColor;
             mBack.color = new Color(mBack.color.r, mBack.color.g, mBack.color.b, 0.3f);
@@ -41,7 +45,7 @@ public class LandMassStatusDisplay : MassStatusDisplay {
         else
             mIncreaseMesh.text = tLand.mIncreaseCost.ToString();
         mAcquisitionMesh.text = tLand.mAcquisitionCost.ToString();
-        mPurchaseMesh.text = tLand.mPurchaseCost.ToString();
+        mPurchaseMesh.text = (tLand.mPurchaseCost < 0) ? "-" : tLand.mPurchaseCost.ToString();
         mSellMesh.text = tLand.mSellCost.ToString();
         mIncreaseLevelMesh.text = tLand.mIncreaseLevel.ToString();
         mAttributeRenderer1.sprite = tLand.mAttributes[0].getSprite();

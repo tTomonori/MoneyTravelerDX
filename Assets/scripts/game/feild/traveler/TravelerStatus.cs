@@ -37,4 +37,14 @@ public class TravelerStatus {
             }
         }
     }
+    public bool canPurchase(LandMass aLand) {
+        if (GameData.mGameSetting.mSecondHandPrice == SecondHandPrice.cannotPurchase && aLand.mSecondHand) return false;
+        if (aLand.mOwner != null) return false;
+        return mMoney >= aLand.mPurchaseCost;
+    }
+    public bool canIncrease(LandMass aLand) {
+        if (aLand.mOwner != this) return false;
+        if (aLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) return false;
+        return mMoney >= aLand.mIncreaseCost;
+    }
 }

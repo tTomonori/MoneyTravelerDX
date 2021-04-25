@@ -5,8 +5,12 @@ using System;
 
 static public class LandMassEventManager {
     static public void runStopEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
-        if (aLand.mOwner == null) {
+        if (aLand.mOwner == null && !aLand.mSecondHand) {
             runStopFreeLandEvent(aTraveler, aLand, aMaster, aCallback);
+            return;
+        }
+        if (aLand.mOwner == null && aLand.mSecondHand) {
+            runStopSecondHandLandEvent(aTraveler, aLand, aMaster, aCallback);
             return;
         }
         if (aLand.mOwner == aTraveler) {
@@ -69,6 +73,44 @@ static public class LandMassEventManager {
             });
         });
     }
+    static public void runStopSecondHandLandEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        if (!GameData.mGameSetting.mSecondHandFee) {
+            runPurchaseSecondHandLandEvent(aTraveler, aLand, aMaster, aCallback);
+            return;
+        }
+        //中古土地料金あり
+        GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mFeeCost).ToString(), () => {
+            aTraveler.paidFee(aLand);
+            aMaster.updateStatusDisplay();
+            BankruptcyEventManager.checkRankruptcy(aTraveler, aMaster, () => {
+                if (aTraveler.mIsRetired) {
+                    aCallback();
+                    return;
+                }
+                runPurchaseSecondHandLandEvent(aTraveler, aLand, aMaster, aCallback);
+            });
+        });
+    }
+    static public void runPurchaseSecondHandLandEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        if (GameData.mGameSetting.mSecondHandPrice == SecondHandPrice.cannotPurchase) {
+            //購入不可の設定
+            aCallback();
+            return;
+        }
+        if (aTraveler.mMoney < aLand.mPurchaseCost) {
+            //金が足りない
+            aCallback();
+            return;
+        }
+        aTraveler.mAi.purchaseLand(aTraveler, aLand, aMaster, (aAns) => {
+            if (!aAns) {
+                aCallback();
+                return;
+            }
+            //購入する
+            purchaseSecondHandLand(aTraveler, aLand, aMaster, aCallback);
+        });
+    }
     static public void runAcquisitionEvent(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
         if (aTraveler.mMoney < aLand.mAcquisitionCost) {
             //金が足りない
@@ -92,6 +134,17 @@ static public class LandMassEventManager {
             aLand.changeOrner(aTraveler, () => { });
             aLand.changeIncreaseLevel(aLand.mIncreaseLevel, () => {
                 aTraveler.purchased(aLand);
+                aMaster.updateStatusDisplay();
+                aCallback();
+            });
+        });
+    }
+    static public void purchaseSecondHandLand(TravelerStatus aTraveler, LandMass aLand, GameMaster aMaster, Action aCallback) {
+        GameData.mStageData.mCamera.mTarget = aTraveler.mComa;
+        GameEffector.lostCoin(aTraveler.mComa.worldPosition, (-aLand.mPurchaseCost).ToString(), () => {
+            GameData.mStageData.mCamera.mTarget = aLand;
+            aLand.changeOrner(aTraveler, () => {
+                aTraveler.purchasedSecondHandLand(aLand);
                 aMaster.updateStatusDisplay();
                 aCallback();
             });

@@ -78,6 +78,12 @@ public class SettingMain : MonoBehaviour {
                 case "disasterDamageButtonPushed":
                     displayFlowerBoard<DisasterDamageSetting>();
                     break;
+                case "secondHandFeeButtonPushed":
+                    displayFlowerBoard<SecondHandFeeSetting>();
+                    break;
+                case "secondHandPriceButtonPushed":
+                    displayFlowerBoard<SecondHandPriceSetting>();
+                    break;
                 case "orbitEventTypeButtonPushed":
                     displayFlowerBoard<OrbitEventTypeSetting>();
                     break;
@@ -115,6 +121,10 @@ public class SettingMain : MonoBehaviour {
         GameObject.Find("acquisitionConditionMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mAcquisitionCondition.getName();
         //災害被害
         GameObject.Find("disasterDamageMesh").GetComponent<TextMesh>().text = "x" + GameData.mGameSetting.mDisasterDamage.ToString();
+        //中古土地料金
+        GameObject.Find("secondHandFeeMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mSecondHandFee ? "あり" : "なし";
+        //中古土地価格
+        GameObject.Find("secondHandPriceMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mSecondHandPrice.getName();
         //周回イベント
         GameObject.Find("orbitEventTypeMesh").GetComponent<TextMesh>().text = GameData.mGameSetting.mOrbitEventType.getName();
         //ステージ

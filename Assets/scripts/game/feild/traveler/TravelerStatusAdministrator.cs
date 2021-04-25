@@ -39,6 +39,13 @@ static public class TravelerStatusAdministrator {
     }
     //土地を購入した
     static public void purchased(this TravelerStatus aTraveler, LandMass aLand) {
+        aTraveler.mMoney -= aLand.mFreePurchaseCost;
+        aTraveler.mProperty += aLand.mTotalValue;
+        aTraveler.mLandNumber += 1;
+        aTraveler.updateMaxAssets();
+    }
+    //中古の土地を購入した
+    static public void purchasedSecondHandLand(this TravelerStatus aTraveler, LandMass aLand) {
         aTraveler.mMoney -= aLand.mPurchaseCost;
         aTraveler.mProperty += aLand.mTotalValue;
         aTraveler.mLandNumber += 1;

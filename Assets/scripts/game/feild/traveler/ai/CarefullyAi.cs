@@ -45,9 +45,12 @@ public class CarefullyAi : CpuAi {
     }
     public override void selectPurchase(TravelerStatus aMyStatus, GameMaster aMaster, Action<LandMass> aCallback) {
         //所持金が現在の最も料金が高いマスの料金と150を下回らなければ最も購入価格が安い土地を購入する
+        LandMass tHighestFeeLand = aMaster.mFeild.searchExpensivestFeeLand(aMyStatus);
+        int tHighestFee = (tHighestFeeLand == null) ? 0 : tHighestFeeLand.mFeeCost;
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(null)) {
-            if (aMyStatus.mMoney < tLand.mPurchaseCost) continue;
+            if (!aMyStatus.canPurchase(tLand)) continue;
+            if (tHighestFee > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
             if (aMyStatus.mMoney - tLand.mPurchaseCost < 150) continue;
             if (tTarget == null) {
                 tTarget = tLand;
@@ -66,7 +69,7 @@ public class CarefullyAi : CpuAi {
         int tHighestFee = (tHighestFeeLand == null) ? 0 : tHighestFeeLand.mFeeCost;
         LandMass tTarget = null;
         foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aMyStatus)) {
-            if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
+            if (!aMyStatus.canIncrease(tLand)) continue;
             if (tHighestFee > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
             if (150 > aMyStatus.mMoney - tLand.mIncreaseCost) continue;
             if (tTarget == null) {

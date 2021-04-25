@@ -9,6 +9,7 @@ public class LandMass : GameMass {
     static public int mMaxIncreaseLevel = 3;
     public TravelerStatus mOwner = null;
     [NonSerialized] public int mIncreaseLevel = 0;
+    [NonSerialized] public bool mSecondHand = false;
     [SerializeField]
     public string mName;
     public int mBaseValue;
@@ -20,6 +21,7 @@ public class LandMass : GameMass {
     public MyBehaviour mSellingValues;
     public MyBehaviour mSoldValues;
     public TextMesh mPurchaseMesh;
+    public TextMesh mSecondHandFeeMesh;
     public TextMesh mIncreaseMesh;
     public TextMesh mFeeMesh;
     public SpriteRenderer mAttribute1Renderer;
@@ -28,7 +30,7 @@ public class LandMass : GameMass {
     public List<MyBehaviour> mBuildingRenderers;
 
     public int getIncreaseCost(int aIncraseLevel) {
-        return mBaseValue / 2 * (int)Mathf.Pow(3.5f-0.5f*aIncraseLevel, aIncraseLevel);
+        return mBaseValue / 2 * (int)Mathf.Pow(3.6f - 0.7f * aIncraseLevel, aIncraseLevel);
     }
     public int getTotalValue(int aIncreaseLevel) {
         int tTotal = mBaseValue;
@@ -37,19 +39,43 @@ public class LandMass : GameMass {
         }
         return tTotal;
     }
-    public int mPurchaseCost { get { return mBaseValue; } }
+    public int mPurchaseCost {
+        get {
+            switch (GameData.mGameSetting.mSecondHandPrice) {
+                case SecondHandPrice.initialValue:
+                    return mBaseValue;
+                case SecondHandPrice.currentValue:
+                    return mTotalValue;
+                case SecondHandPrice.acquisitionPrice:
+                    return mSecondHand ? mAcquisitionCost : mBaseValue;
+                case SecondHandPrice.cannotPurchase:
+                    return mSecondHand ? -1 : mBaseValue;
+            }
+            throw new Exception();
+        }
+    }
+    public int mFreePurchaseCost { get { return mBaseValue; } }
     public int mFeeCost { get { return (int)(mFeeRate * GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3.25f - 0.25f * mIncreaseLevel, mIncreaseLevel)); } }
     public int mIncreaseCost { get { return getIncreaseCost(mIncreaseLevel); } }
     public int mAcquisitionCost { get { return (int)(mTotalValue * GameData.mGameSetting.mAcquisition); } }
     public int mAcquisitionTakeCost { get { return mTotalValue; } }
     public int mSellCost { get { return (int)(mTotalValue * 0.8f); } }
     public int mTotalValue { get { return getTotalValue(mIncreaseLevel); } }
+    public Color mSecondHandColor { get { return new Color(0.8f, 0.8f, 0.8f, 1); } }
     //購入増資等の欄更新
     public void updateValueDisplay() {
         if (mOwner == null) {
             mSellingValues.gameObject.SetActive(true);
             mSoldValues.gameObject.SetActive(false);
-            mPurchaseMesh.text = mPurchaseCost.ToString();
+            if (GameData.mGameSetting.mSecondHandPrice == SecondHandPrice.cannotPurchase && mSecondHand)
+                mPurchaseMesh.text = "-";
+            else
+                mPurchaseMesh.text = mPurchaseCost.ToString();
+
+            if (!GameData.mGameSetting.mSecondHandFee || !mSecondHand)
+                mSecondHandFeeMesh.text = "-";
+            else
+                mSecondHandFeeMesh.text = mFeeCost.ToString();
         } else {
             mSellingValues.gameObject.SetActive(false);
             mSoldValues.gameObject.SetActive(true);
@@ -62,11 +88,12 @@ public class LandMass : GameMass {
     }
     //オーナー変更
     public void changeOrner(TravelerStatus aTraveler, Action aCallback) {
+        mSecondHand = true;
         if (aTraveler == null) {
             mOwner = null;
-            mMassRenderer.color = new Color(1, 1, 1, 1);
+            mMassRenderer.color = mSecondHandColor;
             updateValueDisplay();
-            GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), new Color(0.8f, 0.8f, 0.8f, 1), aCallback);
+            GameEffector.generateAura(this.worldPosition + new Vector3(0, 0.1f, 0), mSecondHandColor, aCallback);
             return;
         }
         mOwner = aTraveler;
