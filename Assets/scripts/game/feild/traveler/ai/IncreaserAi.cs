@@ -7,7 +7,7 @@ public class IncreaserAi : CpuAi {
     public override void purchaseLand(TravelerStatus aMyStatus, LandMass aLand, GameMaster aMaster, Action<bool> aCallback) {
         //所持金が自分の土地の増資コストの平均を下回らなければ購入する
         float tAve = aMaster.mFeild.calculateIncreaseCostAverage(aMyStatus);
-        if (aMyStatus.mMoney - aLand.mIncreaseCost < tAve) {
+        if (aMyStatus.mMoney - aLand.mPurchaseCost < tAve) {
             aCallback(false);
             return;
         }

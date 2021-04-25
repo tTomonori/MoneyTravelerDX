@@ -20,6 +20,7 @@ public class StageSetting : PaperBoardSetting {
         mStageData.Add(("登山道", "trail"));
         mStageData.Add(("双子橋", "twinBridge"));
         mStageData.Add(("世界一周", "worldTour"));
+        mStageData.Add(("中央大陸", "centralContinent"));
 
         updatePage();
     }

@@ -13,7 +13,7 @@ static public class OrbitEventManager {
     }
     //追加ボーナス
     static public void addBonus(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        int tMoney = (int)(50 * UnityEngine.Random.Range(1, 6));
+        int tMoney = (int)(50 * UnityEngine.Random.Range(2, 6));
         aMaster.mUiMain.displayEventDescription("追加ボーナス!\n+" + tMoney.ToString() + "金", () => {
             EventMassEventManager.giveMoney(aTraveler, tMoney, aMaster, aCallback);
         });

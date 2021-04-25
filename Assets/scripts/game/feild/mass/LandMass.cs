@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class LandMass : GameMass {
     static public int mMaxIncreaseLevel = 3;
@@ -105,3 +106,19 @@ public class LandMass : GameMass {
             tRenderer.gameObject.SetActive(false);
     }
 }
+//[CustomEditor(typeof(LandMass))]
+//public class LandMassEditor : Editor {
+
+//    public override void OnInspectorGUI() {
+//        // 元のインスペクター部分を表示
+//        base.OnInspectorGUI();
+//        LandMass tLand = target as LandMass;
+
+//        if (GUILayout.Button("changeBuilding")) {
+//            string tBuildingName = "ship";
+//            for (int i = 0; i < 4; i++) {
+//                tLand.mBuildingRenderers[i].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/feild/mass/building/" + tBuildingName + i.ToString());
+//            }
+//        }
+//    }
+//}

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/worldTour.unity
     guid: 77ad276c0c12c450bb5890a257901e8c
+  - enabled: 1
+    path: Assets/Scenes/stage/centralContinent.unity
+    guid: 15068ad510c744217801b528cdcaba48
   m_configObjects: {}
