@@ -36,7 +36,10 @@ public class LandMassStatusDisplay : MassStatusDisplay {
         mTotalValueMesh.text = tLand.mTotalValue.ToString();
         mFeeMesh.text = tLand.mFeeCost.ToString();
         mFeeRateMesh.text = tLand.mFeeRate.ToString();
-        mIncreaseMesh.text = tLand.mIncreaseCost.ToString();
+        if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel)
+            mIncreaseMesh.text = "MAX";
+        else
+            mIncreaseMesh.text = tLand.mIncreaseCost.ToString();
         mAcquisitionMesh.text = tLand.mAcquisitionCost.ToString();
         mPurchaseMesh.text = tLand.mPurchaseCost.ToString();
         mSellMesh.text = tLand.mSellCost.ToString();

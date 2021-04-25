@@ -28,7 +28,7 @@ public class LandMass : GameMass {
     public List<MyBehaviour> mBuildingRenderers;
 
     public int getIncreaseCost(int aIncraseLevel) {
-        return mBaseValue / 2 * (int)Mathf.Pow(2, aIncraseLevel);
+        return mBaseValue / 2 * (int)Mathf.Pow(3.5f-0.5f*aIncraseLevel, aIncraseLevel);
     }
     public int getTotalValue(int aIncreaseLevel) {
         int tTotal = mBaseValue;
@@ -38,7 +38,7 @@ public class LandMass : GameMass {
         return tTotal;
     }
     public int mPurchaseCost { get { return mBaseValue; } }
-    public int mFeeCost { get { return (int)(mFeeRate * GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3, mIncreaseLevel)); } }
+    public int mFeeCost { get { return (int)(mFeeRate * GameData.mGameSetting.mFee * mBaseValue / 5 * Mathf.Pow(3.25f - 0.25f * mIncreaseLevel, mIncreaseLevel)); } }
     public int mIncreaseCost { get { return getIncreaseCost(mIncreaseLevel); } }
     public int mAcquisitionCost { get { return (int)(mTotalValue * GameData.mGameSetting.mAcquisition); } }
     public int mAcquisitionTakeCost { get { return mTotalValue; } }
