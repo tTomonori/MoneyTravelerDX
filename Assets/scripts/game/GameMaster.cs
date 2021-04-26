@@ -139,75 +139,65 @@ public class GameMaster {
         CallbackSystem tSystem = new CallbackSystem();
         for (int i = 0; i < mTravelers.Count; i++) {
             (int, int) tRes = tNums[i];
-            switch (tRes.Item1) {
-                case -1:
-                    break;
-                case 0:
-                    mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0, 0, 0), 0.2f, tSystem.getCounter());
-                    break;
-                case 1:
-                    mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                    break;
-                case 2:
-                    switch (tRes.Item2) {
-                        case 1:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 2:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (tRes.Item2) {
-                        case 1:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 2:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 3:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                    }
-                    break;
-                case 4:
-                    switch (tRes.Item2) {
-                        case 1:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 2:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 3:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 4:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
-                            break;
-                    }
-                    break;
-                case 5:
-                    switch (tRes.Item2) {
-                        case 1:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-1.2f, 0, 0.3f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 2:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(-0.6f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 3:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.4f, 0, 0.7f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 4:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(0.9f, 0, 0.5f), 0.2f, tSystem.getCounter());
-                            break;
-                        case 5:
-                            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + new Vector3(1.4f, 0, 0.3f), 0.2f, tSystem.getCounter());
-                            break;
-                    }
-                    break;
-            }
+            if (tRes.Item1 == -1) continue;
+            mTravelers[i].mComa.moveTo(mFeild.mMassList[mTravelers[i].mCurrentMassNumber].worldPosition + getTweakComaPosition(tRes.Item1, tRes.Item2), 0.2f, tSystem.getCounter());
         }
         tSystem.then(aCallback);
+    }
+    //マス内での相対待機座標
+    public Vector3 getTweakComaPosition(int aNumberOfTraveler, int aNumberOfOrder) {
+        switch (aNumberOfTraveler) {
+            case -1://null or retire
+                break;
+            case 0://ターンのトラベラー
+                return new Vector3(0, 0, 0);
+            case 1:
+                return new Vector3(1f, 0, 0.5f);
+            case 2:
+                switch (aNumberOfOrder) {
+                    case 1:
+                        return new Vector3(-1f, 0, 0.5f);
+                    case 2:
+                        return new Vector3(1f, 0, 0.5f);
+                }
+                break;
+            case 3:
+                switch (aNumberOfOrder) {
+                    case 1:
+                        return new Vector3(-1f, 0, 0.5f);
+                    case 2:
+                        return new Vector3(1.2f, 0, 0.3f);
+                    case 3:
+                        return new Vector3(0.6f, 0, 0.5f);
+                }
+                break;
+            case 4:
+                switch (aNumberOfOrder) {
+                    case 1:
+                        return new Vector3(-1.2f, 0, 0.3f);
+                    case 2:
+                        return new Vector3(-0.6f, 0, 0.5f);
+                    case 3:
+                        return new Vector3(0.6f, 0, 0.5f);
+                    case 4:
+                        return new Vector3(1.2f, 0, 0.3f);
+                }
+                break;
+            case 5:
+                switch (aNumberOfOrder) {
+                    case 1:
+                        return new Vector3(-1.2f, 0, 0.3f);
+                    case 2:
+                        return new Vector3(-0.6f, 0, 0.5f);
+                    case 3:
+                        return new Vector3(0.4f, 0, 0.7f);
+                    case 4:
+                        return new Vector3(0.9f, 0, 0.5f);
+                    case 5:
+                        return new Vector3(1.4f, 0, 0.3f);
+                }
+                break;
+        }
+        throw new Exception(aNumberOfTraveler.ToString() + ":" + aNumberOfOrder);
     }
 }

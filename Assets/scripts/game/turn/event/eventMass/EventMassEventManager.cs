@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 static public partial class EventMassEventManager {
-    static public void run(TravelerStatus aTraveler,EventMass aMass,GameMaster aMaster,Action aCallback) {
+    static public void run(TravelerStatus aTraveler, EventMass aMass, GameMaster aMaster, Action aCallback) {
         switch (aMass.mEventType) {
             case EventMassType.heart:
                 runHeartEvent(aTraveler, aMaster, aCallback);
@@ -21,13 +21,13 @@ static public partial class EventMassEventManager {
         }
     }
     //リストの中から実行するイベントを決める
-    static public Action<TravelerStatus,GameMaster,Action> pickEvent(List<(Action<TravelerStatus, GameMaster, Action>,float)> aEventList) {
+    static public Action<TravelerStatus, GameMaster, Action> pickEvent(List<(Action<TravelerStatus, GameMaster, Action>, float)> aEventList) {
         float tTotalWeight = 0;
         foreach ((Action<TravelerStatus, GameMaster, Action>, float) tTuple in aEventList)
             tTotalWeight += tTuple.Item2;
 
         float tWeight = UnityEngine.Random.Range(0f, tTotalWeight);
-        foreach((Action<TravelerStatus, GameMaster, Action>, float) tTuple in aEventList) {
+        foreach ((Action<TravelerStatus, GameMaster, Action>, float) tTuple in aEventList) {
             tWeight -= tTuple.Item2;
             if (tWeight > 0) continue;
             return tTuple.Item1;
@@ -52,6 +52,21 @@ static public partial class EventMassEventManager {
             aCallback();
         });
     }
+    //指定したトラベラー全員に指定した額のボーナスを与える
+    static public void continuousGiveBonusSameAmount(List<TravelerStatus> aTravelerList, int aMoney, GameMaster aMaster, Action aCallback) {
+        CallbackSystem tSystem = new CallbackSystem();
+        foreach (TravelerStatus tTraveler in aTravelerList) {
+            Action tCounter = tSystem.getCounter();
+            GameEffector.getCoin(tTraveler.mComa.worldPosition, "+" + aMoney.ToString(), () => {
+                tTraveler.getMoney(aMoney);
+                tCounter();
+            });
+        }
+        tSystem.then(() => {
+            aMaster.updateStatusDisplay();
+            aCallback();
+        });
+    }
     //それぞれのトラベラーにそれぞれ指定した額の損害もしくはボーナスを与える
     static public void continuousGiveBonus(List<(TravelerStatus, int)> aMoneyList, GameMaster aMaster, Action aCallback) {
         int tLength = aMoneyList.Count;
@@ -67,14 +82,30 @@ static public partial class EventMassEventManager {
             if (aMoneyList[aIndex].Item2 == 0) {
                 tCallNext(aIndex);
                 return;
-            }else if (aMoneyList[aIndex].Item2 < 0) {
+            } else if (aMoneyList[aIndex].Item2 < 0) {
                 giveDamage(aMoneyList[aIndex].Item1, -aMoneyList[aIndex].Item2, aMaster, () => { tCallNext(aIndex); });
                 return;
-            }else if (aMoneyList[aIndex].Item2 > 0) {
+            } else if (aMoneyList[aIndex].Item2 > 0) {
                 giveMoney(aMoneyList[aIndex].Item1, aMoneyList[aIndex].Item2, aMaster, () => { tCallNext(aIndex); });
                 return;
             }
         };
         tFunction(0);
+    }
+    //トラベラーを指定したマスにワープ
+    static public void warp(TravelerStatus aTraveler, GameMass aMass, Vector3 aTweakPosition, GameMaster aMaster, bool aTargetCamera, Action aCallback) {
+        int tMassNumber = aMaster.mFeild.mMassList.IndexOf(aMass);
+        if (aTargetCamera)
+            GameData.mStageData.mCamera.mTarget = aMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber];
+        MySoundPlayer.playSe("warp", false);
+        aTraveler.mComa.moveToWithSpeed(new Vector3(aTraveler.mComa.positionX, GameData.mStageData.mCeiling, aTraveler.mComa.positionZ), 15, () => {
+            if (aTargetCamera)
+                GameData.mStageData.mCamera.mTarget = aMass;
+            aTraveler.mComa.position = new Vector3(aMass.worldPosition.x + aTweakPosition.x, GameData.mStageData.mCeiling, aMass.worldPosition.z + aTweakPosition.z);
+            aTraveler.mComa.moveToWithSpeed(aMass.worldPosition + aTweakPosition, 15, () => {
+                aTraveler.mCurrentMassNumber = tMassNumber;
+                aCallback();
+            });
+        });
     }
 }

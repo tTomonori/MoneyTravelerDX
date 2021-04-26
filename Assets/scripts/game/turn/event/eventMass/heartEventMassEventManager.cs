@@ -11,6 +11,7 @@ static public partial class EventMassEventManager {
         tEventList.Add((getSupportMoneyFromHigher, 3));
         tEventList.Add((selectIncrease, 1));
         tEventList.Add((selectPurchase, 1));
+        tEventList.Add((moveToStart, 1));
         pickEvent(tEventList)(aTraveler, aMaster, aCallback);
     }
     //宝くじ
@@ -53,7 +54,7 @@ static public partial class EventMassEventManager {
     static public void selectIncrease(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         aMaster.mUiMain.displayEventDescription("好きな土地に\n増資できます", () => {
             bool tOk = false;
-            foreach(LandMass tLand in aMaster.mFeild.getOwnedLand(aTraveler)) {
+            foreach (LandMass tLand in aMaster.mFeild.getOwnedLand(aTraveler)) {
                 if (tLand.mIncreaseLevel >= LandMass.mMaxIncreaseLevel) continue;
                 if (tLand.mIncreaseCost > aTraveler.mMoney) continue;
                 tOk = true;
@@ -93,6 +94,24 @@ static public partial class EventMassEventManager {
                 }
                 //購入する
                 LandMassEventManager.purchaseLand(aTraveler, aLand, aMaster, aCallback);
+            });
+        });
+    }
+    //スタートへ進む
+    static public void moveToStart(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
+        aMaster.mUiMain.displayEventDescription("一周してスタートへ\n進めます", () => {
+            aTraveler.mAi.moveToStart(aTraveler, aMaster, (aAns) => {
+                if (!aAns) {
+                    aCallback();
+                    return;
+                }
+                //進む
+                StartMass tStart = aMaster.getStart(aTraveler);
+                warp(aTraveler, tStart, aMaster.getTweakComaPosition(0, 1), aMaster, true, () => {
+                    MyBehaviour.setTimeoutToIns(0.3f, () => {
+                        StartMassEventManager.runEvent(aTraveler, tStart, aMaster, aCallback);
+                    });
+                });
             });
         });
     }

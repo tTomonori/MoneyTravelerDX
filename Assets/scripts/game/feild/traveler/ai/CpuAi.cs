@@ -14,4 +14,7 @@ abstract public class CpuAi : TravelerAi {
         //一番料金が低い土地を売る
         aCallback(aMaster.mFeild.searchCheapestFeeLand(aMyStatus));
     }
+    public override void moveToStart(TravelerStatus aMyStatus, GameMaster aMaster, Action<bool> aCallback) {
+        aCallback(true);
+    }
 }

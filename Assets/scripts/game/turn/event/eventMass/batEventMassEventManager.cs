@@ -8,6 +8,7 @@ static public partial class EventMassEventManager {
         tEventList.Add((thiefInvades, 4));
         tEventList.Add((pocketMoneyTax, 4));
         tEventList.Add((lostSupportMoneyToLower, 2));
+        tEventList.Add((backToStart, 1));
         pickEvent(tEventList)(aTraveler, aMaster, aCallback);
     }
     //泥棒
@@ -38,6 +39,15 @@ static public partial class EventMassEventManager {
             }
             tMoneyList.Insert(0, (aTraveler, -tMoney * tMoneyList.Count));
             continuousGiveBonus(tMoneyList, aMaster, aCallback);
+        });
+    }
+    //スタートに戻る
+    static public void backToStart(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
+        aMaster.mUiMain.displayEventDescription("スタートに戻る・・・", () => {
+            StartMass tStart = aMaster.getStart(aTraveler);
+            warp(aTraveler, tStart, aMaster.getTweakComaPosition(0, 1), aMaster, true, ()=> {
+                MyBehaviour.setTimeoutToIns(0.5f, aCallback);
+            });
         });
     }
 }

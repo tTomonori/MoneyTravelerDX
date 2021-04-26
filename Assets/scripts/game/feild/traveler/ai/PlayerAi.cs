@@ -329,4 +329,35 @@ public class PlayerAi : TravelerAi {
             }
         }));
     }
+    public override void moveToStart(TravelerStatus aMyStatus, GameMaster aMaster, Action<bool> aCallback) {
+        LandOwnedDisplay tDisplay = null;
+        List<MassStatusUiButtonData> tUiButtonData = new List<MassStatusUiButtonData>() {
+            new MassStatusUiButtonData("進む",new Color(0.8f, 0.8f, 0.8f), () => {
+                tDisplay.close();
+                aCallback(true);
+            }),
+            new MassStatusUiButtonData("進まない",new Color(0.8f, 0.8f, 0.8f), () => {
+                tDisplay.close();
+                aCallback(false);
+            }),null,null,
+            new MassStatusUiButtonData("マップを\nみる",new Color(0.8f, 0.8f, 0.8f), () => {
+                tDisplay.close();
+                viewMap(aMaster,()=>{ moveToStart(aMyStatus,aMaster,aCallback); });
+            }),
+        };
+        tDisplay = aMaster.mUiMain.displayLandOwnedDisplay(aMyStatus, aMaster.mFeild.getOwnedLand(aMyStatus), (aLand) => {
+            tDisplay.close();
+            MonoBehaviour tTarget = GameData.mStageData.mCamera.mTarget;
+            GameData.mStageData.mCamera.mTarget = aLand;
+            LandMassStatusDisplay tLandDisplay = null;
+            List<MassStatusUiButtonData> tLandUiButtonData = new List<MassStatusUiButtonData>() {
+                null,null,null,null,
+                new MassStatusUiButtonData("もどる",new Color(0.8f, 0.8f, 0.8f), () => {
+                    tLandDisplay.close();
+                    GameData.mStageData.mCamera.mTarget=tTarget;
+                    moveToStart(aMyStatus,aMaster,aCallback);
+             })};
+            tLandDisplay = (LandMassStatusDisplay)aMaster.mUiMain.displayMassStatus(aLand, tLandUiButtonData);
+        }, tUiButtonData);
+    }
 }

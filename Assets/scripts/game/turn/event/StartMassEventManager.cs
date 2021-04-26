@@ -19,6 +19,14 @@ static public class StartMassEventManager {
             runOrbitEvent(aTraveler, aMaster, aCallback);
         });
     }
+    static public void runEvent(TravelerStatus aTraveler, StartMass aStart, GameMaster aMaster, Action aCallback) {
+        GameEffector.getCoin(aTraveler.mComa.worldPosition, "+" + aStart.mPassBonus.ToString(), () => {
+            aTraveler.getMoney(aStart.mPassBonus);
+            aTraveler.mOrbit++;
+            aMaster.updateStatusDisplay();
+            runOrbitEvent(aTraveler, aMaster, aCallback);
+        });
+    }
     static public void runOrbitEvent(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         if (!GameData.mGameSetting.mOrbitEventType.canRunEvent(aTraveler, aMaster)) {
             aCallback();

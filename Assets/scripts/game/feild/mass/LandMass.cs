@@ -30,7 +30,7 @@ public class LandMass : GameMass {
     public List<MyBehaviour> mBuildingRenderers;
 
     public int getIncreaseCost(int aIncraseLevel) {
-        return mBaseValue / 2 * (int)Mathf.Pow(3.6f - 0.7f * aIncraseLevel, aIncraseLevel);
+        return mBaseValue / 2 * (int)Mathf.Pow(3.5f - 0.5f * aIncraseLevel, aIncraseLevel);
     }
     public int getTotalValue(int aIncreaseLevel) {
         int tTotal = mBaseValue;

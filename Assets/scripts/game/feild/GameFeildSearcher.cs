@@ -12,6 +12,17 @@ static public class GameFeildSearche {
         }
         return tLands;
     }
+    //最も増資回数が多い土地の増資回数を返す
+    static public int getHighestIncreaseLevel(this GameFeild aFeild) {
+        int tHighestLevel = 0;
+        foreach (GameMass tMass in aFeild.mMassList) {
+            if (!(tMass is LandMass)) continue;
+            LandMass tLand = (LandMass)tMass;
+            if (tHighestLevel < tLand.mIncreaseLevel)
+                tHighestLevel = tLand.mIncreaseLevel;
+        }
+        return tHighestLevel;
+    }
     //指定したトラベラーが所有している土地のリストを返す
     static public List<LandMass> getOwnedLand(this GameFeild aFeild, TravelerStatus aTraveler) {
         List<LandMass> tLands = new List<LandMass>();

@@ -8,6 +8,7 @@ static public partial class EventMassEventManager {
         tEventList.Add((hugeEarthquake, 3));
         tEventList.Add((randomDisaster, 5));
         tEventList.Add((randomCatastrophe, 2));
+        tEventList.Add((disasterHighestIncreaseLevelLand, 2));
         pickEvent(tEventList)(aTraveler, aMaster, aCallback);
     }
     //指定したトラベラーの指定した属性の土地の価値の合計を返す
@@ -49,6 +50,21 @@ static public partial class EventMassEventManager {
         foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
             if (tTraveler.mIsRetired) continue;
             tDamageList.Add((tTraveler, (int)(getLandValue(tTraveler, aMaster.mFeild, aAttribute) * tRate / 100f)));
+        }
+        continuousDisasterDamage(tDamageList, aMaster, aCallback);
+    }
+    //条件メソッドがtrueを返す土地に指定した%の被害
+    static public void disaster(GameMaster aMaster, Func<LandMass, bool> aConditions, float tRate, Action aCallback) {
+        List<(TravelerStatus, int)> tDamageList = new List<(TravelerStatus, int)>();
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (tTraveler.mIsRetired) continue;
+            List<LandMass> tOwnedList = aMaster.mFeild.getOwnedLand(tTraveler);
+            int tTotalProperty = 0;
+            foreach (LandMass tLand in tOwnedList) {
+                if (aConditions(tLand))
+                    tTotalProperty += tLand.mTotalValue;
+            }
+            tDamageList.Add((tTraveler, (int)(tTotalProperty * tRate / 100f)));
         }
         continuousDisasterDamage(tDamageList, aMaster, aCallback);
     }
@@ -107,6 +123,16 @@ static public partial class EventMassEventManager {
         }
         aMaster.mUiMain.displayEventDescription(tText + "\n物件の" + tRate.ToString() + "%の被害", () => {
             disaster(aMaster, tAttribute, tRate, aCallback);
+        });
+    }
+    //増資回数が最も多い土地に災害
+    static public void disasterHighestIncreaseLevelLand(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
+        int tRate = (int)(UnityEngine.Random.Range(7, 15) * GameData.mGameSetting.mDisasterDamage);
+        int tHighestLevel = aMaster.mFeild.getHighestIncreaseLevel();
+        aMaster.mUiMain.displayEventDescription("増資回数が最も多い土地に\n害獣が住み着き荒らされた!\n" + tRate.ToString() + "%の被害", () => {
+            disaster(aMaster, (aLand) => {
+                return tHighestLevel <= aLand.mIncreaseLevel;
+            }, tRate, aCallback);
         });
     }
 }
