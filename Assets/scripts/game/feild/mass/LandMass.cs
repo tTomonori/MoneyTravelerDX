@@ -123,6 +123,7 @@ public class LandMass : GameMass {
     public void setTest() {
         mNameMesh.text = (mName == "") ? "地名" : mName;
         mPurchaseMesh.text = (mBaseValue == 0) ? "9999" : mPurchaseCost.ToString();
+        mSecondHandFeeMesh.text = (mBaseValue == 0) ? "-" : mFeeCost.ToString();
         mBuildingRenderers[0].gameObject.SetActive(true);
         mAttribute1Renderer.sprite = mAttributes[0].getSprite();
         mAttribute2Renderer.sprite = mAttributes[1].getSprite();

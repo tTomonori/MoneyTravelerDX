@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class GameFeild : MyBehaviour {
     static public readonly float mHorizontalMargin = 15;
+    static public readonly float mAdditionalSouthMargin = 7;
     static public readonly float mCeilingMargin = 15;
     static public readonly float mFloorMargin = 0.1f;
     [SerializeField]
@@ -56,11 +57,8 @@ public class GameFeild : MyBehaviour {
         tRoute.position = (aMass1.worldPosition + aMass2.worldPosition) / 2f;
         tRoute.positionY -= 0.05f;
         tRoute.scale = new Vector3(Vector3.Distance(aMass1.worldPosition, aMass2.worldPosition) / 2f, 1, 1);
-        //tRoute.rotateX = VectorCalculator.corner(new Vector2(1, 0), new Vector2(Vector3.Distance(aMass1.worldPosition, aMass2.worldPosition), aMass1.positionY - aMass2.positionY));
-        //tRoute.rotateY = VectorCalculator.corner(new Vector2(aMass1.positionX - aMass2.positionX, aMass1.positionZ - aMass2.positionZ), new Vector2(1, 0));
         float tRotate1 = VectorCalculator.corner(new Vector2(1, 0), new Vector2(Vector3.Distance(aMass1.worldPosition, aMass2.worldPosition), aMass1.positionY - aMass2.positionY)); ;
         float tRotate2 = VectorCalculator.corner(new Vector2(aMass1.positionX - aMass2.positionX, aMass1.positionZ - aMass2.positionZ), new Vector2(1, 0)); ;
-        //tRoute.rotate = Quaternion.Euler(0, tRotate2, 0) * (Quaternion.Euler(0, 0, tRotate1) * new Vector3(90, 0, 0));
         tRoute.transform.Rotate(90, 0, 0, Space.World);
         tRoute.transform.Rotate(0, 0, tRotate1, Space.World);
         tRoute.transform.Rotate(0, tRotate2, 0, Space.World);
@@ -85,7 +83,7 @@ public class GameFeild : MyBehaviour {
         }
         mNorth = tNorth + mHorizontalMargin;
         mEast = tEast + mHorizontalMargin;
-        mSouth = tSouth - mHorizontalMargin;
+        mSouth = tSouth - mHorizontalMargin - mAdditionalSouthMargin;
         mWest = tWest - mHorizontalMargin;
         mFloor = tFloor;
         mCeiling = tCeiling + mCeilingMargin;

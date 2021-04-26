@@ -11,10 +11,12 @@ public class StageSetting : PaperBoardSetting {
     [SerializeField]
     public List<TextMesh> mChoiceMeshList;
     public TextMesh mInitialMoneyMesh;
+    public TextMesh mLandNumberMesh;
     private void Awake() {
         mPage = 0;
         mOpeningScene = "";
         mInitialMoneyMesh.text = "";
+        mLandNumberMesh.text = "";
         mStageData = new List<(string, string)>();
         mStageData.Add(("スタンダード", "standard"));
         mStageData.Add(("登山道", "trail"));
@@ -44,6 +46,11 @@ public class StageSetting : PaperBoardSetting {
                 if (tMain != null) break;
             }
             mInitialMoneyMesh.text = tMain.mInitialMoney.ToString();
+            int tLandNumber = 0;
+            foreach (GameMass tMass in tMain.mFeild.mMassList)
+                if (tMass is LandMass)
+                    tLandNumber++;
+            mLandNumberMesh.text = tLandNumber.ToString();
             tMain.mCamera.mCamera.GetComponent<Camera>().rect = new Rect(0.246f, 0.13f, 0.707f, 0.7f);
         });
     }

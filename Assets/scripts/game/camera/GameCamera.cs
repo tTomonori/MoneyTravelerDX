@@ -2,50 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameCamera : MyBehaviour {
+abstract public class GameCamera : MyBehaviour {
     [SerializeField]
     public MyBehaviour mCamera;
+    public MyBehaviour mCameraContainer;
     [System.NonSerialized] public MonoBehaviour mTarget;
     [System.NonSerialized] public float mMoveSpeed = 100;
     private void Update() {
         if (mTarget == null) return;
+        if (isShooting()) return;
         moveToTarget();
     }
     //撮影対象の場所へ移動する
-    public void moveToTarget() {
-        if (isShooting()) return;
-        float tDistance = Vector3.Distance(mTarget.transform.position, this.worldPosition);
-        if (tDistance < mMoveSpeed * Time.deltaTime) {
-            this.worldPosition = mTarget.transform.position;
-            return;
-        }
-        Vector3 tVec = mTarget.transform.position - this.worldPosition;
-        this.worldPosition += tVec.normalized * (mMoveSpeed * Time.deltaTime);
-    }
+    abstract public void moveToTarget();
     //撮影対象をベストポジションで撮影している
-    public bool isShooting() {
-        return Vector3.Distance(mTarget.transform.position, this.worldPosition) < 0.05f;
-    }
+    abstract public bool isShooting();
     //指定した対象の位置を撮影する
-    public void shoot(MonoBehaviour aTarget) {
-        this.worldPosition = aTarget.transform.position;
-    }
-    public void move(Vector2 aVec) {
-        this.position += new Vector3(aVec.x, 0, aVec.y);
-        orthodonticsPosition();
-    }
-    public void orthodonticsPosition() {
-        if (mCamera.worldPosition.z > GameData.mStageData.mNorth - 7) {
-            this.positionZ -= mCamera.worldPosition.z - (GameData.mStageData.mNorth - 7);
-        }
-        if (mCamera.worldPosition.x > GameData.mStageData.mEast - 1) {
-            this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mEast - 1);
-        }
-        if (mCamera.worldPosition.z < GameData.mStageData.mSouth + 1) {
-            this.positionZ -= mCamera.worldPosition.z - (GameData.mStageData.mSouth + 1);
-        }
-        if (mCamera.worldPosition.x < GameData.mStageData.mWest + 1) {
-            this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mWest + 1);
-        }
-    }
+    abstract public void shoot(MonoBehaviour aTarget);
+    //カメラを移動させる
+    abstract public void move(Vector2 aVec);
+    //カメラがフィールドの範囲外にある場合は調整する
+    abstract public void orthodonticsPosition();
+    //ズームインorズームアウト
+    abstract public void zoom(float aScale);
 }

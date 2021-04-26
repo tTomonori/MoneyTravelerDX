@@ -52,19 +52,9 @@ public class GameMain : MonoBehaviour {
         MySceneManager.changeSceneWithFade("result", "curtainFade", new Arg(new Dictionary<string, object>() { { "travelers", mMaster.mTravelers } }));
     }
     private void setPreview() {
-        Subject.addObserver(new Observer("gameMain", (aMessage) => {
-            switch (aMessage.name) {
-                case "gamePadDragged":
-                    moveCamera(aMessage.getParameter<Vector2>("vector"));
-                    return;
-            }
-        }));
-    }
-    public void moveCamera(Vector2 aDragVector) {
-        Vector2 tVec = aDragVector / -15f;
-        mCamera.move(tVec);
+        GameCameraController.activate(null);
     }
     private void OnDestroy() {
-        Subject.removeObserver("gameMain");
+        GameCameraController.invalidate();
     }
 }

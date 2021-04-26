@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class HangingBoard : MyBehaviour {
     static private List<HangingBoard> mBoards = new List<HangingBoard>();
@@ -15,12 +16,13 @@ public class HangingBoard : MyBehaviour {
     public SpriteRenderer mPaperImage;
     private Coroutine mAnimation;
     private bool mIsClosing = false;
-    static public HangingBoard create(BoardImage aBoardImage) {
+    static public HangingBoard create(BoardImage aBoardImage,Action aOnClicked) {
         HangingBoard tBoard = GameObject.Instantiate(Resources.Load<HangingBoard>("prefabs/ui/hangingBoard"));
         if (mBoards.Count != 0)
             tBoard.positionZ = mBoards[mBoards.Count - 1].positionZ - 0.1f;
         mBoards.Add(tBoard);
         tBoard.setImage(aBoardImage);
+        tBoard.mButton.mPushedFunction = aOnClicked;
         return tBoard;
     }
     public void open() {

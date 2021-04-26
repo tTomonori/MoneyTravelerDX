@@ -66,8 +66,8 @@ public class GameUiMain : MyBehaviour {
         return tDisplay;
     }
     //hangingBoard
-    public HangingBoard displayHangingBoard(HangingBoard.BoardImage aBoardImage) {
-        HangingBoard tBoard = HangingBoard.create(aBoardImage);
+    public HangingBoard displayHangingBoard(HangingBoard.BoardImage aBoardImage, Action aOnClicked) {
+        HangingBoard tBoard = HangingBoard.create(aBoardImage, aOnClicked);
         tBoard.transform.SetParent(this.transform, false);
         return tBoard;
     }

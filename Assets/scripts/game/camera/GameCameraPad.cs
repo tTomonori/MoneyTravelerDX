@@ -7,6 +7,10 @@ public class GameCameraPad : MyPad {
     private void Start() {
         mCamera = this.GetComponentInParent<Camera>();
     }
+    private void Update() {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+            scrolled();
+    }
     private void OnMouseDrag() {
         mouseDrag();
         if (mIsDragging) {
@@ -32,6 +36,15 @@ public class GameCameraPad : MyPad {
             tMass = tHit.collider.GetComponent<GameMass>();
             if (tMass != null) {
                 Subject.sendMessage(new Message("gamePadClicked", new Arg(new Dictionary<string, object>() { { "mass", tMass } })));
+                return;
+            }
+        }
+    }
+    private void scrolled() {
+        Ray tRay = mCamera.ScreenPointToRay(Input.mousePosition);
+        foreach (RaycastHit tHit in Physics.RaycastAll(tRay)) {
+            if (tHit.collider.GetComponent<GameCameraPad>() == this) {
+                Subject.sendMessage(new Message("gamePadScrolled", new Arg(new Dictionary<string, object>() { { "scroll", Input.GetAxis("Mouse ScrollWheel") } })));
                 return;
             }
         }
