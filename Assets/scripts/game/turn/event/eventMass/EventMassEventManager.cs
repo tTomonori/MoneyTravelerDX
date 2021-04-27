@@ -97,7 +97,7 @@ static public partial class EventMassEventManager {
         int tMassNumber = aMaster.mFeild.mMassList.IndexOf(aMass);
         if (aTargetCamera)
             GameData.mStageData.mCamera.mTarget = aMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber];
-        MySoundPlayer.playSe("warp", false);
+        MySoundPlayer.playSe("jump", false);
         aTraveler.mComa.moveToWithSpeed(new Vector3(aTraveler.mComa.positionX, GameData.mStageData.mCeiling, aTraveler.mComa.positionZ), 15, () => {
             if (aTargetCamera)
                 GameData.mStageData.mCamera.mTarget = aMass;

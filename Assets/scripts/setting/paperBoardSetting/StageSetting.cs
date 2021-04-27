@@ -23,6 +23,7 @@ public class StageSetting : PaperBoardSetting {
         mStageData.Add(("双子橋", "twinBridge"));
         mStageData.Add(("世界一周", "worldTour"));
         mStageData.Add(("中央大陸", "centralContinent"));
+        mStageData.Add(("魔王城", "demonCastle"));
 
         updatePage();
     }

@@ -10,6 +10,10 @@ static public class MassEventManager {
                 aCallback();
                 return;
             case EventMass tEvent:
+                if (tEvent.mRunType == EventMassRunType.pass) {
+                    EventMassEventManager.run(aTraveler, tEvent, aMaster, aCallback);
+                    return;
+                }
                 aCallback();
                 return;
             case CheckPointMass tCheck:

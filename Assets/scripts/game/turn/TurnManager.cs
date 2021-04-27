@@ -32,6 +32,10 @@ public class TurnManager {
             //マスを通過する
             aTurnTraveler.mComa.mNumberMesh.text = (aNumber - 1).ToString();
             MassEventManager.runPassEvent(aTurnTraveler, mMaster, () => {
+                if (aTurnTraveler.mIsRetired) {
+                    aCallback();
+                    return;
+                }
                 GameData.mStageData.mCamera.mTarget = aTurnTraveler.mComa;
                 move(aTurnTraveler, aNumber - 1, aCallback);
             });
@@ -40,9 +44,21 @@ public class TurnManager {
     //次のマスへ移動させる(空マスは通過する)
     private void moveToNextMass(TravelerStatus aTraveler, Action aCallback) {
         int tNextMassNumber = (aTraveler.mCurrentMassNumber + 1) % mMaster.mFeild.mMassList.Count;
+        if (!(mMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber] is SpecialMoveMass && mMaster.mFeild.mMassList[tNextMassNumber] is SpecialMoveMass)) {
+            walkToNextMass(aTraveler, aCallback);
+            return;
+        }
+        //特殊な移動演出のマス
+        ((SpecialMoveMass)mMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber]).effectMove(aTraveler, (SpecialMoveMass)mMaster.mFeild.mMassList[tNextMassNumber], () => {
+            aTraveler.mCurrentMassNumber = tNextMassNumber;
+            moveToNextMass(aTraveler, aCallback);
+        });
+    }
+    private void walkToNextMass(TravelerStatus aTraveler, Action aCallback) {
+        int tNextMassNumber = (aTraveler.mCurrentMassNumber + 1) % mMaster.mFeild.mMassList.Count;
         aTraveler.mComa.moveToWithSpeed(mMaster.mFeild.mMassList[tNextMassNumber].worldPosition, 8, () => {
             aTraveler.mCurrentMassNumber = tNextMassNumber;
-            if (mMaster.mFeild.mMassList[tNextMassNumber] is EmptyMass) {
+            if (mMaster.mFeild.mMassList[tNextMassNumber] is EmptyMass || mMaster.mFeild.mMassList[tNextMassNumber] is SpecialMoveMass) {
                 moveToNextMass(aTraveler, aCallback);
                 return;
             }

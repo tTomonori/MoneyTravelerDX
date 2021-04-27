@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/centralContinent.unity
     guid: 15068ad510c744217801b528cdcaba48
+  - enabled: 1
+    path: Assets/Scenes/stage/demonCastle.unity
+    guid: 99fa6270eab2f42b6a97adfd41607620
   m_configObjects: {}

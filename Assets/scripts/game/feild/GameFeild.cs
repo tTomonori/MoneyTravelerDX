@@ -42,9 +42,11 @@ public class GameFeild : MyBehaviour {
         mMassList.AddRange(mMassContainer.GetComponentsInChildren<GameMass>());
         //ルート作成
         for (int i = 0; i < mMassList.Count - 1; i++) {
+            if (mMassList[i] is SpecialMoveMass && mMassList[i + 1] is SpecialMoveMass) continue;
             createRoute(mMassList[i], mMassList[i + 1]).transform.SetParent(mRouteContainer.transform, true);
         }
-        createRoute(mMassList[mMassList.Count - 1], mMassList[0]).transform.SetParent(mRouteContainer.transform, true);
+        if (!(mMassList[mMassList.Count - 1] is SpecialMoveMass && mMassList[0] is SpecialMoveMass))
+            createRoute(mMassList[mMassList.Count - 1], mMassList[0]).transform.SetParent(mRouteContainer.transform, true);
     }
     //2つのマスを結ぶ線を生成
     static public MyBehaviour createRoute(GameMass aMass1, GameMass aMass2) {

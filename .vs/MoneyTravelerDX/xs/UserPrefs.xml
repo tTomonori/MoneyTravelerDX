@@ -1,16 +1,43 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/GameFeild.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/turn/TurnManager.cs">
     <Files>
-      <File FileName="Assets/scripts/game/camera/GameCamera.cs" Line="26" Column="20" />
-      <File FileName="Assets/scripts/game/camera/GameXZCamera.cs" Line="56" Column="32" />
-      <File FileName="Assets/scripts/game/feild/traveler/ai/PlayerAi.cs" Line="22" Column="23" />
-      <File FileName="Assets/scripts/game/camera/GameCameraController.cs" Line="12" Column="52" />
-      <File FileName="Assets/scripts/game/feild/GameFeild.cs" Line="59" Column="57" />
+      <File FileName="Assets/scripts/game/feild/mass/EventMass.cs" Line="39" Column="27" />
+      <File FileName="Assets/scripts/game/turn/event/MassEventManager.cs" Line="15" Column="28" />
+      <File FileName="Assets/scripts/game/turn/TurnManager.cs" Line="53" Column="26" />
+      <File FileName="Assets/scripts/game/feild/mass/specialMoveMass/WarpMass.cs" Line="12" Column="42" />
+      <File FileName="Assets/scripts/game/feild/mass/SpecialMoveMass.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoneyTravelerDX" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="game" expanded="True">
+                  <Node name="camera" expanded="True" />
+                  <Node name="feild" expanded="True">
+                    <Node name="mass" expanded="True">
+                      <Node name="specialMoveMass" expanded="True" />
+                    </Node>
+                    <Node name="traveler" expanded="True" />
+                  </Node>
+                  <Node name="turn" expanded="True">
+                    <Node name="event" expanded="True">
+                      <Node name="eventMass" expanded="True" />
+                    </Node>
+                    <Node name="TurnManager.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3283bf14-d639-4b29-9f7a-1abedc7116f3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d0ba6e91-0970-4aeb-a1f0-632f4e181c00" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

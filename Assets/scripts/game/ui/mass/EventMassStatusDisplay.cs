@@ -5,11 +5,13 @@ using UnityEngine;
 public class EventMassStatusDisplay : MassStatusDisplay {
     [SerializeField]
     public TextMesh mEventTypeMesh;
+    public TextMesh mRunTypeMesh;
     public TextMesh mDescription1Mesh;
     public TextMesh mDescription2Mesh;
     public override void setStatus(GameMass aMass) {
         EventMass tEvent = (EventMass)aMass;
         mEventTypeMesh.text = tEvent.mEventType.getName();
+        mRunTypeMesh.text = tEvent.mRunType.getName();
         switch (tEvent.mEventType) {
             case EventMassType.heart:
                 mDescription1Mesh.text = "なにかいいことが起こるかも?";

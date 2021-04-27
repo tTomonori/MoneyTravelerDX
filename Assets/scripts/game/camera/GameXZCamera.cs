@@ -10,7 +10,6 @@ public class GameXZCamera : GameCamera {
         Vector2 tCameraPosition = new Vector2(this.worldPosition.x, this.worldPosition.z);
         float tDistance = Vector2.Distance(tTargetPosition, tCameraPosition);
         if (tDistance < mMoveSpeed * Time.deltaTime) {
-            this.worldPosition = mTarget.transform.position;
             this.worldPosition = new Vector3(mTarget.transform.position.x, this.worldPosition.y, mTarget.transform.position.z);
             return;
         }
@@ -20,9 +19,6 @@ public class GameXZCamera : GameCamera {
     }
     //撮影対象をベストポジションで撮影している
     public override bool isShooting() {
-        //Vector2 tTargetPosition = new Vector2(mTarget.transform.position.x, mTarget.transform.position.z);
-        //Vector2 tCameraPosition = new Vector2(this.worldPosition.x, this.worldPosition.z);
-        //return Vector2.Distance(tTargetPosition, tCameraPosition) < 0.05f;
         return mTarget.transform.position.x == this.worldPosition.x && mTarget.transform.position.z == this.worldPosition.z && mCameraContainer.scale.x == 1;
     }
     //指定した対象の位置を撮影する
