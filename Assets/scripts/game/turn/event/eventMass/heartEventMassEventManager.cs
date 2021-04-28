@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+
 static public partial class EventMassEventManager {
     static public void runHeartEvent(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
         List<(Action<TravelerStatus, GameMaster, Action>, float)> tEventList = new List<(Action<TravelerStatus, GameMaster, Action>, float)>();

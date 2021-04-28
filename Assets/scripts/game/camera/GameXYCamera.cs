@@ -36,8 +36,8 @@ public class GameXYCamera : GameCamera {
         if (mCamera.worldPosition.x > GameData.mStageData.mEast - 1) {
             this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mEast - 1);
         }
-        if (mCamera.worldPosition.y < GameData.mStageData.mFloor + 7) {
-            this.positionY -= mCamera.worldPosition.y - (GameData.mStageData.mFloor + 7);
+        if (this.worldPosition.y < GameData.mStageData.mFloor) {
+            this.positionY = GameData.mStageData.mFloor;
         }
         if (mCamera.worldPosition.x < GameData.mStageData.mWest + 1) {
             this.positionX -= mCamera.worldPosition.x - (GameData.mStageData.mWest + 1);

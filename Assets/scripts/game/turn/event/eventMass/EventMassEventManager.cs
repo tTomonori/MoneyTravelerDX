@@ -18,6 +18,9 @@ static public partial class EventMassEventManager {
             case EventMassType.disaster:
                 runDisasterEvent(aTraveler, aMaster, aCallback);
                 return;
+            case EventMassType.question:
+                runQuestionEvent(aTraveler, aMaster, aCallback);
+                return;
         }
     }
     //リストの中から実行するイベントを決める

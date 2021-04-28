@@ -10,10 +10,10 @@ public class EventMass : GameMass {
 }
 
 public enum EventMassType {
-    heart, bat, magic, disaster
+    heart, bat, magic, disaster, question
 }
 public enum EventMassRunType {
-    stop,pass
+    stop, pass
 }
 static public class EventMassTypeMethods {
     static public string getName(this EventMassType e) {
@@ -26,6 +26,8 @@ static public class EventMassTypeMethods {
                 return "マジック";
             case EventMassType.disaster:
                 return "災害";
+            case EventMassType.question:
+                return "ハテナ";
         }
         throw new Exception();
     }

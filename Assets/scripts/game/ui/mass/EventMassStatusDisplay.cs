@@ -29,6 +29,10 @@ public class EventMassStatusDisplay : MassStatusDisplay {
                 mDescription1Mesh.text = "災害イベントが発生!?";
                 mDescription2Mesh.text = "吉と出るか凶と出るか・・・";
                 break;
+            case EventMassType.question:
+                mDescription1Mesh.text = "全てのイベントの中から";
+                mDescription2Mesh.text = "ランダムにイベントが発生するよ";
+                break;
         }
     }
 }
