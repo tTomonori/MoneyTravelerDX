@@ -4,8 +4,8 @@ using UnityEngine;
 using System;
 
 static public class MassEventManager {
-    static public void runPassEvent(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        switch (aMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber]) {
+    static public void runPassEvent(TravelerStatus aTraveler, GameMass aMass, GameMaster aMaster, Action aCallback) {
+        switch (aMass) {
             case LandMass tLand:
                 aCallback();
                 return;
@@ -22,10 +22,15 @@ static public class MassEventManager {
             case StartMass tStart:
                 StartMassEventManager.runPassEvent(aTraveler, tStart, aMaster, aCallback);
                 return;
+            case ShareMass tShare:
+                if (tShare.mSharedMass is ShareMass)
+                    throw new Exception();
+                runPassEvent(aTraveler, tShare.mSharedMass, aMaster, aCallback);
+                return;
         }
     }
-    static public void runStopEvent(TravelerStatus aTraveler, GameMaster aMaster, Action aCallback) {
-        switch (aMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber]) {
+    static public void runStopEvent(TravelerStatus aTraveler, GameMass aMass, GameMaster aMaster, Action aCallback) {
+        switch (aMass) {
             case LandMass tLand:
                 LandMassEventManager.runStopEvent(aTraveler, tLand, aMaster, aCallback);
                 return;
@@ -38,6 +43,11 @@ static public class MassEventManager {
             case StartMass tStart:
                 StartMassEventManager.runStopEvent(aTraveler, tStart, aMaster, aCallback);
                 break;
+            case ShareMass tShare:
+                if (tShare.mSharedMass is ShareMass)
+                    throw new Exception();
+                runStopEvent(aTraveler, tShare.mSharedMass, aMaster, aCallback);
+                return;
         }
     }
 }

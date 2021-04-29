@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 
 public class TurnManager {
+    static public readonly float mMoveSpeed = 8;
     public GameMaster mMaster;
     //ターン開始
     public void startTurn(TravelerStatus aTurnTraveler, Action aCallback) {
@@ -26,12 +27,12 @@ public class TurnManager {
             //マスに止まった
             if (aNumber == 1) {
                 aTurnTraveler.mComa.mNumberMesh.text = "";
-                MassEventManager.runStopEvent(aTurnTraveler, mMaster, aCallback);
+                MassEventManager.runStopEvent(aTurnTraveler, mMaster.mFeild.mMassList[aTurnTraveler.mCurrentMassNumber], mMaster, aCallback);
                 return;
             }
             //マスを通過する
             aTurnTraveler.mComa.mNumberMesh.text = (aNumber - 1).ToString();
-            MassEventManager.runPassEvent(aTurnTraveler, mMaster, () => {
+            MassEventManager.runPassEvent(aTurnTraveler, mMaster.mFeild.mMassList[aTurnTraveler.mCurrentMassNumber], mMaster, () => {
                 if (aTurnTraveler.mIsRetired) {
                     aCallback();
                     return;
@@ -44,21 +45,33 @@ public class TurnManager {
     //次のマスへ移動させる(空マスは通過する)
     private void moveToNextMass(TravelerStatus aTraveler, Action aCallback) {
         int tNextMassNumber = (aTraveler.mCurrentMassNumber + 1) % mMaster.mFeild.mMassList.Count;
-        if (!(mMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber] is SpecialMoveMass && mMaster.mFeild.mMassList[tNextMassNumber] is SpecialMoveMass)) {
+        GameMass tCurrentMass = mMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber].getNotShared();
+        GameMass tNextMass = mMaster.mFeild.mMassList[tNextMassNumber].getNotShared();
+        if (!(tCurrentMass is SpecialMoveMass && tNextMass is SpecialMoveMass)) {
             walkToNextMass(aTraveler, aCallback);
             return;
         }
         //特殊な移動演出のマス
-        ((SpecialMoveMass)mMaster.mFeild.mMassList[aTraveler.mCurrentMassNumber]).effectMove(aTraveler, (SpecialMoveMass)mMaster.mFeild.mMassList[tNextMassNumber], () => {
+        if (tCurrentMass is JumpMassNumberMass) {
+            JumpMassNumberMass tJumpMass = (JumpMassNumberMass)tCurrentMass;
+            JumpMassNumberMass tNextJumpMass = (JumpMassNumberMass)tJumpMass.getJumpToMass(aTraveler, mMaster);
+            tJumpMass.effectMove(aTraveler, tNextJumpMass, () => {
+                aTraveler.mCurrentMassNumber = mMaster.mFeild.mMassList.IndexOf(tNextJumpMass);
+                moveToNextMass(aTraveler, aCallback);
+            });
+            return;
+        }
+        ((SpecialMoveMass)tCurrentMass).effectMove(aTraveler, (SpecialMoveMass)tNextMass, () => {
             aTraveler.mCurrentMassNumber = tNextMassNumber;
             moveToNextMass(aTraveler, aCallback);
         });
     }
     private void walkToNextMass(TravelerStatus aTraveler, Action aCallback) {
         int tNextMassNumber = (aTraveler.mCurrentMassNumber + 1) % mMaster.mFeild.mMassList.Count;
-        aTraveler.mComa.moveToWithSpeed(mMaster.mFeild.mMassList[tNextMassNumber].worldPosition, 8, () => {
+        GameMass tNextMass = mMaster.mFeild.mMassList[tNextMassNumber].getNotShared();
+        aTraveler.mComa.moveToWithSpeed(tNextMass.worldPosition, mMoveSpeed, () => {
             aTraveler.mCurrentMassNumber = tNextMassNumber;
-            if (mMaster.mFeild.mMassList[tNextMassNumber] is EmptyMass || mMaster.mFeild.mMassList[tNextMassNumber] is SpecialMoveMass) {
+            if (tNextMass is EmptyMass || tNextMass is SpecialMoveMass) {
                 moveToNextMass(aTraveler, aCallback);
                 return;
             }

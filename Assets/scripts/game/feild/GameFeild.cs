@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class GameFeild : MyBehaviour {
     static public readonly float mHorizontalMargin = 15;
-    static public readonly float mAdditionalSouthMargin = 7;
+    static public readonly float mAdditionalSouthMargin = 15;
     static public readonly float mCeilingMargin = 15;
     static public readonly float mFloorMargin = 0.1f;
     [SerializeField]
@@ -41,12 +41,28 @@ public class GameFeild : MyBehaviour {
         //マスをリストに記録
         mMassList.AddRange(mMassContainer.GetComponentsInChildren<GameMass>());
         //ルート作成
-        for (int i = 0; i < mMassList.Count - 1; i++) {
-            if (mMassList[i] is SpecialMoveMass && mMassList[i + 1] is SpecialMoveMass) continue;
-            createRoute(mMassList[i], mMassList[i + 1]).transform.SetParent(mRouteContainer.transform, true);
+        for (int i = 0; i < mMassList.Count; i++) {
+            int tIndex1 = i;
+            int tIndex2 = (i + 1 == mMassList.Count) ? 0 : i + 1;
+            if (!mustCreateRout(tIndex1, tIndex2)) continue;
+            createRoute(mMassList[tIndex1].getNotShared(), mMassList[tIndex2].getNotShared()).transform.SetParent(mRouteContainer.transform, true);
         }
-        if (!(mMassList[mMassList.Count - 1] is SpecialMoveMass && mMassList[0] is SpecialMoveMass))
-            createRoute(mMassList[mMassList.Count - 1], mMassList[0]).transform.SetParent(mRouteContainer.transform, true);
+    }
+    private bool mustCreateRout(int aIndex1, int aIndex2) {
+        if (mMassList[aIndex1].getNotShared() is SpecialMoveMass && mMassList[aIndex2].getNotShared() is SpecialMoveMass)
+            return false;
+        if (!(mMassList[aIndex1] is ShareMass) && !(mMassList[aIndex2] is ShareMass))
+            return true;
+        for (int i = 0; i < mMassList.Count; i++) {
+            if (i == aIndex1) continue;
+            int tIndex1 = i;
+            int tIndex2 = (i + 1 == mMassList.Count) ? 0 : i + 1;
+            if ((mMassList[aIndex1].getNotShared() == mMassList[tIndex1].getNotShared() && mMassList[aIndex2].getNotShared() == mMassList[tIndex2].getNotShared()) ||
+                (mMassList[aIndex1].getNotShared() == mMassList[tIndex2].getNotShared() && mMassList[aIndex2].getNotShared() == mMassList[tIndex1].getNotShared())) {
+                if (aIndex1 > tIndex1) return false;
+            }
+        }
+        return true;
     }
     //2つのマスを結ぶ線を生成
     static public MyBehaviour createRoute(GameMass aMass1, GameMass aMass2) {

@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/mass/specialMoveMass/WaterSplashMass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/game/feild/GameFeild.cs">
     <Files>
-      <File FileName="Assets/scripts/mapParts/Cloud.cs" Line="13" Column="30" />
-      <File FileName="Assets/scripts/mapParts/JumpCloud.cs" />
-      <File FileName="Assets/scripts/game/feild/mass/specialMoveMass/WaterSplashMass.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/game/feild/mass/specialMoveMass/FactoryLiftMass.cs" Line="18" Column="37" />
+      <File FileName="Assets/scripts/mapParts/FactoryLift.cs" Line="8" Column="64" />
+      <File FileName="Assets/scripts/mapParts/Gear.cs" Line="9" Column="40" />
+      <File FileName="Assets/scripts/game/turn/TurnManager.cs" Line="72" Column="76" />
+      <File FileName="Assets/scripts/setting/paperBoardSetting/StageSetting.cs" Line="29" Column="39" />
+      <File FileName="Assets/scripts/game/feild/GameFeild.cs" Line="8" Column="61" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

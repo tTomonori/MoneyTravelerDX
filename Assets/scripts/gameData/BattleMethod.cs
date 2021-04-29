@@ -5,6 +5,14 @@ using UnityEngine;
 abstract public class BattleMethod {
     public string mName;
     abstract public bool isFinish(GameMaster aMaster);
+    public bool lastOne(GameMaster aMaster) {
+        int tTravelerNumber = 0;
+        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
+            if (!tTraveler.mIsRetired)
+                tTravelerNumber++;
+        }
+        return tTravelerNumber <= 1;
+    }
 }
 abstract public class WithResultBonusMethod : BattleMethod {
     public int mResultBonus = 500;
@@ -20,12 +28,7 @@ public class LosingMethod : BattleMethod {
         mName = "負け抜け";
     }
     public override bool isFinish(GameMaster aMaster) {
-        int tTravelerNumber = 0;
-        foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
-            if (!tTraveler.mIsRetired)
-                tTravelerNumber++;
-        }
-        return tTravelerNumber <= 1;
+        return lastOne(aMaster);
     }
 }
 public class AssetsGoalMethod : BattleMethod {
@@ -34,6 +37,8 @@ public class AssetsGoalMethod : BattleMethod {
         mName = "総資産目標";
     }
     public override bool isFinish(GameMaster aMaster) {
+        if (lastOne(aMaster))
+            return true;
         foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
             if (tTraveler.mAssets >= mGoalAmount)
                 return true;
@@ -47,6 +52,8 @@ public class TurnLimitsMethod : WithResultBonusMethod {
         mName = "ターン制限";
     }
     public override bool isFinish(GameMaster aMaster) {
+        if (lastOne(aMaster))
+            return true;
         if (aMaster.mTurnNumber < mLimitsTurn) return false;
         for (int i = aMaster.mTurnIndex + 1; i < aMaster.mTurnOrder.Count; i++) {
             if (aMaster.mTurnOrder[i].mIsRetired)
@@ -63,6 +70,8 @@ public class LapGoalMethod : WithResultBonusMethod {
         mName = "周回目標";
     }
     public override bool isFinish(GameMaster aMaster) {
+        if (lastOne(aMaster))
+            return true;
         foreach (TravelerStatus tTraveler in aMaster.mTurnOrder) {
             if (tTraveler.mOrbit >= mGoalLap + 1)
                 return true;

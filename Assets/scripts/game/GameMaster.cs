@@ -128,7 +128,7 @@ public class GameMaster {
             foreach (TravelerStatus tComparison in mTravelers) {
                 if (tComparison == null || tComparison.mIsRetired || tComparison == aTurnTraveler)
                     continue;
-                if (tComparison.mCurrentMassNumber != tTraveler.mCurrentMassNumber)
+                if (mFeild.getMassNumberConsiderShareMass(tComparison) != mFeild.getMassNumberConsiderShareMass(tTraveler))
                     continue;
                 tNum.Item1++;
                 if (tComparison.mPlayerNumber <= tTraveler.mPlayerNumber)

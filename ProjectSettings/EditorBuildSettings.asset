@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/heaven.unity
     guid: 65a68e94edc514338a203dcc552eb4ee
+  - enabled: 1
+    path: Assets/Scenes/stage/factory.unity
+    guid: f694135dc7d594907b5384ceb4760739
   m_configObjects: {}

@@ -184,4 +184,12 @@ static public class GameFeildSearche {
         }
         return tAttributes;
     }
+    //指定したトラベラーがいるマスのindexを返す(shareMassの場合は共有しているマスのindex)
+    static public int getMassNumberConsiderShareMass(this GameFeild aFeild, TravelerStatus aTraveler) {
+        GameMass tMass = aFeild.mMassList[aTraveler.mCurrentMassNumber];
+        if (tMass is ShareMass)
+            return aFeild.mMassList.IndexOf(((ShareMass)tMass).mSharedMass);
+        else
+            return aFeild.mMassList.IndexOf(tMass);
+    }
 }
