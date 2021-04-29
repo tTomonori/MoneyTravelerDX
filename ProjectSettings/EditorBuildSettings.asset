@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/cityOfWater.unity
     guid: 91c5a9701f0dd482f88650a220fbb569
+  - enabled: 1
+    path: Assets/Scenes/stage/heaven.unity
+    guid: 65a68e94edc514338a203dcc552eb4ee
   m_configObjects: {}

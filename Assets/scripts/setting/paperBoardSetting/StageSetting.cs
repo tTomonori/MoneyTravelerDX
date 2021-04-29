@@ -25,6 +25,7 @@ public class StageSetting : PaperBoardSetting {
         mStageData.Add(("中央大陸", "centralContinent"));
         mStageData.Add(("魔王城", "demonCastle"));
         mStageData.Add(("水の都", "cityOfWater"));
+        mStageData.Add(("天界", "heaven"));
 
         updatePage();
     }

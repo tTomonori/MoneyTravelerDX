@@ -33,6 +33,10 @@ public class EventMassStatusDisplay : MassStatusDisplay {
                 mDescription1Mesh.text = "全てのイベントの中から";
                 mDescription2Mesh.text = "ランダムにイベントが発生するよ";
                 break;
+            case EventMassType.building:
+                mDescription1Mesh.text = "土地に関するイベントが発生するよ";
+                mDescription2Mesh.text = "うまく使いこなそう";
+                break;
         }
     }
 }

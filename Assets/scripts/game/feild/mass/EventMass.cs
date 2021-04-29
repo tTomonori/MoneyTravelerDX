@@ -10,7 +10,7 @@ public class EventMass : GameMass {
 }
 
 public enum EventMassType {
-    heart, bat, magic, disaster, question
+    heart, bat, magic, disaster, question, building
 }
 public enum EventMassRunType {
     stop, pass
@@ -28,6 +28,8 @@ static public class EventMassTypeMethods {
                 return "災害";
             case EventMassType.question:
                 return "ハテナ";
+            case EventMassType.building:
+                return "物件";
         }
         throw new Exception();
     }
