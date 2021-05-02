@@ -18,15 +18,15 @@ public class WaterSplashMass : SpecialMoveMass {
     //移動先の方が高い場合
     public void splashUp(TravelerStatus aTraveler, SpecialMoveMass aNextMass, Action aCallback) {
         float tPreHeight = mSplash.mHeight;
-        mSplash.changeHeightWithSpeed(aNextMass.positionY - mSplash.positionY, mSplashSpeed, () => {
+        mSplash.changeHeightWithSpeed(aNextMass.positionY - mSplash.worldPosition.y, mSplashSpeed, () => {
             MyBehaviour.setTimeoutToIns(mJumpDuration, () => {
                 mSplash.changeHeightWithSpeed(tPreHeight, mSplashSpeed, () => { });
             });
         });
-        MyBehaviour.setTimeoutToIns((this.positionY - mSplash.positionY - tPreHeight) / mSplashSpeed - mJumpDuration, () => {
-            aTraveler.mComa.sinMove(new Vector3(mSplash.positionX - this.positionX, 0, mSplash.positionZ - this.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
-                aTraveler.mComa.moveToWithSpeed(new Vector3(mSplash.positionX, aNextMass.positionY, mSplash.positionZ), mSplashSpeed, () => {
-                    aTraveler.mComa.sinMove(new Vector3(aNextMass.positionX - mSplash.positionX, 0, aNextMass.positionZ - mSplash.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
+        MyBehaviour.setTimeoutToIns((this.positionY - mSplash.worldPosition.y - tPreHeight) / mSplashSpeed - mJumpDuration, () => {
+            aTraveler.mComa.sinMove(new Vector3(mSplash.worldPosition.x - this.positionX, 0, mSplash.worldPosition.z - this.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
+                aTraveler.mComa.moveToWithSpeed(new Vector3(mSplash.worldPosition.x, aNextMass.positionY, mSplash.worldPosition.z), mSplashSpeed, () => {
+                    aTraveler.mComa.sinMove(new Vector3(aNextMass.positionX - mSplash.worldPosition.x, 0, aNextMass.positionZ - mSplash.worldPosition.z), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
                         aCallback();
                     });
                 });
@@ -36,15 +36,15 @@ public class WaterSplashMass : SpecialMoveMass {
     //移動先の方が低い場合
     public void splashDown(TravelerStatus aTraveler, SpecialMoveMass aNextMass, Action aCallback) {
         float tPreHeight = mSplash.mHeight;
-        mSplash.changeHeightWithSpeed(this.positionY - mSplash.positionY, mSplashSpeed, () => {
+        mSplash.changeHeightWithSpeed(this.positionY - mSplash.worldPosition.y, mSplashSpeed, () => {
             MyBehaviour.setTimeoutToIns(mJumpDuration, () => {
                 mSplash.changeHeightWithSpeed(tPreHeight, mSplashSpeed, () => { });
             });
         });
-        MyBehaviour.setTimeoutToIns((this.positionY - mSplash.positionY - tPreHeight) / mSplashSpeed, () => {
-            aTraveler.mComa.sinMove(new Vector3(mSplash.positionX - this.positionX, 0, mSplash.positionZ - this.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
-                aTraveler.mComa.moveToWithSpeed(new Vector3(mSplash.positionX, aNextMass.positionY, mSplash.positionZ), mSplashSpeed, () => {
-                    aTraveler.mComa.sinMove(new Vector3(aNextMass.positionX - mSplash.positionX, 0, aNextMass.positionZ - mSplash.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
+        MyBehaviour.setTimeoutToIns((this.positionY - mSplash.worldPosition.y - tPreHeight) / mSplashSpeed, () => {
+            aTraveler.mComa.sinMove(new Vector3(mSplash.worldPosition.x - this.positionX, 0, mSplash.worldPosition.z - this.positionZ), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
+                aTraveler.mComa.moveToWithSpeed(new Vector3(mSplash.worldPosition.x, aNextMass.positionY, mSplash.worldPosition.z), mSplashSpeed, () => {
+                    aTraveler.mComa.sinMove(new Vector3(aNextMass.positionX - mSplash.worldPosition.x, 0, aNextMass.positionZ - mSplash.worldPosition.z), new Vector3(0, mJumpHeight, 0), 0, 1, mJumpDuration, () => {
                         aCallback();
                     });
                 });

@@ -27,6 +27,7 @@ public class StageSetting : PaperBoardSetting {
         mStageData.Add(("水の都", "cityOfWater"));
         mStageData.Add(("天界", "heaven"));
         mStageData.Add(("工場", "factory"));
+        mStageData.Add(("デコボコ山岳", "unevenMountain"));
 
         updatePage();
     }

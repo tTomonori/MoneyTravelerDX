@@ -47,6 +47,14 @@ public class GameFeild : MyBehaviour {
             if (!mustCreateRout(tIndex1, tIndex2)) continue;
             createRoute(mMassList[tIndex1].getNotShared(), mMassList[tIndex2].getNotShared()).transform.SetParent(mRouteContainer.transform, true);
         }
+        //jumpMassのルート
+        for(int i = 0; i < mMassList.Count; i++) {
+            if(mMassList[i] is JumpMassNumberMass && ((JumpMassNumberMass)mMassList[i]).mRequireRoute) {
+                foreach(GameMass tMass in ((JumpMassNumberMass)mMassList[i]).mJumpToMassList) {
+                    createRoute(mMassList[i], tMass).transform.SetParent(mRouteContainer.transform, true);
+                }
+            }
+        }
     }
     private bool mustCreateRout(int aIndex1, int aIndex2) {
         if (mMassList[aIndex1].getNotShared() is SpecialMoveMass && mMassList[aIndex2].getNotShared() is SpecialMoveMass)

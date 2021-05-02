@@ -3001,7 +3001,7 @@ MonoBehaviour:
   mInitialMoney: 1000
   mFeild: {fileID: 187700227}
   mCamera: {fileID: 915530813}
-  mBGM: {fileID: 8300000, guid: 2a548bc5f07834b598ef3029a34d9aa0, type: 3}
+  mBGM: {fileID: 8300000, guid: 80d486845ccfc425f86891ac5f4e04f8, type: 3}
 --- !u!1001 &294023235
 PrefabInstance:
   m_ObjectHideFlags: 0

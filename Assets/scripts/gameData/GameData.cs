@@ -19,7 +19,7 @@ static public class GameData {
         mGameSetting.mOrbitEventType = OrbitEventType.always;
         mGameSetting.mStageSceneName = "standard";
         mGameSetting.mStageName = "スタンダード";
-        mGameSetting.mBattleMethod = new LosingMethod();
+        mGameSetting.mBattleMethod = new BottomConfirmedMethod();
 
         mGameSetting.mTravelerData = new List<TravelerData>();
         TravelerData tCharaData;

@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage/factory.unity
     guid: f694135dc7d594907b5384ceb4760739
+  - enabled: 1
+    path: Assets/Scenes/stage/unevenMountain.unity
+    guid: 0c2ac3b8c3a46442585727331097a33e
   m_configObjects: {}
