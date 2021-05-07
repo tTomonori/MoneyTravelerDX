@@ -21,6 +21,7 @@ public class GameFeild : MyBehaviour {
     public float mFloor;
     public float mCeiling;
 
+#if UNITY_EDITOR
     //inspector用
     private void createContainer() {
         if (mMassContainer == null)
@@ -48,9 +49,9 @@ public class GameFeild : MyBehaviour {
             createRoute(mMassList[tIndex1].getNotShared(), mMassList[tIndex2].getNotShared()).transform.SetParent(mRouteContainer.transform, true);
         }
         //jumpMassのルート
-        for(int i = 0; i < mMassList.Count; i++) {
-            if(mMassList[i] is JumpMassNumberMass && ((JumpMassNumberMass)mMassList[i]).mRequireRoute) {
-                foreach(GameMass tMass in ((JumpMassNumberMass)mMassList[i]).mJumpToMassList) {
+        for (int i = 0; i < mMassList.Count; i++) {
+            if (mMassList[i] is JumpMassNumberMass && ((JumpMassNumberMass)mMassList[i]).mRequireRoute) {
+                foreach (GameMass tMass in ((JumpMassNumberMass)mMassList[i]).mJumpToMassList) {
                     createRoute(mMassList[i], tMass).transform.SetParent(mRouteContainer.transform, true);
                 }
             }
@@ -146,7 +147,11 @@ public class GameFeild : MyBehaviour {
             tWall.position = new Vector3((mEast + mWest) / 2f, mFloor - mFloorMargin, (mNorth + mSouth) / 2f);
         }
     }
+#endif
 }
+
+
+#if UNITY_EDITOR
 [CustomEditor(typeof(GameFeild))]
 public class GameFeildEditor : Editor {
 
@@ -169,3 +174,4 @@ public class GameFeildEditor : Editor {
         }
     }
 }
+#endif

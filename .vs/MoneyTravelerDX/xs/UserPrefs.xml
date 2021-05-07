@@ -1,11 +1,8 @@
 ﻿<Properties StartupConfiguration="{5530CCFE-277A-3E3B-1C7B-4F474AC7A930}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/gameData/GameData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/title/TitleMain.cs">
     <Files>
-      <File FileName="Assets/scripts/mapParts/ArrowBoard.cs" Line="8" Column="29" />
-      <File FileName="Assets/scripts/game/feild/mass/specialMoveMass/ArrowBoardJumpMass.cs" Line="30" Column="44" />
-      <File FileName="Assets/scripts/game/camera/GameWallCamera.cs" Line="44" Column="32" />
-      <File FileName="Assets/scripts/setting/paperBoardSetting/StageSetting.cs" Line="30" Column="50" />
-      <File FileName="Assets/scripts/gameData/GameData.cs" Line="22" Column="42" />
+      <File FileName="Assets/scripts/game/feild/GameFeild.cs" Line="150" Column="7" />
+      <File FileName="Assets/scripts/title/TitleMain.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -18,4 +18,8 @@ public class TitleMain : MonoBehaviour {
             MySceneManager.changeScene("setting");
         };
     }
+    [RuntimeInitializeOnLoadMethod]
+    static void OnRuntimeMethodLoad() {
+        Screen.SetResolution(2250, 1500, false, 60);
+    }
 }
